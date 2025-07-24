@@ -1,1 +1,9 @@
-<p>step2-contact-info works!</p>
+<div class="inputs">
+  <input placeholder="Email Address" />
+  <input placeholder="Phone Number (optional)" />
+  <input placeholder="Discord ID (e.g. User#1234)" />
+  <div class="btns">
+    <button (click)="prev.emit()">← Back</button>
+    <button (click)="next.emit()">Next →</button>
+  </div>
+</div>
