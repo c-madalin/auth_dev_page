@@ -1,0 +1,139 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  gap: 200px;
+  padding: 40px;
+}
+
+.page_one_button {
+  width: 360px !important;
+  height: 360px !important;
+  background: linear-gradient(145deg, rgb(27, 39, 53), #334155);
+  position: relative;
+  z-index: 100;
+  border: 2px solid rgba(255, 255, 255, 0.05);
+  border-radius: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.3),
+    0 4px 10px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  padding: 20px;
+}
+
+.page_one_button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  padding: 2px;
+  background: linear-gradient(145deg, rgba(148, 163, 184, 0.3), rgba(71, 85, 105, 0.1));
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: xor;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.page_one_button:hover {
+  transform: translateY(-5px);
+  box-shadow:
+    0 12px 36px rgba(26, 188, 156, 0.3),
+    0 8px 24px rgba(0, 0, 0, 0.3),
+    0 4px 10px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  border-color: rgba(26, 188, 156, 0.3);
+}
+
+.page_one_button:hover::before {
+  opacity: 1;
+}
+
+.page_one_button:active {
+  transform: scale(0.98);
+  transition-duration: 0.1s;
+}
+
+/* Remove icon container styling since we're not using it */
+
+i {
+  color: white;
+  font-size: 80px;
+  z-index: 110;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.1);
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.page_one_button:hover i {
+  color: #1abc9c;
+  text-shadow: 0 0 16px rgba(26, 188, 156, 0.6);
+}
+
+.button_label {
+  color: white;
+  font-size: 24px;
+  font-weight: 600;
+  z-index: 110;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  text-align: center;
+  transition: color 0.3s ease;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    gap: 40px;
+    padding: 20px;
+  }
+
+  .page_one_button {
+    width: 280px !important;
+    height: 240px !important;
+  }
+
+  .button_label {
+    font-size: 20px;
+  }
+
+  i {
+    font-size: 28px;
+  }
+
+  .info_icon {
+    width: 70px;
+    height: 70px;
+  }
+}
+
+@media (max-width: 480px) {
+  .page_one_button {
+    width: 240px !important;
+    height: 200px !important;
+  }
+
+  .button_label {
+    font-size: 18px;
+  }
+
+  i {
+    font-size: 24px;
+  }
+
+  .info_icon {
+    width: 60px;
+    height: 60px;
+  }
+}
