@@ -1,14 +1,15 @@
 <div class="auth-box">
   <div class="login-box fade">
     <div class="title">
-      <img src="assets/logo.png" class="image" />
+      <img src="assets/icon_user.png" class="image" />
       <h2>Seller Verification</h2>
     </div>
 
-    <ng-container [ngSwitch]="step">
+    <div [ngSwitch]="step" class="step-container">
+
       <app-step1-personal-info *ngSwitchCase="1" (next)="nextStep()"></app-step1-personal-info>
       <app-step2-contact-info *ngSwitchCase="2" (next)="nextStep()" (prev)="prevStep()"></app-step2-contact-info>
       <app-step3-business-info *ngSwitchCase="3" (prev)="prevStep()"></app-step3-business-info>
-    </ng-container>
+    </div>
   </div>
 </div>
