@@ -1,13 +1,329 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Seller</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <title>GameVitalise Authentication</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+      height: 100vh;
+      font-family: 'Montserrat', sans-serif;
+      color: #fff;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    canvas#stars {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .auth-box {
+      position: relative;
+      z-index: 10;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .login-box {
+      background: rgba(27, 39, 53, 0.85);
+      border-radius: 25px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      width: 480px;
+      max-width: 90vw;
+      padding: 40px 50px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow:
+        0 0 10px rgba(2, 2, 2, 0.5),
+        0 0 20px rgba(19, 21, 21, 0.3);
+      transition: box-shadow 0.3s ease;
+    }
+    .login-box:hover {
+      box-shadow:
+        0 0 20px rgba(12, 13, 13, 0.8),
+        0 0 40px rgba(25, 31, 32, 0.6);
+    }
+
+    .title {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    .image {
+      width: 50px;
+      height: 50px;
+      filter: drop-shadow(0 0 3px #00bcd4);
+    }
+
+    h2 {
+      margin: 0;
+      font-weight: 700;
+      font-size: 2rem;
+      letter-spacing: 2px;
+      text-shadow: 0 0 5px #00bcd4;
+    }
+
+    .inputs {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      gap: 18px;
+      margin-top: 10px;
+      opacity: 1;
+      transition: opacity 0.5s ease;
+    }
+    .inputs.fade-out {
+      opacity: 0;
+      pointer-events: none;
+      user-select: none;
+    }
+    .inputs.fade-in {
+      opacity: 1;
+      pointer-events: auto;
+      user-select: auto;
+    }
+
+    input {
+      background-color: #0f1c2b;
+      border: 1px solid #333;
+      border-radius: 12px;
+      padding: 14px 18px;
+      color: #fff;
+      font-size: 16px;
+      outline: none;
+      transition: border-color 0.3s ease;
+      box-shadow: inset 0 0 5px rgba(0,0,0,0.3);
+    }
+    input:focus {
+      border-color: #00bcd4;
+      box-shadow: 0 0 8px #00bcd4;
+      background-color: #122636;
+    }
+
+    .social-row {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 25px;
+      transition: opacity 0.5s ease;
+    }
+    .social-row.fade-out {
+      opacity: 0;
+      pointer-events: none;
+      user-select: none;
+    }
+    .social-row.fade-in {
+      opacity: 1;
+      pointer-events: auto;
+      user-select: auto;
+    }
+
+    .social-btn {
+      background-color: #0f1c2b;
+      border: 1px solid #444;
+      border-radius: 12px;
+      padding: 10px;
+      width: 46px;
+      height: 46px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.3s, border-color 0.3s;
+      box-shadow: 0 0 6px rgba(0, 188, 212, 0.2);
+    }
+    .social-btn:hover {
+      background-color: #00bcd4;
+      border-color: #00bcd4;
+      box-shadow: 0 0 15px #00bcd4;
+    }
+
+    .social-btn img {
+      width: 24px;
+      height: 24px;
+      filter: drop-shadow(0 0 1px rgba(0,0,0,0.6));
+    }
+
+    .switch-text {
+      margin-top: 30px;
+      color: #aaa;
+      cursor: pointer;
+      font-size: 15px;
+      user-select: none;
+      text-align: center;
+      transition: color 0.3s;
+    }
+
+    .switch-text:hover {
+      color: #00bcd4;
+    }
+
+    .switch-text span {
+      color: #00bcd4;
+      text-decoration: underline;
+      font-weight: 600;
+    }
+
+    .error-message {
+      color: #ff5252;
+      margin-top: 12px;
+      font-size: 14px;
+      text-align: center;
+      display: none;
+      user-select: none;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+  </style>
 </head>
 <body>
+
   <app-root></app-root>
+
+  <canvas id="stars"></canvas>
+
+  <script>
+    // Canvas stars
+    const canvas = document.getElementById('stars');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      initStars();
+    });
+
+    function createStar() {
+      return {
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 0.8 + 0.2,
+        age: 0,
+        lifeSpan: Math.random() * 60 + 60,
+        opacity: 0,
+      };
+    }
+
+    let stars = [];
+    function initStars() {
+      stars = [];
+      for (let i = 0; i < 300; i++) {
+        stars.push(createStar());
+      }
+    }
+
+    const shootingStars = [];
+
+    function drawStars() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      for (let s of stars) {
+        s.age++;
+        const halfLife = s.lifeSpan / 2;
+        s.opacity = s.age < halfLife ? s.age / halfLife : Math.max(0, 1 - (s.age - halfLife) / halfLife);
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255,255,255,${s.opacity})`;
+        ctx.fill();
+        if (s.age >= s.lifeSpan) Object.assign(s, { ...createStar(), age: 0 });
+      }
+
+      for (let i = shootingStars.length - 1; i >= 0; i--) {
+        const s = shootingStars[i];
+        s.life++;
+        const progress = s.life / s.maxLife;
+        const opacity = Math.max(0, 1 - progress);
+        const length = s.initialLength * (1 - progress);
+        ctx.beginPath();
+        ctx.moveTo(s.x, s.y);
+        ctx.lineTo(s.x - length, s.y + length * 0.3);
+        ctx.strokeStyle = `rgba(255,255,255,${opacity})`;
+        ctx.lineWidth = 0.8;
+        ctx.stroke();
+        s.x -= s.speed;
+        s.y += s.speed * 0.3;
+        if (s.life >= s.maxLife) shootingStars.splice(i, 1);
+      }
+    }
+
+    function animate() {
+      drawStars();
+      if (Math.random() < 0.02 && shootingStars.length < 10) {
+        shootingStars.push({
+          x: Math.random() * canvas.width * 0.8 + canvas.width * 0.2,
+          y: Math.random() * canvas.height * 0.3,
+          initialLength: Math.random() * 50 + 40,
+          speed: Math.random() * 4 + 4,
+          life: 0,
+          maxLife: 60 + Math.random() * 40
+        });
+      }
+      requestAnimationFrame(animate);
+    }
+
+    initStars();
+    animate();
+
+    // Toggle login/signup
+    const loginForm = document.getElementById("login-form");
+    const signupForm = document.getElementById("signup-form");
+    const socialButtons = document.getElementById("social-buttons");
+    const switchBtn = document.getElementById("switchBtn");
+
+    function fadeOut(element, callback) {
+      element.classList.add("fade-out");
+      element.classList.remove("fade-in");
+      setTimeout(() => {
+        if (callback) callback();
+      }, 500);
+    }
+
+    function fadeIn(element) {
+      element.classList.remove("fade-out");
+      element.classList.add("fade-in");
+    }
+
+    switchBtn.addEventListener("click", () => {
+      const showingLogin = !loginForm.classList.contains("hidden");
+
+      fadeOut(showingLogin ? loginForm : signupForm);
+      fadeOut(socialButtons);
+
+      setTimeout(() => {
+        loginForm.classList.toggle("hidden", showingLogin);
+        signupForm.classList.toggle("hidden", !showingLogin);
+        socialButtons.classList.toggle("hidden", showingLogin);
+
+        fadeIn(showingLogin ? signupForm : loginForm);
+        fadeIn(socialButtons);
+
+        switchBtn.innerHTML = showingLogin
+          ? 'Already have an account? <span>Log in</span>'
+          : 'Don\'t have an account? <span>Sign up</span>';
+      }, 500);
+    });
+  </script>
 </body>
 </html>
