@@ -14,7 +14,7 @@
 }
 /* Tranziție animată pentru containerul pașilor */
 .step-container {
-  animation: slideIn 0.5s ease forwards;
+  animation: slideIn 1.3s ease forwards;
   opacity: 0;
 }
 
