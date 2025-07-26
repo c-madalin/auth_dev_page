@@ -1,3 +1,116 @@
+/* Container principal */
+.form-step2 {
+  width: 100%;
+  max-height: 100%;
+  overflow: hidden;
+  padding: 10px;
+}
+
+/* Titlu secțiune */
+h3 {
+  margin-bottom: 20px;
+  font-size: 18px;
+  color: #00bcd4;
+}
+
+/* Linie separator între secțiuni (opțional) */
+.separator {
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.1);
+  margin: 25px 0;
+}
+
+/* Rânduri de inputuri */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+/* Grupare individuală label + input */
+.input-group {
+  flex: 1;
+  min-width: 250px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+/* Label-ul inputului */
+label {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+/* Inputuri și select-uri */
+input, select, textarea {
+  background-color: #0f1c2b;
+  border: 1px solid #333;
+  border-radius: 10px;
+  padding: 10px 12px;
+  color: #fff;
+  font-size: 14px;
+}
+
+/* Textarea fixă */
+textarea {
+  resize: none;
+}
+
+/* Focus efect */
+input:focus, select:focus, textarea:focus {
+  border-color: #00bcd4;
+  box-shadow: 0 0 5px #00bcd4;
+}
+
+/* Butoane pentru experiență */
+.experience-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+/* Stil butoane experiență */
+.experience-buttons button {
+  flex: 1;
+  background: #0f1c2b;
+  border: 1px solid #555;
+  padding: 8px 12px;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 14px;
+}
+
+/* Buton activ sau hover */
+.experience-buttons button.active,
+.experience-buttons button:hover {
+  background-color: #00bcd4;
+  border-color: #00bcd4;
+}
+
+/* Text mic sub câmpuri */
+small {
+  font-size: 12px;
+  color: #aaa;
+  margin-top: 4px;
+}
+
+/* Secțiune experiență */
+.experience-details {
+  margin-bottom: 30px;
+}
+
+/* Butoane back/next */
+.btns {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25px;
+}
+
+/* Stil global buton */
 button {
   background-color: #16c572;
   color: #fff;
@@ -14,10 +127,4 @@ button:hover {
   background-color: #27a579;
   transform: translateY(-2px);
   box-shadow: 0 0 15px rgba(0, 188, 212, 0.6);
-}
-
-.btns {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
 }
