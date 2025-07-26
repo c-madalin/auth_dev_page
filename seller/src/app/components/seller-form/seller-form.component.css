@@ -28,3 +28,20 @@
     opacity: 1;
   }
 }
+/* Stil container progres */
+.progress-wrapper {
+  height: 8px;
+  width: 100%;
+  background-color: #e0e0e0;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+/* Bara propriu-zisă */
+.progress-bar {
+  height: 100%;
+  width: 0%;
+  background-color: #16c572;
+  transition: width 0.4s ease-in-out;
+}
