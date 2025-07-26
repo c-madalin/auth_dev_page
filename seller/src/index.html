@@ -39,21 +39,24 @@
       padding: 20px;
     }
 
-    .login-box {
-      background: rgba(27, 39, 53, 0.85);
-      border-radius: 25px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      width: 480px;
-      max-width: 90vw;
-      padding: 40px 50px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      box-shadow:
-        0 0 10px rgba(2, 2, 2, 0.5),
-        0 0 20px rgba(19, 21, 21, 0.3);
-      transition: box-shadow 0.3s ease;
-    }
+   .login-box {
+  background: rgba(27, 39, 53, 0.85);
+  border-radius: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  width: 850px;               /* FIXĂ - pentru toate step-urile */
+  height: 850px;              /* FIXĂ - ca în screenshot */
+  padding: 40px 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow:
+    0 0 10px rgba(2, 2, 2, 0.5),
+    0 0 20px rgba(19, 21, 21, 0.3);
+  transition: box-shadow 0.3s ease;
+  overflow: hidden;           /* previne să iasă în afară */
+}
+
+
     .login-box:hover {
       box-shadow:
         0 0 20px rgba(12, 13, 13, 0.8),
