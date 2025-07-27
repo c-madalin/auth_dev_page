@@ -1,24 +1,39 @@
 .step1-form {
   width: 100%;
-  max-width: 700px;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  gap: 20px;
   color: #fff;
+  gap: 25px;
 }
 
 .section-title {
-  margin-top: 30px;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 600;
   color: #16c572;
   text-align: center;
+  margin: 0;
 }
 
 .form-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 18px;
+  gap: 20px 40px; /* rânduri x coloane */
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.full-width {
+  grid-column: span 2;
+}
+
+label {
+  font-size: 0.85rem;
+  color: #ccc;
+  margin-bottom: 6px;
 }
 
 input,
@@ -31,7 +46,7 @@ select {
   font-size: 14px;
   width: 100%;
   box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
-  transition: border 0.3s ease;
+  transition: border-color 0.3s ease;
 }
 
 input:focus,
@@ -41,21 +56,19 @@ select:focus {
   box-shadow: 0 0 8px #16c572;
 }
 
-label {
-  font-size: 0.85rem;
-  margin-bottom: 4px;
-  display: block;
-  color: #ccc;
+.date-row {
+  display: flex;
+  gap: 10px;
 }
 
-.date-grid {
-  display: flex;
-  gap: 8px;
+.date-row input,
+.date-row select {
+  flex: 1;
 }
 
 .nav-button {
   align-self: flex-end;
-  margin-top: 30px;
+  margin-top: 20px;
   padding: 12px 24px;
   border-radius: 12px;
   background-color: #16c572;
@@ -71,10 +84,4 @@ label {
 .nav-button:hover {
   box-shadow: 0 0 20px rgba(22, 197, 114, 1);
   transform: scale(1.03);
-}
-
-.form-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px 32px; /* rânduri x coloane: mai mult spațiu între coloane */
 }
