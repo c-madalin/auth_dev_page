@@ -9,5 +9,8 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class Step1Component {
   @Output() next = new EventEmitter<void>();
-
+   months = [
+    'January', 'February', 'March', 'April', 'May', 'June',
+    'July', 'August', 'September', 'October', 'November', 'December'
+  ];
 }

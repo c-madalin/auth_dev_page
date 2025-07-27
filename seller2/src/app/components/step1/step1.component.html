@@ -1,1 +1,34 @@
-<p>step1 works!</p>
+<form class="step1-form">
+  <h3 class="section-title">1.A Personal Information</h3>
+  <div class="form-grid">
+    <div><label>First Name</label><input type="text" /></div>
+    <div><label>Last Name (Including Middle Name if present)</label><input type="text" /></div>
+    <div><label>Personal ID Number</label><input type="text" placeholder="e.g., ID123456" /></div>
+    <div><label>Street Address</label><input type="text" /></div>
+    <div><label>City</label><input type="text" /></div>
+    <div><label>Postal Code</label><input type="text" /></div>
+
+    <div>
+      <label>Date of Birth</label>
+      <div class="date-grid">
+        <input type="text" placeholder="Year" />
+        <select>
+          <option disabled selected>Select Month</option>
+          <option *ngFor="let month of months">{{ month }}</option>
+        </select>
+        <input type="text" placeholder="Day" />
+      </div>
+    </div>
+    <div><label>Nationality</label><input type="text" /></div>
+  </div>
+
+  <h3 class="section-title">1.B Contact Information</h3>
+  <div class="form-grid">
+    <div><label>Email Contact</label><input type="email" /></div>
+    <div><label>Discord ID</label><input type="text" placeholder="e.g., User#1234" /></div>
+    <div><label>Telegram ID (optional)</label><input type="text" /></div>
+    <div><label>Phone Number (optional)</label><input type="text" /></div>
+  </div>
+
+  <button class="nav-button" (click)="next.emit()">Next →</button>
+</form>
