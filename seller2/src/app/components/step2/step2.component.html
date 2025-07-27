@@ -1,1 +1,103 @@
-<p>step2 works!</p>
+<!-- step2.component.html -->
+<form class="step2-form">
+
+  <div class="form-grid">
+    <div class="form-field">
+      <label>Type of Products You Sell</label>
+      <select [(ngModel)]="productType" name="productType">
+        <option value="" disabled selected>Select Product Type</option>
+        <option value="accounts">Accounts</option>
+        <option value="boosting">Boosting</option>
+        <option value="currency">Currency</option>
+        <option value="items">Items</option>
+        <option value="topup">Top Up</option>
+      </select>
+    </div>
+
+    <div class="form-field">
+      <label>Estimated Monthly Sales</label>
+      <select [(ngModel)]="salesRange" name="salesRange">
+        <option value="" disabled selected>Select Sales Range</option>
+        <option value="0-500">0-500$</option>
+        <option value="500-1000">500$-1000$</option>
+        <option value="1000+">1000+$</option>
+      </select>
+    </div>
+
+    <div class="form-field full-width">
+      <label>Previous Experience</label>
+      <div class="experience-buttons">
+        <button
+          type="button"
+          [class.active]="experience === 'no'"
+          (click)="experience = 'no'">
+          No Previous Experience
+        </button>
+        <button
+          type="button"
+          [class.active]="experience === 'yes'"
+          (click)="experience = 'yes'">
+          Yes, I Have Experience
+        </button>
+      </div>
+    </div>
+
+    <!-- Experience Details - Show only if "Yes" is selected -->
+    <div *ngIf="experience === 'yes'" class="form-field full-width experience-section">
+      <div class="form-field full-width">
+        <label>Describe Your Experience (max 500 characters)</label>
+        <div class="textarea-container">
+          <textarea
+            [(ngModel)]="description"
+            name="description"
+            maxlength="500"
+            placeholder="Tell us about your previous selling experience..."></textarea>
+          <div class="char-counter">{{ description.length }}/500</div>
+        </div>
+      </div>
+
+      <div class="form-field full-width">
+        <label>Upload Images (1-5 images)</label>
+        <div class="file-upload">
+          <input
+            type="file"
+            id="imageUpload"
+            multiple
+            accept="image/*"
+            (change)="onFileSelected($event)"
+            class="file-input">
+          <label for="imageUpload" class="file-label">
+            Choose Images
+          </label>
+        </div>
+
+        <div *ngIf="previewImages.length > 0" class="image-previews">
+          <div *ngFor="let img of previewImages; let i = index" class="image-preview">
+            <img [src]="img" [alt]="'Preview ' + (i + 1)">
+            <button type="button" class="remove-btn" (click)="removeImage(i)">×</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-field full-width">
+      <label>Profile Link (Required)</label>
+      <input type="url" [(ngModel)]="link1" name="link1" placeholder="https://example.com/profile">
+    </div>
+
+    <div class="form-field">
+      <label>Additional Link 1 (Optional)</label>
+      <input type="url" [(ngModel)]="link2" name="link2" placeholder="https://...">
+    </div>
+
+    <div class="form-field">
+      <label>Additional Link 2 (Optional)</label>
+      <input type="url" [(ngModel)]="link3" name="link3" placeholder="https://...">
+    </div>
+  </div>
+
+  <div class="nav-buttons">
+    <button type="button" class="nav-button prev" (click)="prev.emit()">← Previous</button>
+    <button type="button" class="nav-button next" (click)="next.emit()">Next →</button>
+  </div>
+</form>
