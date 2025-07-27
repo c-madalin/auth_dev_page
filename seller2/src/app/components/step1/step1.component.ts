@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-step1',
@@ -8,5 +8,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./step1.component.css']
 })
 export class Step1Component {
+  @Output() next = new EventEmitter<void>();
 
 }
