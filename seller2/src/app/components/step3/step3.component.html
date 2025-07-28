@@ -1,1 +1,33 @@
-<p>step3 works!</p>
+<div class="step3-wrapper">
+  <div class="step-header">Step 3 din 3</div>
+
+  <div class="upload-section">
+    <label for="idUpload">Upload a picture with a valid ID or Passport/Driver Licence with <strong>GameVitalise.com</strong> in background</label>
+    <small>*Personal details on the document needs to be clearly visible</small>
+    <input type="file" id="idUpload" (change)="onFileSelected($event, 'id')" accept="image/*" />
+    <div class="preview-box" *ngIf="idPreview">
+      <img [src]="idPreview" alt="ID preview" />
+    </div>
+  </div>
+
+  <div class="upload-section">
+    <label for="selfieUpload">Upload a selfie of yourself holding your ID card for identity verification.</label>
+    <small>*Personal details on the document needs to be clearly visible</small>
+    <input type="file" id="selfieUpload" (change)="onFileSelected($event, 'selfie')" accept="image/*" />
+    <div class="preview-box" *ngIf="selfiePreview">
+      <img [src]="selfiePreview" alt="Selfie preview" />
+    </div>
+  </div>
+
+  <div class="checkbox-wrapper">
+    <input type="checkbox" id="agreement" [(ngModel)]="agreed" />
+    <label for="agreement">
+      By checking this box, you agree to our <strong>privacy policy</strong>, <strong>data processing terms</strong>, and <strong>seller rules</strong>.
+    </label>
+  </div>
+
+  <div class="buttons-wrapper">
+    <button class="nav-button" (click)="prev.emit()">← Prev</button>
+    <button class="submit-button" [disabled]="!agreed" (click)="submit()">Submit Documents</button>
+  </div>
+</div>
