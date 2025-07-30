@@ -1,5 +1,5 @@
 <div class="login-box fade">
-  <div class="step-header">Step {{ step }} din 3</div>
+  <div class="step-header">Step {{ step }} of 3</div>
 
   <div [ngSwitch]="step" class="step-container">
     <app-step1 *ngSwitchCase="1" (next)="nextStep()"></app-step1>
