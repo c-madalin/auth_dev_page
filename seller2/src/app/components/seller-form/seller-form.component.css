@@ -1,103 +1,61 @@
-/* seller-form.component.css */
+.auth-box {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  padding: 20px;
+  z-index: 10;
+  position: relative;
+}
+
 .login-box {
-  background: rgba(27, 39, 53, 0.9);
-  border-radius: 5px;
+  background: rgba(27, 39, 53, 0.85);
+  border-radius: 25px;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  width: 800px;
-  height: 800px;
-  padding: 30px 40px;
+  width: 850px;
+  padding: 40px 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
   box-shadow:
-    0 0 30px rgba(0, 188, 212, 0.1),
-    0 10px 40px rgba(0, 0, 0, 0.3);
-  transition: all 0.3s ease;
+    0 0 10px rgba(2, 2, 2, 0.5),
+    0 0 20px rgba(19, 21, 21, 0.3);
+  transition: box-shadow 0.3s ease;
   overflow: hidden;
-  backdrop-filter: blur(10px);
 }
 
-.login-box:hover {
-  box-shadow:
-    0 0 40px rgba(0, 188, 212, 0.15),
-    0 15px 50px rgba(0, 0, 0, 0.4);
-}
-
-.step-header {
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: 25px;
-  color: #fff;
-  text-shadow: 0 0 10px #16c572;
+.step-indicator {
   text-align: center;
-  letter-spacing: 0.5px;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #16c572;
+  margin-top: 20px;
+  text-shadow: 0 0 6px #16c572;
 }
 
-.step-container {
-  width: 100%;
-  flex-grow: 1;
+.buttons-wrapper {
   display: flex;
-  flex-direction: column;
-  min-height: 0; /* Important for proper flex behavior */
+  justify-content: space-between;
+  width: 850px;
+  margin: 20px auto;
+  padding: 0 20px;
+  z-index: 10;
+  position: relative;
 }
 
-/* Animations */
-.fade {
-  animation: fadeIn 0.6s ease-out;
+.nav-button {
+  padding: 12px 25px;
+  font-size: 16px;
+  border-radius: 10px;
+  background-color: #16c572;
+  border: none;
+  color: #fff;
+  font-weight: bold;
+  box-shadow: 0 0 12px #16c572;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.step-container {
-  animation: slideIn 0.8s ease-out forwards;
-  opacity: 0;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-20px) scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-@keyframes slideIn {
-  0% {
-    transform: translateX(30px);
-    opacity: 0;
-  }
-  100% {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .login-box {
-    width: 95vw;
-    height: 95vh;
-    padding: 20px;
-    border-radius: 20px;
-  }
-
-  .step-header {
-    font-size: 1.3rem;
-    margin-bottom: 20px;
-  }
-}
-
-@media (max-width: 480px) {
-  .login-box {
-    width: 98vw;
-    height: 98vh;
-    padding: 15px;
-    border-radius: 15px;
-  }
-
-  .step-header {
-    font-size: 1.2rem;
-    margin-bottom: 15px;
-  }
+.nav-button:hover {
+  background-color: #149e5a;
+  box-shadow: 0 0 18px #16c572;
 }

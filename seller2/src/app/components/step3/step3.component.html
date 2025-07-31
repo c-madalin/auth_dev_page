@@ -3,7 +3,7 @@
   <div class="upload-section">
     <label for="idUpload">Upload a picture with a valid ID or Passport/Driver Licence with <strong>GameVitalise.com</strong> in background</label>
     <small>*Personal details on the document needs to be clearly visible</small>
-    <i class="fa-solid fa-images"></i>
+
     <input type="file" id="idUpload" (change)="onFileSelected($event, 'id')" accept="image/*" />
     <div class="preview-box" *ngIf="idPreview">
       <img [src]="idPreview" alt="ID preview" />
