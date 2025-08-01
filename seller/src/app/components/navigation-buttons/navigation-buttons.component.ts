@@ -1,9 +1,10 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-navigation-buttons',
   standalone: true,
-  imports: [],
+  imports: [NgIf],
   templateUrl: './navigation-buttons.component.html',
   styleUrl: './navigation-buttons.component.css'
 })

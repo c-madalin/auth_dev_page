@@ -1,6 +1,9 @@
 <div class="form-wrapper">
+
+  <!-- Step X din 6 -->
   <div class="step-counter">Step {{ step }} din 6</div>
 
+  <!-- Cutia cu formularul activ (step-ul curent) -->
   <div class="form-box fade">
     <div [ngSwitch]="step">
       <app-step1 *ngSwitchCase="1"></app-step1>
@@ -12,9 +15,12 @@
     </div>
   </div>
 
-  <!-- Butoane vizibile în afara cutiei -->
-  <div class="nav-buttons">
-    <button *ngIf="step > 1" (click)="prevStep()" class="nav-button">← Prev</button>
-    <button *ngIf="step < 6" (click)="nextStep()" class="nav-button green">Next →</button>
-  </div>
+  <!-- Butoanele de navigare -->
+  <app-navigation-buttons
+    [step]="step"
+    [maxStep]="6"
+    (next)="nextStep()"
+    (prev)="prevStep()"
+  ></app-navigation-buttons>
+
 </div>
