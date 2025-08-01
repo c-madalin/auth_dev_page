@@ -1,1 +1,21 @@
-<p>seller-form works!</p>
+<div class="form-wrapper">
+  <div class="step-counter">Step {{ step }} din 6</div>
+
+  <div class="form-box fade">
+    <div [ngSwitch]="step">
+      <app-step1 *ngSwitchCase="1"></app-step1>
+      <app-step2 *ngSwitchCase="2"></app-step2>
+      <app-step3 *ngSwitchCase="3"></app-step3>
+      <app-step4 *ngSwitchCase="4"></app-step4>
+      <app-step5 *ngSwitchCase="5"></app-step5>
+      <app-step6 *ngSwitchCase="6"></app-step6>
+    </div>
+  </div>
+
+  <!-- Butoanele sunt direct aici, fără componentă dedicată -->
+  <div class="nav-buttons">
+    <button *ngIf="step > 1" (click)="prevStep()" class="nav-button">← Prev</button>
+    <button *ngIf="step < 6" (click)="nextStep()" class="nav-button green">Next →</button>
+    <button *ngIf="step === 6" (click)="submitForm()" class="nav-button green">Submit</button>
+  </div>
+</div>
