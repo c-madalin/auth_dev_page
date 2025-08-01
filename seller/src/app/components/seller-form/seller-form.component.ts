@@ -26,7 +26,5 @@ export class SellerFormComponent {
     if (this.step > 1) this.step--;
   }
 
-  submitForm() {
-    // TODO: Trimite datele
-  }
+
 }

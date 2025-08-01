@@ -12,10 +12,9 @@
     </div>
   </div>
 
-  <!-- Butoanele sunt direct aici, fără componentă dedicată -->
+  <!-- Butoane vizibile în afara cutiei -->
   <div class="nav-buttons">
     <button *ngIf="step > 1" (click)="prevStep()" class="nav-button">← Prev</button>
     <button *ngIf="step < 6" (click)="nextStep()" class="nav-button green">Next →</button>
-    <button *ngIf="step === 6" (click)="submitForm()" class="nav-button green">Submit</button>
   </div>
 </div>
