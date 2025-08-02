@@ -1,22 +1,16 @@
-.step2-form {
+.step1-form {
   display: flex;
   flex-direction: column;
   gap: 20px;
   max-height: 100%;
+  overflow: visible;
   overflow-y: auto;
-}
-
-.form-title {
-  color: #fff;
-  font-size: 1.3rem;
-  font-weight: bold;
-  margin-bottom: 10px;
-  text-align: center;
 }
 
 .form-group {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .form-group label {
@@ -24,16 +18,21 @@
   margin-bottom: 5px;
 }
 
-.optional {
-  color: #aaa;
-  font-size: 0.9rem;
-  margin-left: 5px;
-}
-
-input {
+.form-group input,
+.form-group select {
   background-color: #1e2a38;
   border: 1px solid #444;
-  color: white;
+  color: #fff;
   padding: 10px;
   border-radius: 5px;
+}
+
+.dob-fields {
+  display: flex;
+  gap: 10px;
+}
+
+.dob-fields input,
+.dob-fields select {
+  flex: 1;
 }
