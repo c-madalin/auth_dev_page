@@ -1,0 +1,39 @@
+.step2-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-height: 100%;
+  overflow-y: auto;
+}
+
+.form-title {
+  color: #fff;
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  color: white;
+  margin-bottom: 5px;
+}
+
+.optional {
+  color: #aaa;
+  font-size: 0.9rem;
+  margin-left: 5px;
+}
+
+input {
+  background-color: #1e2a38;
+  border: 1px solid #444;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+}
