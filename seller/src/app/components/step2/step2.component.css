@@ -1,10 +1,9 @@
-.step1-form {
+.step2-form {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  max-height: 100%;
-  overflow: visible;
-  overflow-y: auto;
+  max-width: 500px;  /* 🔐 pentru consistență */
+  width: 100%;
 }
 
 .form-group {
@@ -18,21 +17,10 @@
   margin-bottom: 5px;
 }
 
-.form-group input,
-.form-group select {
+.form-group input {
   background-color: #1e2a38;
   border: 1px solid #444;
   color: #fff;
   padding: 10px;
   border-radius: 5px;
-}
-
-.dob-fields {
-  display: flex;
-  gap: 10px;
-}
-
-.dob-fields input,
-.dob-fields select {
-  flex: 1;
 }
