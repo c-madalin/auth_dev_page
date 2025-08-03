@@ -1,0 +1,52 @@
+.step5-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  color: white;
+  margin-bottom: 5px;
+}
+
+.form-group select,
+.form-group input[type="file"] {
+  background-color: #1e2a38;
+  border: 1px solid #444;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+}
+.upload-area {
+  background-color: #1e2a38;
+  border: 1px dashed #888;
+  color: #ccc;
+  text-align: center;
+  padding: 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.upload-area:hover {
+  background-color: #263648;
+}
+
+.optional {
+  font-size: 0.9rem;
+  color: #aaa;
+  font-style: italic;
+}
+
+.form-group p {
+  color: #8efc9c;
+  font-size: 0.85rem;
+  margin-top: 5px;
+}

@@ -1,1 +1,36 @@
-<p>step5 works!</p>
+<form class="step5-form">
+
+  <!-- Dropdown Tip Verificare -->
+  <div class="form-group">
+    <label for="verificationType">Verification Type</label>
+    <select id="verificationType" [(ngModel)]="verificationType" name="verificationType">
+      <option value="" disabled selected>Select document type...</option>
+      <option value="passport">Passport</option>
+      <option value="id">National ID</option>
+      <option value="other">Other form of verification</option>
+    </select>
+  </div>
+
+  <!-- Upload Față -->
+  <div class="form-group">
+    <label>Upload Front Side of Document <span class="optional">(required)</span></label>
+    <div class="upload-area" (click)="frontInput.click()">
+      <i class="fa-solid fa-id-card"></i>
+      Click to upload front side
+      <input type="file" #frontInput (change)="onFileSelected($event, 'front')" accept="image/*" hidden />
+    </div>
+    <p *ngIf="selectedFiles.front">{{ selectedFiles.front.name }}</p>
+  </div>
+
+  <!-- Upload Verso -->
+  <div class="form-group">
+    <label>Upload Back Side of Document <span class="optional">(required)</span></label>
+    <div class="upload-area" (click)="backInput.click()">
+      <i class="fa-solid fa-id-card-clip"></i>
+      Click to upload back side
+      <input type="file" #backInput (change)="onFileSelected($event, 'back')" accept="image/*" hidden />
+    </div>
+    <p *ngIf="selectedFiles.back">{{ selectedFiles.back.name }}</p>
+  </div>
+
+</form>

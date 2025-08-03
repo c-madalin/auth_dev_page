@@ -1,11 +1,15 @@
 import { Component } from '@angular/core';
+import { NgFor} from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-step4',
-  imports: [],
+  imports: [ NgFor, FormsModule, CommonModule],
   templateUrl: './step4.component.html',
-  styleUrl: './step4.component.css'
+  styleUrls: ['./step4.component.css']
 })
 export class Step4Component {
+years = Array.from({ length: 2025 - 1970 + 1 }, (_, i) => 1970 + i);
 
 }
