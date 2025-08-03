@@ -1,46 +1,45 @@
-.step1-form {
+.step1-wrapper {
+  max-width: 400px;
+  width: 100%;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 20px;
-  max-height: 100%;
-  overflow-y: auto;
-  overflow: visible;
 }
 
-.form-group {
+.step1-title {
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.categories-form {
   display: flex;
   flex-direction: column;
-  width: 100%;
-  max-width: 400px;
+  gap: 15px;
 }
 
-.form-group label {
-  color: white;
-  margin-bottom: 5px;
-}
-
-.form-group input,
-.form-group select {
-  background-color: #1e2a38;
-  border: 1px solid #444;
-  color: #fff;
-  padding: 10px;
-  border-radius: 5px;
-}
-
-/* În step1.component.css */
-.dob-wrapper {
-  width: 100%;
-}
-
-.dob-fields {
+.category-option {
   display: flex;
+  align-items: center;
   gap: 10px;
-  flex-wrap: wrap;
+  background: #1e2a38;
+  padding: 10px 15px;
+  border-radius: 8px;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
 }
 
-.dob-fields input,
-.dob-fields select {
-  flex: 1;
-  min-width: 0;
+.category-option:hover {
+  background: #263445;
+}
+
+.category-option input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #16c572; /* verdele din butonul tău */
+  cursor: pointer;
 }

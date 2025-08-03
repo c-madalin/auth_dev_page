@@ -2,20 +2,33 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
-  padding: 30px 20px;
+  gap: 20px; /* 🔽 redus de la 20px */
+  padding: 10px;
   width: 100%;
   min-width: 500px;
   max-width: 850px;
   box-sizing: border-box;
 }
 
-.step-counter {
-  color: white;
-  font-size: 1.2rem;
-  font-weight: 600;
+.form-header {
+  font-size: 18px; /* 🔽 redus */
+  margin-top: 10px; /* 🔽 adăugat spațiu mai mic de sus */
   text-align: center;
 }
+
+.form-header h2 {
+  margin: 0;
+  font-size: 22px; /* 🔽 redus ușor */
+  font-weight: 600;
+}
+
+.step-counter {
+  color: white;
+  font-size: 14px; /* 🔽 redus */
+  font-weight: 500;
+  margin-top: 4px;
+}
+
 
 .form-box {
   background: rgba(27, 39, 53, 0.85);
