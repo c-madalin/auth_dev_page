@@ -1,11 +1,29 @@
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms'; // ✅ Asta trebuie!
+import { CommonModule } from '@angular/common'; // dacă mai folosești *ngIf, *ngFor
 
 @Component({
   selector: 'app-step2',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule, FormsModule], // ✅ Adaugă FormsModule aici
   templateUrl: './step2.component.html',
-  styleUrl: './step2.component.css'
+  styleUrls: ['./step2.component.css']
 })
 export class Step2Component {
+  experienceType: 'new' | 'experienced' | null = null;
+  stockSource = '';
+  monthlyRevenue = '';
+  experienceDescription = '';
+  links: string[] = [''];
 
+  onFileSelected(event: any) {
+    const files = Array.from(event.target.files);
+    console.log('Selected files:', files);
+  }
+
+  checkLinks() {
+    if (this.links.length < 3 && this.links[this.links.length - 1]) {
+      this.links.push('');
+    }
+  }
 }
