@@ -1,5 +1,4 @@
 <form class="step5-form">
-
   <!-- Dropdown Tip Verificare -->
   <div class="form-group">
     <label for="verificationType">Verification Type</label>
@@ -11,26 +10,29 @@
     </select>
   </div>
 
-  <!-- Upload Față -->
+  <!-- Upload Front -->
   <div class="form-group">
-    <label>Upload Front Side of Document <span class="optional">(required)</span></label>
+    <label>Front Side of Document <span class="optional">(required)</span></label>
     <div class="upload-area" (click)="frontInput.click()">
       <i class="fa-solid fa-id-card"></i>
       Click to upload front side
-      <input type="file" #frontInput (change)="onFileSelected($event, 'front')" accept="image/*" hidden />
+      <input type="file" #frontInput accept="image/*" (change)="onFileSelected($event, 'front')" hidden />
     </div>
-    <p *ngIf="selectedFiles.front">{{ selectedFiles.front.name }}</p>
+    <div class="file-list" *ngIf="selectedFiles.front">
+      <p>{{ selectedFiles.front.name }}</p>
+    </div>
   </div>
 
-  <!-- Upload Verso -->
+  <!-- Upload Back -->
   <div class="form-group">
-    <label>Upload Back Side of Document <span class="optional">(required)</span></label>
+    <label>Back Side of Document <span class="optional">(required)</span></label>
     <div class="upload-area" (click)="backInput.click()">
       <i class="fa-solid fa-id-card-clip"></i>
       Click to upload back side
-      <input type="file" #backInput (change)="onFileSelected($event, 'back')" accept="image/*" hidden />
+      <input type="file" #backInput accept="image/*" (change)="onFileSelected($event, 'back')" hidden />
     </div>
-    <p *ngIf="selectedFiles.back">{{ selectedFiles.back.name }}</p>
+    <div class="file-list" *ngIf="selectedFiles.back">
+      <p>{{ selectedFiles.back.name }}</p>
+    </div>
   </div>
-
 </form>

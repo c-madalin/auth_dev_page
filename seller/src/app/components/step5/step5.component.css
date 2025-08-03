@@ -50,3 +50,52 @@
   font-size: 0.85rem;
   margin-top: 5px;
 }
+.step5-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  color: white;
+  margin-bottom: 6px;
+}
+
+.upload-area {
+  background-color: #1e2a38;
+  border: 2px dashed #16c572;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background 0.3s;
+}
+
+.upload-area:hover {
+  background-color: #263648;
+}
+
+.upload-area i {
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.file-list p {
+  margin-top: 5px;
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+.optional {
+  font-size: 0.8rem;
+  color: #aaa;
+}
