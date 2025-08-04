@@ -102,3 +102,57 @@ select {
     flex-direction: column;
   }
 }
+.upload-area {
+  border: 2px dashed #555;
+  padding: 30px;
+  text-align: center;
+  color: #ccc;
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 10px;
+}
+
+.upload-area:hover {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.upload-area i {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.file-list p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #aaa;
+}
+.upload-area {
+  border: 2px dashed #16c572; /* ✅ Verdele folosit la butoane */
+  padding: 30px;
+  text-align: center;
+  color: #ccc;
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.02);
+  box-shadow: 0 0 10px rgba(22, 197, 114, 0.3);
+}
+
+.upload-area:hover {
+  background-color: rgba(22, 197, 114, 0.05);
+  box-shadow: 0 0 15px rgba(22, 197, 114, 0.5);
+}
+
+.upload-area i {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  display: block;
+  color: #16c572;
+}
+
+.file-list p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #aaa;
+}

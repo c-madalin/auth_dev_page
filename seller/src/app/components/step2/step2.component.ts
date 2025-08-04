@@ -16,14 +16,20 @@ export class Step2Component {
   experienceDescription = '';
   links: string[] = [''];
 
-  onFileSelected(event: any) {
-    const files = Array.from(event.target.files);
-    console.log('Selected files:', files);
-  }
+
 
   checkLinks() {
     if (this.links.length < 3 && this.links[this.links.length - 1]) {
       this.links.push('');
     }
   }
+
+
+  selectedFiles: File[] = [];
+
+onFileSelected(event: any) {
+  const files = Array.from(event.target.files) as File[];
+  this.selectedFiles = files.slice(0, 5); // limităm la 5
+}
+
 }
