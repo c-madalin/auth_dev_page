@@ -13,23 +13,25 @@ export class Step5Component {
   @Output() validChange = new EventEmitter<boolean>();
 
   verificationType: string = '';
-  selectedFiles: { front?: File; back?: File } = {};
+  selectedFiles: { front?: File; back?: File; selfie?: File } = {};
+  agreed = false;
 
   ngOnInit() {
     this.validChange.emit(false); // inițial invalid
   }
 
-  // Se apelează când se selectează fișiere sau tipul
   checkValidity() {
     const isValid =
       this.verificationType &&
       !!this.selectedFiles.front &&
-      !!this.selectedFiles.back;
+      !!this.selectedFiles.back &&
+      !!this.selectedFiles.selfie &&
+      this.agreed;
 
     this.validChange.emit(!!isValid);
   }
 
-  onFileSelected(event: any, side: 'front' | 'back') {
+  onFileSelected(event: any, side: 'front' | 'back' | 'selfie') {
     const file = event.target.files[0];
     if (file) {
       this.selectedFiles[side] = file;

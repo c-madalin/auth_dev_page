@@ -1,54 +1,54 @@
 <form class="step1-form" #step4Form="ngForm">
   <div class="form-group">
     <label>First Name</label>
-    <input type="text" name="firstName" [(ngModel)]="formData.firstName" required (ngModelChange)="onFormChange(step4Form)" />
+    <input type="text" name="firstName" placeholder="Enter your first name" [(ngModel)]="formData.firstName" required (ngModelChange)="onFormChange(step4Form)" />
   </div>
 
   <div class="form-group">
     <label>Last Name</label>
-    <input type="text" name="lastName" [(ngModel)]="formData.lastName" required (ngModelChange)="onFormChange(step4Form)" />
+    <input type="text" name="lastName" placeholder="Enter your last name" [(ngModel)]="formData.lastName" required (ngModelChange)="onFormChange(step4Form)" />
   </div>
 
   <div class="form-group">
     <label>Personal ID Number</label>
-    <input type="text" name="personalId" [(ngModel)]="formData.personalId" required (ngModelChange)="onFormChange(step4Form)" />
+    <input type="text" name="personalId" placeholder="Enter your ID number" [(ngModel)]="formData.personalId" required (ngModelChange)="onFormChange(step4Form)" />
   </div>
 
   <div class="form-group">
     <label>Street Address</label>
-    <input type="text" name="streetAddress" [(ngModel)]="formData.streetAddress" required (ngModelChange)="onFormChange(step4Form)" />
+    <input type="text" name="streetAddress" placeholder="Enter your street address" [(ngModel)]="formData.streetAddress" required (ngModelChange)="onFormChange(step4Form)" />
   </div>
 
   <div class="form-group">
     <label>City</label>
-    <input type="text" name="city" [(ngModel)]="formData.city" required (ngModelChange)="onFormChange(step4Form)" />
+    <input type="text" name="city" placeholder="Enter your city" [(ngModel)]="formData.city" required (ngModelChange)="onFormChange(step4Form)" />
   </div>
 
   <div class="form-group">
     <label>Postal Code</label>
-    <input type="text" name="postalCode" [(ngModel)]="formData.postalCode" required (ngModelChange)="onFormChange(step4Form)" />
+    <input type="text" name="postalCode" placeholder="Enter your postal code" [(ngModel)]="formData.postalCode" required (ngModelChange)="onFormChange(step4Form)" />
   </div>
 
   <div class="form-group">
     <label>Nationality</label>
-    <input type="text" name="nationality" [(ngModel)]="formData.nationality" required (ngModelChange)="onFormChange(step4Form)" />
+    <input type="text" name="nationality" placeholder="Enter your nationality" [(ngModel)]="formData.nationality" required (ngModelChange)="onFormChange(step4Form)" />
   </div>
 
   <div class="form-group">
     <label>Date of Birth</label>
     <div class="dob-fields">
       <select name="dobYear" [(ngModel)]="formData.dobYear" required (ngModelChange)="onFormChange(step4Form)">
-        <option value="" disabled selected>Year</option>
+        <option value="" disabled selected hidden>Year</option>
         <option *ngFor="let year of years" [value]="year">{{ year }}</option>
       </select>
 
       <select name="dobMonth" [(ngModel)]="formData.dobMonth" required (ngModelChange)="onFormChange(step4Form)">
-        <option value="" disabled selected>Month</option>
+        <option value="" disabled selected hidden>Month</option>
         <option *ngFor="let month of months" [value]="month">{{ month }}</option>
       </select>
 
       <select name="dobDay" [(ngModel)]="formData.dobDay" required (ngModelChange)="onFormChange(step4Form)">
-        <option value="" disabled selected>Day</option>
+        <option value="" disabled selected hidden>Day</option>
         <option *ngFor="let d of [].constructor(31); let i = index" [value]="i + 1">{{ i + 1 }}</option>
       </select>
     </div>

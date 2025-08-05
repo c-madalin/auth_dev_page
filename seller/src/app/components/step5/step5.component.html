@@ -1,5 +1,7 @@
 <form class="step5-form">
-  <!-- Dropdown Tip Verificare -->
+  <h2>Verification</h2>
+
+  <!-- Dropdown Verification Type (moved up) -->
   <div class="form-group">
     <label for="verificationType">Verification Type</label>
     <select
@@ -15,7 +17,14 @@
     </select>
   </div>
 
-  <!-- Upload Front -->
+  <!-- Text 1 -->
+  <p>
+    Upload a picture with a valid <strong>ID or Passport/Driver Licence</strong> with
+    <a href="http://GameVitalise.com" target="_blank">GameVitalise.com</a> in the background.
+  </p>
+  <p class="note">*Personal details on the document need to be clearly visible</p>
+
+  <!-- Upload Front Side -->
   <div class="form-group">
     <label>Front Side of Document <span class="optional">(required)</span></label>
     <div class="upload-area" (click)="frontInput.click()">
@@ -34,22 +43,47 @@
     </div>
   </div>
 
-  <!-- Upload Back -->
+  <!-- Text 2 -->
+  <p>
+    Upload a selfie of yourself <strong>holding your ID card</strong> for identity verification.
+  </p>
+  <p class="note">*Personal details on the document need to be clearly visible</p>
+
+  <!-- Upload Selfie -->
   <div class="form-group">
-    <label>Back Side of Document <span class="optional">(required)</span></label>
-    <div class="upload-area" (click)="backInput.click()">
-      <i class="fa-solid fa-id-card-clip"></i>
-      Click to upload back side
+    <label>Selfie with ID <span class="optional">(required)</span></label>
+    <div class="upload-area" (click)="selfieInput.click()">
+      <i class="fa-solid fa-camera"></i>
+      Click to upload selfie
       <input
         type="file"
-        #backInput
+        #selfieInput
         accept="image/*"
-        (change)="onFileSelected($event, 'back')"
+        (change)="onFileSelected($event, 'selfie')"
         hidden
       />
     </div>
-    <div class="file-list" *ngIf="selectedFiles.back">
-      <p>{{ selectedFiles.back.name }}</p>
+    <div class="file-list" *ngIf="selectedFiles.selfie">
+      <p>{{ selectedFiles.selfie.name }}</p>
     </div>
   </div>
+
+  <!-- Agreement Checkbox -->
+  <!-- Agreement Checkbox -->
+<div class="form-group agreement">
+  <label class="checkbox-label">
+    <input
+      type="checkbox"
+      id="privacyAgreement"
+      [(ngModel)]="agreed"
+      name="privacyAgreement"
+    />
+    <span>
+      By checking this box, you agree to our
+      <a href="#">privacy policy</a>, data processing terms, and
+      <a href="#">seller rules</a>.
+    </span>
+  </label>
+</div>
+
 </form>

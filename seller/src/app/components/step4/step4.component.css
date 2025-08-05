@@ -7,6 +7,9 @@
   overflow-y: auto;
   overflow: visible;
 }
+::placeholder {
+  font-weight: bold;
+}
 
 .form-group {
   display: flex;

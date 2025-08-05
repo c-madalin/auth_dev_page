@@ -11,7 +11,9 @@
   flex-direction: column;
   width: 100%;
 }
-
+::placeholder {
+  font-weight: bold;
+}
 .form-group label {
   color: white;
   margin-bottom: 5px;
