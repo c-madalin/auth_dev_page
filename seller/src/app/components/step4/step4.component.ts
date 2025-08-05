@@ -1,18 +1,38 @@
-import { Component } from '@angular/core';
-import { NgFor} from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { NgForm, FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
-
+import { NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-step4',
-  imports: [ NgFor, FormsModule, CommonModule],
-  standalone:true,
+  standalone: true,
+  imports: [NgFor, FormsModule, CommonModule],
   templateUrl: './step4.component.html',
   styleUrls: ['./step4.component.css']
 })
 export class Step4Component {
-years = Array.from({ length: 2025 - 1970 + 1 }, (_, i) => 1970 + i);
+  @Output() validChange = new EventEmitter<boolean>();
 
+  years = Array.from({ length: 2025 - 1970 + 1 }, (_, i) => 1970 + i);
+  months = [
+    'January', 'February', 'March', 'April', 'May', 'June',
+    'July', 'August', 'September', 'October', 'November', 'December'
+  ];
+
+  formData = {
+    firstName: '',
+    lastName: '',
+    personalId: '',
+    streetAddress: '',
+    city: '',
+    postalCode: '',
+    nationality: '',
+    dobYear: '',
+    dobMonth: '',
+    dobDay: ''
+  };
+
+  onFormChange(form: NgForm) {
+    this.validChange.emit(!!form.valid);
+  }
 }

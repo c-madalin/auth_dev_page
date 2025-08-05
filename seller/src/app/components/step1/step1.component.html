@@ -3,32 +3,32 @@
 
   <form class="categories-form">
     <label class="category-option">
-      <input type="checkbox" name="category" value="Currency" />
+      <input type="checkbox" value="Currency" (change)="toggleCategory('Currency', $event)" />
       Currency
     </label>
 
     <label class="category-option">
-      <input type="checkbox" name="category" value="Accounts" />
+      <input type="checkbox" value="Accounts" (change)="toggleCategory('Accounts', $event)" />
       Accounts
     </label>
 
     <label class="category-option">
-      <input type="checkbox" name="category" value="Items" />
+      <input type="checkbox" value="Items" (change)="toggleCategory('Items', $event)" />
       Items
     </label>
 
     <label class="category-option">
-      <input type="checkbox" name="category" value="TopUps" />
+      <input type="checkbox" value="TopUps" (change)="toggleCategory('TopUps', $event)" />
       Top Ups
     </label>
 
     <label class="category-option">
-      <input type="checkbox" name="category" value="Boosting" />
+      <input type="checkbox" value="Boosting" (change)="toggleCategory('Boosting', $event)" />
       Boosting
     </label>
 
     <label class="category-option">
-      <input type="checkbox" name="category" value="GiftCards" />
+      <input type="checkbox" value="GiftCards" (change)="toggleCategory('GiftCards', $event)" />
       Gift Cards
     </label>
   </form>

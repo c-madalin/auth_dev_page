@@ -2,7 +2,12 @@
   <!-- Dropdown Tip Verificare -->
   <div class="form-group">
     <label for="verificationType">Verification Type</label>
-    <select id="verificationType" [(ngModel)]="verificationType" name="verificationType">
+    <select
+      id="verificationType"
+      [(ngModel)]="verificationType"
+      name="verificationType"
+      (change)="checkValidity()"
+    >
       <option value="" disabled selected>Select document type...</option>
       <option value="passport">Passport</option>
       <option value="id">National ID</option>
@@ -16,7 +21,13 @@
     <div class="upload-area" (click)="frontInput.click()">
       <i class="fa-solid fa-id-card"></i>
       Click to upload front side
-      <input type="file" #frontInput accept="image/*" (change)="onFileSelected($event, 'front')" hidden />
+      <input
+        type="file"
+        #frontInput
+        accept="image/*"
+        (change)="onFileSelected($event, 'front')"
+        hidden
+      />
     </div>
     <div class="file-list" *ngIf="selectedFiles.front">
       <p>{{ selectedFiles.front.name }}</p>
@@ -29,7 +40,13 @@
     <div class="upload-area" (click)="backInput.click()">
       <i class="fa-solid fa-id-card-clip"></i>
       Click to upload back side
-      <input type="file" #backInput accept="image/*" (change)="onFileSelected($event, 'back')" hidden />
+      <input
+        type="file"
+        #backInput
+        accept="image/*"
+        (change)="onFileSelected($event, 'back')"
+        hidden
+      />
     </div>
     <div class="file-list" *ngIf="selectedFiles.back">
       <p>{{ selectedFiles.back.name }}</p>

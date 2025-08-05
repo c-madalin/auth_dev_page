@@ -11,6 +11,7 @@ import { NgIf } from '@angular/common';
 export class NavigationButtonsComponent {
   @Input() step!: number;
   @Input() maxStep = 6;
+  @Input() isNextEnabled = true;
 
   @Output() next = new EventEmitter<void>();
   @Output() prev = new EventEmitter<void>();
@@ -23,3 +24,4 @@ export class NavigationButtonsComponent {
     this.prev.emit();
   }
 }
+

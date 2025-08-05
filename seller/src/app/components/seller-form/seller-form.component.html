@@ -10,21 +10,21 @@
   <!-- Cutia cu formularul activ (step-ul curent) -->
   <div class="form-box fade">
     <div [ngSwitch]="step">
-      <app-step1 *ngSwitchCase="1"></app-step1>
-      <app-step2 *ngSwitchCase="2"></app-step2>
-      <app-step3 *ngSwitchCase="3"></app-step3>
-      <app-step4 *ngSwitchCase="4"></app-step4>
-      <app-step5 *ngSwitchCase="5"></app-step5>
-      <app-step6 *ngSwitchCase="6"></app-step6>
+<app-step1 *ngSwitchCase="1" (validChange)="updateStepValid($event)"></app-step1>
+<app-step2 *ngSwitchCase="2" (validChange)="updateStepValid($event)"></app-step2>
+<app-step3 *ngSwitchCase="3" (validChange)="updateStepValid($event)"></app-step3>
+<app-step4 *ngSwitchCase="4" (validChange)="updateStepValid($event)"></app-step4>
+<app-step5 *ngSwitchCase="5" (validChange)="updateStepValid($event)"></app-step5>
+<app-step6 *ngSwitchCase="6" (validChange)="updateStepValid(true)"></app-step6>
     </div>
   </div>
 
   <!-- Butoanele de navigare -->
   <app-navigation-buttons
-    [step]="step"
-    [maxStep]="6"
-    (next)="nextStep()"
-    (prev)="prevStep()"
-  ></app-navigation-buttons>
-
+  [step]="step"
+  [maxStep]="6"
+  [isNextEnabled]="currentStepValid"
+  (next)="nextStep()"
+  (prev)="prevStep()"
+></app-navigation-buttons>
 </div>

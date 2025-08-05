@@ -19,14 +19,24 @@ import { NgSwitch, NgSwitchCase } from '@angular/common';
 
 export class SellerFormComponent {
   step = 1;
+  currentStepValid = false;
 
   nextStep() {
-    if (this.step < 6) this.step++;
+    if (this.step < 6 && this.currentStepValid) {
+      this.step++;
+      this.currentStepValid = false; // reset la pasul următor
+    }
   }
 
   prevStep() {
-    if (this.step > 1) this.step--;
+    if (this.step > 1) {
+      this.step--;
+      this.currentStepValid = true; // presupunem valid dacă se merge înapoi
+    }
   }
 
-
+  // Validează în funcție de ce primește de la copil (ex: Step4Component)
+  updateStepValid(valid: boolean) {
+  this.currentStepValid = valid ?? true; // dacă e undefined, presupune true
+  }
 }
