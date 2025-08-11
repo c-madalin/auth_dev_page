@@ -1,21 +1,12 @@
 .background {
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(135deg, #2c2c2c 0%, #4a4a4a 50%, #666666 100%);
+  background-color: #121212; /* culoare solidă */
   position: fixed; /* Fixează background-ul */
   top: 0;
   left: 0;
   z-index: 1;
   overflow: hidden;
-}
-
-/* Sau pentru un gradient vertical */
-.background-vertical {
-  min-height: 100vh;
-  background: linear-gradient(180deg, #1a1a1a 0%, #3a3a3a 100%);
-  padding: 0;
-  margin: 0;
-  width: 100%;
 }
 
 ::ng-deep app-home {
@@ -31,5 +22,5 @@
   position: relative;
   z-index: 10;
   height: 100vh;
-  overflow-y: auto; /* Permite scroll în componente */
+  overflow-y: auto;
 }
