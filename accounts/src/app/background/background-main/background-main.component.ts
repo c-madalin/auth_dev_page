@@ -3,8 +3,9 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-background-main',
   imports: [],
+  standalone: true,
   templateUrl: './background-main.component.html',
-  styleUrl: './background-main.component.css'
+  styleUrls: ['./background-main.component.css']
 })
 export class BackgroundMainComponent {
 
