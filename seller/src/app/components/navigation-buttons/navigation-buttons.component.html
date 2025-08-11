@@ -1,0 +1,7 @@
+<div class="nav-buttons">
+  <button *ngIf="step > 1" class="nav-button" (click)="goPrev()">← Prev</button>
+  <button *ngIf="step < maxStep"
+          class="nav-button green"
+          [disabled]="!isNextEnabled"
+          (click)="goNext()">Next →</button>
+</div>

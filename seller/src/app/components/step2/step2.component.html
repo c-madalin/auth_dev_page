@@ -1,0 +1,98 @@
+<form class="step4-form">
+  <!-- Radio Buttons pentru alegere tip vânzător -->
+  <div class="form-group radio-group">
+    <label>
+      <input type="radio" name="experience" [(ngModel)]="experienceType" value="new" (change)="checkValidity()" />
+      New seller <span class="note">(this is my first selling experience)</span>
+    </label>
+    <label>
+      <input type="radio" name="experience" [(ngModel)]="experienceType" value="experienced" (change)="checkValidity()" />
+      Experienced seller <span class="note">(Previously active on other marketplaces)</span>
+    </label>
+  </div>
+
+  <!-- Dacă are experiență -->
+  <ng-container *ngIf="experienceType === 'experienced'">
+    <div class="form-row">
+      <div class="form-group half">
+        <label>How do you get your stock?</label>
+        <select [(ngModel)]="stockSource" name="stockSource" (change)="checkValidity()">
+          <option disabled selected value="">Select one</option>
+          <option>I manually farm/level up my own products, then sell them on the marketplace.</option>
+          <option>I resell a wide variety of gaming-related products and services acquired externally, aiming to generate consistent profit.</option>
+        </select>
+      </div>
+
+      <div class="form-group half">
+        <label>Estimated Monthly Revenue</label>
+        <select [(ngModel)]="monthlyRevenue" name="monthlyRevenue" (change)="checkValidity()">
+          <option disabled selected value="">Select range</option>
+          <option>0-500$</option>
+          <option>500$-1000$</option>
+          <option>1000$+</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Textarea pentru descriere -->
+    <div class="form-group">
+      <label>Describe Your Experience</label>
+      <textarea
+        [(ngModel)]="experienceDescription"
+        name="experienceDescription"
+        maxlength="500"
+        rows="5"
+        (input)="checkValidity()"
+      ></textarea>
+      <div class="char-counter">{{ experienceDescription.length }}/500</div>
+    </div>
+
+    <!-- Upload imagini -->
+    <div class="form-group">
+      <label>Upload Images <span class="optional">(optional, max 5)</span></label>
+      <div class="upload-area" (click)="imageInput.click()">
+        <i class="fa-solid fa-image"></i>
+        Click to upload images
+        <input
+          type="file"
+          #imageInput
+          multiple
+          accept="image/*"
+          hidden
+          (change)="onFileSelected($event)"
+        />
+      </div>
+
+      <div class="file-list" *ngIf="selectedFiles.length > 0">
+        <p *ngFor="let file of selectedFiles">{{ file.name }}</p>
+      </div>
+    </div>
+
+    <!-- Linkuri profil -->
+    <div class="form-group">
+      <label>Profile Links <span class="optional">(optional)</span></label>
+      <input
+        type="url"
+        placeholder="Link 1"
+        [(ngModel)]="links[0]"
+        name="link0"
+        (input)="checkLinks()"
+      />
+      <input
+        *ngIf="links[1] !== undefined"
+        type="url"
+        placeholder="Link 2"
+        [(ngModel)]="links[1]"
+        name="link1"
+        (input)="checkLinks()"
+      />
+      <input
+        *ngIf="links[2] !== undefined"
+        type="url"
+        placeholder="Link 3"
+        [(ngModel)]="links[2]"
+        name="link2"
+      />
+    </div>
+  </ng-container>
+</form>

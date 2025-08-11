@@ -1,0 +1,45 @@
+.step1-wrapper {
+  max-width: 400px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.step1-title {
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.categories-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.category-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #1e2a38;
+  padding: 10px 15px;
+  border-radius: 8px;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+}
+
+.category-option:hover {
+  background: #263445;
+}
+
+.category-option input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #16c572; /* verdele din butonul tău */
+  cursor: pointer;
+}
