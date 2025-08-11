@@ -1,0 +1,35 @@
+<div class="step1-wrapper">
+  <h2 class="step1-title">Choose your selling categories to get started:</h2>
+
+  <form class="categories-form">
+    <label class="category-option">
+      <input type="checkbox" value="Currency" (change)="toggleCategory('Currency', $event)" />
+      Currency
+    </label>
+
+    <label class="category-option">
+      <input type="checkbox" value="Accounts" (change)="toggleCategory('Accounts', $event)" />
+      Accounts
+    </label>
+
+    <label class="category-option">
+      <input type="checkbox" value="Items" (change)="toggleCategory('Items', $event)" />
+      Items
+    </label>
+
+    <label class="category-option">
+      <input type="checkbox" value="TopUps" (change)="toggleCategory('TopUps', $event)" />
+      Top Ups
+    </label>
+
+    <label class="category-option">
+      <input type="checkbox" value="Boosting" (change)="toggleCategory('Boosting', $event)" />
+      Boosting
+    </label>
+
+    <label class="category-option">
+      <input type="checkbox" value="GiftCards" (change)="toggleCategory('GiftCards', $event)" />
+      Gift Cards
+    </label>
+  </form>
+</div>

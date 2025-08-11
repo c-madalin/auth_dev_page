@@ -1,0 +1,17 @@
+<div class="step-indicator">Step {{ step }} din 3</div>
+
+<div class="auth-box">
+  <div class="login-box fade">
+    <div [ngSwitch]="step" class="step-container">
+      <app-step1 *ngSwitchCase="1" (next)="nextStep()"></app-step1>
+      <app-step2 *ngSwitchCase="2" (next)="nextStep()" (prev)="prevStep()"></app-step2>
+      <app-step3 *ngSwitchCase="3" (prev)="prevStep()"></app-step3>
+    </div>
+  </div>
+</div>
+
+<!-- Butoane sub card -->
+<div class="buttons-wrapper">
+  <button *ngIf="step > 1" class="nav-button" (click)="prevStep()">← Prev</button>
+  <button *ngIf="step < 3" class="nav-button" (click)="nextStep()">Next →</button>
+</div>

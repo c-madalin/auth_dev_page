@@ -1,0 +1,89 @@
+<form class="step5-form">
+  <h2>Verification</h2>
+
+  <!-- Dropdown Verification Type (moved up) -->
+  <div class="form-group">
+    <label for="verificationType">Verification Type</label>
+    <select
+      id="verificationType"
+      [(ngModel)]="verificationType"
+      name="verificationType"
+      (change)="checkValidity()"
+    >
+      <option value="" disabled selected>Select document type...</option>
+      <option value="passport">Passport</option>
+      <option value="id">National ID</option>
+      <option value="other">Other form of verification</option>
+    </select>
+  </div>
+
+  <!-- Text 1 -->
+  <p>
+    Upload a picture with a valid <strong>ID or Passport/Driver Licence</strong> with
+    <a href="http://GameVitalise.com" target="_blank">GameVitalise.com</a> in the background.
+  </p>
+  <p class="note">*Personal details on the document need to be clearly visible</p>
+
+  <!-- Upload Front Side -->
+  <div class="form-group">
+    <label>Front Side of Document <span class="optional">(required)</span></label>
+    <div class="upload-area" (click)="frontInput.click()">
+      <i class="fa-solid fa-id-card"></i>
+      Click to upload front side
+      <input
+        type="file"
+        #frontInput
+        accept="image/*"
+        (change)="onFileSelected($event, 'front')"
+        hidden
+      />
+    </div>
+    <div class="file-list" *ngIf="selectedFiles.front">
+      <p>{{ selectedFiles.front.name }}</p>
+    </div>
+  </div>
+
+  <!-- Text 2 -->
+  <p>
+    Upload a selfie of yourself <strong>holding your ID card</strong> for identity verification.
+  </p>
+  <p class="note">*Personal details on the document need to be clearly visible</p>
+
+  <!-- Upload Selfie -->
+  <div class="form-group">
+    <label>Selfie with ID <span class="optional">(required)</span></label>
+    <div class="upload-area" (click)="selfieInput.click()">
+      <i class="fa-solid fa-camera"></i>
+      Click to upload selfie
+      <input
+        type="file"
+        #selfieInput
+        accept="image/*"
+        (change)="onFileSelected($event, 'selfie')"
+        hidden
+      />
+    </div>
+    <div class="file-list" *ngIf="selectedFiles.selfie">
+      <p>{{ selectedFiles.selfie.name }}</p>
+    </div>
+  </div>
+
+  <!-- Agreement Checkbox -->
+  <!-- Agreement Checkbox -->
+<div class="form-group agreement">
+  <label class="checkbox-label">
+    <input
+      type="checkbox"
+      id="privacyAgreement"
+      [(ngModel)]="agreed"
+      name="privacyAgreement"
+    />
+    <span>
+      By checking this box, you agree to our
+      <a href="#">privacy policy</a>, data processing terms, and
+      <a href="#">seller rules</a>.
+    </span>
+  </label>
+</div>
+
+</form>

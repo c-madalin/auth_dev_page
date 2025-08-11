@@ -1,0 +1,87 @@
+<form class="step1-form">
+
+  <div class="form-grid">
+    <div class="form-field">
+      <label>First Name</label>
+      <input type="text" />
+    </div>
+
+    <div class="form-field">
+      <label>Last Name (Including Middle Name)</label>
+      <input type="text" />
+    </div>
+
+    <div class="form-field">
+      <label>Personal ID Number</label>
+      <input type="text" />
+    </div>
+
+    <div class="form-field">
+      <label>Street Address</label>
+      <input type="text" />
+    </div>
+
+    <div class="form-field">
+      <label>City</label>
+      <input type="text" />
+    </div>
+
+    <div class="form-field">
+      <label>Postal Code</label>
+      <input type="text" />
+    </div>
+
+    <div class="form-field full-width">
+      <label>Date of Birth</label>
+      <div class="date-row">
+        <input type="text" placeholder="Year" />
+        <select>
+          <option disabled selected>Select Month</option>
+          <option>January</option>
+          <option>February</option>
+          <option>March</option>
+          <option>April</option>
+          <option>May</option>
+          <option>June</option>
+          <option>July</option>
+          <option>August</option>
+          <option>September</option>
+          <option>October</option>
+          <option>November</option>
+          <option>December</option>
+        </select>
+        <input type="text" placeholder="Day" />
+      </div>
+    </div>
+
+    <div class="form-field">
+      <label>Nationality</label>
+      <input type="text" />
+    </div>
+  </div>
+
+
+  <div class="form-grid">
+    <div class="form-field">
+      <label>Email Contact</label>
+      <input type="email" />
+    </div>
+
+    <div class="form-field">
+      <label>Discord ID</label>
+      <input type="text" />
+    </div>
+
+    <div class="form-field">
+      <label>Telegram ID (optional)</label>
+      <input type="text" />
+    </div>
+
+    <div class="form-field">
+      <label>Phone Number (optional)</label>
+      <input type="text" />
+    </div>
+  </div>
+<button type="button" class="nav-button" (click)="next.emit()">Next →</button>
+
+</form>
