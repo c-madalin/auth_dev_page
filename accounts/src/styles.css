@@ -13,3 +13,51 @@ html, body {
   margin: 0;
   padding: 0;
 }
+:root{
+  --bg:#0e131a;
+  --panel:#121a25;
+  --panel-2:#0f1722;
+  --border:#1f2a37;
+  --muted:#8a95a6;
+  --text:#e7eefb;
+  --accent:#2f64ff;
+  --green:#45d483;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:Inter, system-ui, Segoe UI, Roboto, Arial, sans-serif;
+  color:var(--text);
+  background:var(--bg);
+}
+.btn{
+  border:1px solid var(--border);
+  background:var(--panel-2);
+  color:var(--text);
+  padding:10px 14px;
+  border-radius:10px;
+  font-weight:600;
+  line-height:1;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  cursor:pointer;
+}
+.btn:hover{filter:brightness(1.05)}
+.btn-ghost{background:#141b27}
+.btn-primary{background:var(--accent); border-color:transparent; color:#fff}
+.btn.small{padding:8px 10px; font-size:13px}
+
+.chip{
+  background:#1a2230; border:1px solid #243044;
+  color:var(--text); padding:8px 10px; border-radius:10px; font-size:13px; cursor:pointer;
+}
+.badge{
+  display:inline-block; padding:6px 10px; border-radius:8px;
+  background:#2a3547; border:1px solid #2b3a52; color:#b9c7dd; font-weight:600; font-size:12px;
+}
+.badge--green{ background:#1f3b2a; border-color:#2d523f; color:var(--green) }
+
+.muted{ color:var(--muted) }
