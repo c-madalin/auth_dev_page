@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -7,16 +7,13 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './search-bar.component.html',
-  styleUrls: ['./search-bar.component.css']
+  styleUrls: ['./search-bar.component.css'] // ai zis că folosești CSS
 })
 export class SearchBarComponent {
-  @Input() chips: string[] = [];
   @Output() searchChange = new EventEmitter<string>();
-  @Output() chipClick = new EventEmitter<string>();
   @Output() viewClick = new EventEmitter<void>();
 
   term = '';
-
   @ViewChild('searchInput') searchInput?: ElementRef<HTMLInputElement>;
 
   onKey(term: string) {
@@ -25,8 +22,7 @@ export class SearchBarComponent {
   }
 
   focusWithSlash(e: KeyboardEvent) {
-    // dacă utilizatorul apasă "/" și NU e în input, focus pe input
-    if (e.key === '/' && (e.target as HTMLElement)?.tagName !== 'INPUT') {
+    if (e.key === '/') {
       e.preventDefault();
       this.searchInput?.nativeElement.focus();
     }

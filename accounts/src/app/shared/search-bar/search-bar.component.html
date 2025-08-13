@@ -1,4 +1,3 @@
-<!-- Ascultăm tasta "/" global -->
 <div class="toolbar" (window:keydown)="focusWithSlash($event)">
   <!-- SEARCH -->
   <div class="search">
@@ -11,12 +10,11 @@
     <kbd>/</kbd>
   </div>
 
-  <!-- CHIPS -->
+  <!-- Filtrele (butoane dropdown) sunt proiectate aici -->
   <div class="filters">
-    <button class="chip" *ngFor="let c of chips" (click)="chipClick.emit(c)">{{ c }}</button>
+    <ng-content select="[filters]"></ng-content>
   </div>
 
-  <!-- RIGHT -->
   <div class="toolbar-right">
     <button class="btn btn-ghost small" (click)="viewClick.emit()">☰ View</button>
   </div>

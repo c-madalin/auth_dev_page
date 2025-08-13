@@ -8,13 +8,56 @@
   </div>
 
   <app-search-bar
-    [chips]="['+ Game', '+ Status', '+ Rating', '+ Server', '+ Discounted', '+ Date']"
     (searchChange)="onSearch($event)"
-    (chipClick)="onChipClick($event)"
     (viewClick)="onViewClick()">
+    <div filters>
+      <app-filter-button
+        label="+ Game"
+        [options]="gameOptions"
+        [selected]="filters.game || []"
+        (selectedChange)="setFilter('game',$event)">
+      </app-filter-button>
+
+      <app-filter-button
+  label="+ Status"
+  [options]="statusOptions"
+  [selected]="filters.status || []"
+  (selectedChange)="onStatusChange($event)">
+</app-filter-button>
+
+<app-filter-button
+  label="+ Rating"
+  [options]="ratingOptions"
+  [selected]="filters.rating || []"
+  (selectedChange)="onRatingChange($event)">
+</app-filter-button>
+
+
+      <app-filter-button
+        label="+ Server"
+        [options]="serverOptions"
+        [selected]="filters.server || []"
+        (selectedChange)="setFilter('server',$event)">
+      </app-filter-button>
+
+      <app-filter-button
+        label="+ Discounted"
+        [options]="[{value:'yes', label:'Discounted only'}]"
+        [multiple]="false"
+        [selected]="filters.discounted ? ['yes'] : []"
+        (selectedChange)="setFilter('discounted', $event.includes('yes'))">
+      </app-filter-button>
+
+      <app-filter-button
+        label="+ Date"
+        [options]="dateOptions"
+        [multiple]="false"
+        [selected]="datePreset"
+        (selectedChange)="onDatePresetChange($event)">
+      </app-filter-button>
+    </div>
   </app-search-bar>
 
-  <!-- Fără comentarii în bindinguri -->
   <app-accounts-table
     [rows]="rows"
     (rowMenu)="onRowMenu($event)"
