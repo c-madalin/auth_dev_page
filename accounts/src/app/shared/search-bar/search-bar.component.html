@@ -1,0 +1,23 @@
+<!-- Ascultăm tasta "/" global -->
+<div class="toolbar" (window:keydown)="focusWithSlash($event)">
+  <!-- SEARCH -->
+  <div class="search">
+    <span class="search-icon">🔎</span>
+    <input #searchInput
+           type="text"
+           [value]="term"
+           (input)="onKey(searchInput.value)"
+           placeholder="Search..." />
+    <kbd>/</kbd>
+  </div>
+
+  <!-- CHIPS -->
+  <div class="filters">
+    <button class="chip" *ngFor="let c of chips" (click)="chipClick.emit(c)">{{ c }}</button>
+  </div>
+
+  <!-- RIGHT -->
+  <div class="toolbar-right">
+    <button class="btn btn-ghost small" (click)="viewClick.emit()">☰ View</button>
+  </div>
+</div>
