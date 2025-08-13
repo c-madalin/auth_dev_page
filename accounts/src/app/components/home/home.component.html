@@ -1,0 +1,91 @@
+<div class="page">
+  <!-- Header -->
+  <div class="page-header">
+    <h1>Accounts</h1>
+
+    <div class="actions">
+      <button class="btn btn-ghost">
+        <span class="icon">⬆️</span>
+        Account Imports
+      </button>
+      <button class="btn btn-primary">
+        <span class="icon">＋</span>
+        Add New Account
+      </button>
+    </div>
+  </div>
+
+  <!-- Toolbar: search + filtre -->
+  <div class="toolbar">
+    <div class="search">
+      <span class="search-icon">🔎</span>
+      <input type="text" placeholder="Search..." />
+      <kbd>/</kbd>
+    </div>
+
+    <div class="filters">
+      <button class="chip">+ Game</button>
+      <button class="chip">+ Status</button>
+      <button class="chip">+ Rating</button>
+      <button class="chip">+ Server</button>
+      <button class="chip">+ Featured</button>
+      <button class="chip">+ Discounted</button>
+      <button class="chip">+ Date</button>
+    </div>
+
+    <div class="toolbar-right">
+      <button class="btn btn-ghost small">☰ View</button>
+    </div>
+  </div>
+
+  <!-- Table -->
+  <div class="table-wrap">
+    <table class="grid">
+      <thead>
+        <tr>
+          <th style="width:34px;">
+            <input type="checkbox" />
+          </th>
+          <th>TITLE</th>
+          <th>ACCOUNT ID</th>
+          <th>CREDENTIALS</th>
+          <th>STATUS</th>
+          <th>VIEWS</th>
+          <th>PRICE</th>
+          <th>RATING</th>
+          <th>LAST UPDATED</th>
+          <th style="width:44px;"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let r of rows">
+          <td><input type="checkbox" /></td>
+          <td>
+            <div class="title-cell">
+              <span class="game-icon">🎮</span>
+              <div class="title-block">
+                <div class="title">{{ r.title }}</div>
+                <div class="subtitle">{{ r.game }}</div>
+              </div>
+            </div>
+          </td>
+          <td class="muted">{{ r.accountId }}</td>
+          <td class="muted cred">{{ r.credentials }}</td>
+          <td>
+            <span class="badge" [class.badge-green]="r.status==='Sold'">{{ r.status }}</span>
+          </td>
+          <td class="num">{{ r.views }}</td>
+          <td class="num">{{ r.price }}</td>
+          <td>
+            <span class="rating" [class.pos]="r.rating==='Positive'">{{ r.rating }}</span>
+          </td>
+          <td class="muted">{{ r.updated }}</td>
+          <td class="actions-td">
+            <button class="dot">⋯</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
