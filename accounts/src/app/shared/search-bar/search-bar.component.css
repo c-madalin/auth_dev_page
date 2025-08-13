@@ -66,3 +66,76 @@
 .btn:hover { filter: brightness(1.05); }
 .btn-ghost { background: #141b27; }
 .btn.small { padding: 8px 10px; font-size: 13px; }
+
+/* Bara — mai înaltă și cu spații mai mari */
+.toolbar{
+  display:grid;
+  grid-template-columns: 1fr auto auto; /* search ia tot spațiul */
+  align-items:center;
+  gap:16px;
+  padding:16px;
+  border:1px solid var(--border);
+  background: linear-gradient(180deg,#0f1622 0%, #0f1722 100%);
+  border-radius:12px;
+  margin-bottom:16px;
+  box-shadow:0 6px 20px rgba(0,0,0,.25);
+}
+
+/* Search — height mai mare + focus ring subtil */
+.search{
+  display:flex; align-items:center; gap:12px;
+  height:48px;
+  padding:0 14px;
+  border:1px solid var(--border);
+  background: var(--panel);
+  border-radius:12px;
+  transition: box-shadow .18s, border-color .18s, background .18s;
+}
+.search:focus-within{
+  border-color: rgba(47,100,255,.55);
+  box-shadow: 0 0 0 3px rgba(47,100,255,.18);
+  background: #121c2b;
+}
+.search input{
+  background:transparent; border:0; outline:0;
+  color:var(--text); width:100%;
+  font-size:15px;
+}
+.search kbd{
+  display:inline-flex; align-items:center; justify-content:center;
+  height:22px; min-width:22px; padding:0 6px;
+  border-radius:6px; border:1px solid var(--border);
+  background:#0b1220; color:var(--muted);
+  font-size:12px; line-height:1;
+}
+
+/* Chips — mai înalte și cu spațiu mai mare între ele */
+.filters{ display:flex; flex-wrap:wrap; gap:12px; align-items:center; }
+
+.chip{
+  display:inline-flex; align-items:center; justify-content:center;
+  height:36px;
+  padding:0 14px;
+  border-radius:10px;
+  background:#141b27;
+  border:1px dashed #243044;
+  color:var(--text);
+  font-size:13.5px;
+  cursor:pointer;
+  transition: transform .12s, filter .12s, border-color .12s;
+}
+.chip:hover{ filter:brightness(1.08); border-color:#2f64ff; }
+.chip:active{ transform: translateY(1px); }
+
+/* Buton View aliniat și puțin mai înalt */
+.toolbar-right .btn.small{
+  height:38px;
+  padding:0 12px;
+  display:inline-flex; align-items:center; gap:8px;
+}
+
+/* Responsiv */
+@media (max-width: 920px){
+  .toolbar{ grid-template-columns: 1fr; row-gap:12px; }
+  .toolbar-right{ justify-content:flex-start; }
+}
