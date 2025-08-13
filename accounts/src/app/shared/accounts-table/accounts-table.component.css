@@ -1,0 +1,92 @@
+:host { display: block; }
+
+/* container tabel */
+.table-wrap {
+  border: 1px solid var(--border);
+  background: rgba(18, 25, 37, 0.65);
+  backdrop-filter: blur(4px);
+  border-radius: 12px;
+  overflow: auto;
+  /* poți seta o înălțime dinamică în pagina părinte;
+     dacă vrei exact ca în exemplul tău, pune height în .page */
+}
+
+.grid {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 14px;
+}
+
+/* header sticky */
+.grid thead th {
+  text-align: left;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: .6px;
+  color: var(--muted);
+  background: #0f1722;
+  border-bottom: 1px solid var(--border);
+  padding: 12px 14px;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.grid tbody td {
+  border-bottom: 1px solid #162033;
+  padding: 14px;
+  vertical-align: middle;
+}
+
+.grid tbody tr:hover {
+  background: rgba(20, 27, 39, 0.65);
+}
+
+/* celule speciale */
+.title-cell { display: flex; align-items: center; gap: 10px; }
+.game-icon { font-size: 20px; }
+.title-block .title { font-weight: 600; color: #eaf1ff; }
+.title-block .subtitle { color: var(--muted); font-size: 12px; margin-top: 2px; }
+
+.muted { color: var(--muted); }
+.cred { max-width: 340px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.num { text-align: right; }
+
+/* badge/rating/dot */
+.badge {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 8px;
+  background: #2a3547;
+  border: 1px solid #2b3a52;
+  color: #b9c7dd;
+  font-weight: 600;
+  font-size: 12px;
+}
+.badge-green {
+  background: #1f3b2a;
+  border-color: #2d523f;
+  color: var(--green);
+}
+
+.rating { color: var(--muted); font-weight: 600; }
+.rating.pos { color: var(--green); }
+
+.actions-td { text-align: right; }
+.dot {
+  background: #0f1622;
+  border: 1px solid var(--border);
+  color: #c6d2e6;
+  border-radius: 8px;
+  width: 34px; height: 34px;
+  line-height: 32px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.empty {
+  text-align: center;
+  padding: 40px 10px;
+  color: var(--muted);
+}

@@ -1,27 +1,23 @@
 <div class="page">
-  <!-- ========== HEADER (rămâne în Home) ========== -->
   <div class="page-header">
     <h1>Accounts</h1>
-
     <div class="actions">
-      <button class="btn btn-ghost" (click)="onImports()">
-        <span class="icon">⬆️</span>
-        Account Imports
-      </button>
-      <button class="btn btn-primary" (click)="onAddNew()">
-        <span class="icon">＋</span>
-        Add New Account
-      </button>
+      <button class="btn btn-ghost"><span class="icon">⬆️</span>Account Imports</button>
+      <button class="btn btn-primary"><span class="icon">＋</span>Add New Account</button>
     </div>
   </div>
 
-  <!-- ========== SEARCH BAR (componentă nouă) ========== -->
   <app-search-bar
-    [chips]="['+ Game', '+ Status', '+ Rating', '+ Server', '+ Featured', '+ Discounted', '+ Date']"
+    [chips]="['+ Game', '+ Status', '+ Rating', '+ Server', '+ Discounted', '+ Date']"
     (searchChange)="onSearch($event)"
     (chipClick)="onChipClick($event)"
-    (viewClick)="onViewClick()"
-  ></app-search-bar>
+    (viewClick)="onViewClick()">
+  </app-search-bar>
 
-  <!-- aici vom adăuga ulterior <app-accounts-table ...> -->
+  <!-- Fără comentarii în bindinguri -->
+  <app-accounts-table
+    [rows]="rows"
+    (rowMenu)="onRowMenu($event)"
+    (selectionChange)="onSelectionChange($event)">
+  </app-accounts-table>
 </div>
