@@ -57,7 +57,7 @@
 
 .btn-ghost { background: #141b27; }
 .btn-primary {
-  background: var(--accent);
+  background: var(--green);
   border-color: transparent;
   color: white;
 }

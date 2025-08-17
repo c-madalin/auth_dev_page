@@ -1,6 +1,12 @@
-<div class="filter-btn">
+<div class="filter-btn" [class.open]="open">
   <!-- Chip -->
-  <button type="button" class="chip" (click)="toggleOpen()">
+  <button
+    type="button"
+    class="chip"
+    [class.active]="selectedCount > 0"
+    (click)="toggleOpen()"
+    [attr.aria-expanded]="open"
+    aria-haspopup="listbox">
     {{ label }} <span *ngIf="selectedCount">({{selectedCount}})</span>
   </button>
 
@@ -9,14 +15,15 @@
     <!-- Search în panel -->
     <div class="panel-search">
       <span class="search-icon">🔎</span>
-      <input type="text"
-             [value]="q"
-             (input)="q = ($any($event.target)).value"
-             [placeholder]="'Search ' + label.replace('+ ','')" />
+      <input
+        type="text"
+        [value]="q"
+        (input)="q = ($any($event.target)).value"
+        [placeholder]="'Search ' + label.replace('+ ','')" />
     </div>
 
     <!-- Opțiuni -->
-    <div class="options">
+    <div class="options" role="listbox">
       <label class="opt" *ngFor="let o of filteredOptions()">
         <ng-container *ngIf="multiple; else single">
           <input type="checkbox"

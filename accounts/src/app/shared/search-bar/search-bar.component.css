@@ -139,3 +139,55 @@
   .toolbar{ grid-template-columns: 1fr; row-gap:12px; }
   .toolbar-right{ justify-content:flex-start; }
 }
+/* 1) Bara pe 3 coloane, cu SEARCH fix(ish) mai scurt */
+.toolbar{
+  display:grid;
+  grid-template-columns: minmax(260px, 420px) 1fr auto; /* <= aici scurtezi search-ul */
+  align-items:center;
+  gap:16px;
+  padding:16px;
+  border:1px solid var(--border);
+  background: linear-gradient(180deg,#0f1622 0%, #0f1722 100%);
+  border-radius:12px;
+  margin-bottom:16px;
+}
+
+/* 2) SEARCH – ocupă coloana lui, dar nu trece de 420px */
+.search{
+  display:flex; align-items:center; gap:12px;
+  height:48px;                     /* înălțime comodă */
+  padding:0 14px;
+  border:1px solid var(--border);
+  background: var(--panel);
+  border-radius:12px;
+}
+.search input{ font-size:15px; }
+
+/* 3) CHIP-urile – mai late/înaltă un pic */
+.filters{ display:flex; flex-wrap:wrap; gap:12px; align-items:center; }
+.chip{
+  display:inline-flex; align-items:center; justify-content:center;
+  height:40px;             /* +4px față de înainte */
+  padding:0 16px;          /* mai late */
+  border-radius:10px;
+  background:#141b27;
+  border:1px dashed #243044;
+  font-size:14px;          /* +0.5–1px */
+  cursor:pointer;
+  transition:transform .12s, filter .12s, border-color .12s;
+}
+.chip:hover{ filter:brightness(1.08); border-color:#2f64ff; }
+
+/* 4) Butonul "View" – puțin mai mare ca chip-urile */
+.toolbar-right .btn.small{
+  height:40px;
+  padding:0 14px;
+  display:inline-flex; align-items:center; gap:8px;
+  font-size:14px;
+}
+
+/* Responsive: pe ecrane mici, lăsăm search-ul să se întindă pe rând */
+@media (max-width: 920px){
+  .toolbar{ grid-template-columns: 1fr; row-gap:12px; }
+  .toolbar-right{ justify-content:flex-start; }
+}
