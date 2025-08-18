@@ -6,7 +6,7 @@ export interface AccountRow {
   game: string;
   accountId: string;        // ex. "#182665"
   credentials: string;      // text scurtat în celulă
-  status: 'Draft'|'Active'|'Sold'|'Hidden';
+  status: 'In Progress'|'Disputed'|'Done'|'Unlisted'|'Listed'|'Refounded';
   views: number;
   price: string | number;   // ex. "€59,99"
   rating: 'Positive'|'Neutral'|'Negative'|'-';
