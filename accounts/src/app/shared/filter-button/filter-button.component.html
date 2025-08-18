@@ -1,14 +1,21 @@
 <div class="filter-btn" [class.open]="open">
   <!-- Chip -->
-  <button
-    type="button"
-    class="chip"
-    [class.active]="selectedCount > 0"
-    (click)="toggleOpen()"
-    [attr.aria-expanded]="open"
-    aria-haspopup="listbox">
-    {{ label }} <span *ngIf="selectedCount">({{selectedCount}})</span>
-  </button>
+<button
+  type="button"
+  class="chip"
+  [class.active]="selectedCount > 0"
+  (click)="toggleOpen()"
+  [attr.aria-expanded]="open"
+  aria-haspopup="listbox"
+  [style.height.px]="44"
+  [style.padding]="'0 18px'"
+  [style.fontSize.px]="15"
+  [style.fontWeight]="700"
+  [style.borderRadius.px]="12"
+>
+  {{ label }} <span *ngIf="selectedCount">({{selectedCount}})</span>
+</button>
+
 
   <!-- Dropdown panel -->
   <div class="panel" *ngIf="open" (click)="$event.stopPropagation()">
