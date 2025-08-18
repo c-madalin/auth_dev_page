@@ -14,6 +14,7 @@
 }
 
 .page {
+
   position: relative;
   z-index: 10;
   height: 100vh;
@@ -121,7 +122,7 @@
   background: rgba(18, 25, 37, 0.65);
   backdrop-filter: blur(4px);
   border-radius: 12px;
-  overflow: hidden;
+  overflow: auto;
   height: calc(100vh - 20px - 22px - 16px - 12px - 120px);
   /* ^ înălțime calculată: ocupă restul ferestrei */
 }

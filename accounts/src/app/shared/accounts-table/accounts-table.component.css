@@ -1,4 +1,5 @@
-:host { display: block; }
+:host { display: block;
+height: 100%; }
 
 /* container tabel */
 .table-wrap {
@@ -7,6 +8,7 @@
   backdrop-filter: blur(4px);
   border-radius: 12px;
   overflow: auto;
+  height: 100%;
   /* poți seta o înălțime dinamică în pagina părinte;
      dacă vrei exact ca în exemplul tău, pune height în .page */
 }
@@ -89,4 +91,14 @@
   text-align: center;
   padding: 40px 10px;
   color: var(--muted);
+}
+/* Firefox */
+.table-wrap{
+  scrollbar-width: none;          /* ascunde scrollbarul */
+  -ms-overflow-style: none;       /* IE/Edge Legacy */
+}
+/* Chromium/Safari/WebKit */
+.table-wrap::-webkit-scrollbar{
+  width: 0;                        /* ascunde vizual */
+  height: 0;
 }
