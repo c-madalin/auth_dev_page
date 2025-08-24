@@ -1,1 +1,27 @@
-<p>add-account works!</p>
+<div class="overlay" (click)="close.emit()" role="dialog" aria-modal="true">
+  <div class="panel" (click)="$event.stopPropagation()">
+    <div class="header">
+      <h3>{{ title }}</h3>
+      <button class="x" (click)="close.emit()" aria-label="Close">✕</button>
+    </div>
+
+    <div class="panel-search">
+      <span class="icon">🔎</span>
+      <input
+        [(ngModel)]="q"
+        type="text"
+        placeholder="Search games..."
+        aria-label="Search games" />
+    </div>
+
+    <div class="list">
+      <button class="row" *ngFor="let g of filtered" (click)="onPick(g)">
+        <span class="dot" aria-hidden="true"></span>
+        <span class="name">{{ g }}</span>
+        <span class="chev" aria-hidden="true">›</span>
+      </button>
+
+      <div class="empty" *ngIf="filtered.length === 0">No games found</div>
+    </div>
+  </div>
+</div>

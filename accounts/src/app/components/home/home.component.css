@@ -193,3 +193,78 @@
   text-align: center;
   cursor: pointer;
 }
+/* ===== HOME LAYOUT ===== */
+
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+  color: var(--text);
+  font-family: Inter, system-ui, Segoe UI, Roboto, Arial, sans-serif;
+  transition: filter .15s ease;
+}
+
+/* Header */
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.page-header h1 {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: .2px;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+/* Blur când modalul AddAccount e deschis */
+.page.blurred {
+  filter: blur(6px);
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ===== SEȚARE ZONE ===== */
+
+/* Bara de căutare nu se întinde */
+app-search-bar {
+  flex: 0 0 auto;
+  display: block;
+  margin-bottom: 12px;   /* spațiu între search și tabel */
+}
+
+/* Tabelul ocupă tot spațiul rămas (scroll intern în componenta lui) */
+app-accounts-table {
+  flex: 1 1 auto;
+  min-height: 0;         /* esențial pentru ca scrollerul intern să funcționeze */
+  display: block;
+}
+
+/* ===== SPAȚIERE ÎNTRE BUTOANELE DE FILTRU (în interiorul app-search-bar) ===== */
+
+app-search-bar .filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 16px;        /* orizontal | vertical */
+}
+
+/* fiecare filtru (componentă) e tratat ca item */
+app-search-bar .filters > [filters] {
+  display: inline-block;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 720px) {
+  .page { padding: 12px; }
+  .page-header { flex-wrap: wrap; gap: 10px; }
+  .actions { width: 100%; justify-content: flex-end; }
+}

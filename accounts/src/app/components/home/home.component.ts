@@ -1,7 +1,10 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+
 import { SearchBarComponent } from '../../shared/search-bar/search-bar.component';
 import { AccountsTableComponent, AccountRow } from '../../shared/accounts-table/accounts-table.component';
 import { FilterButtonComponent, FilterOption } from '../../shared/filter-button/filter-button.component';
+import { AddAccountComponent } from '../../shared/add-account/add-account.component';
 
 type Status =
   | 'In Progress'
@@ -11,7 +14,7 @@ type Status =
   | 'Listed'
   | 'Refounded';
 
-type Rating = 'Positive'|'Neutral'|'Negative'|'-';
+type Rating = 'Positive' | 'Neutral' | 'Negative' | '-';
 
 interface AccountsFilters {
   search?: string;
@@ -26,68 +29,89 @@ interface AccountsFilters {
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [SearchBarComponent, AccountsTableComponent, FilterButtonComponent],
+  imports: [
+    CommonModule,
+    SearchBarComponent,
+    AccountsTableComponent,
+    FilterButtonComponent,
+    AddAccountComponent
+  ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-
 export class HomeComponent {
-  // --- opțiunile dropdown ---
-  gameOptions: FilterOption[] = [
-  { value: 'Fortnite' },
-  { value: 'League of Legends' },
-  { value: 'GTA V (GTA Online)' },
-  { value: 'Minecraft (Java Edition)' },
-  { value: 'Call of Duty: Warzone / Warzone Mobile' },
-  { value: 'Valorant' },
-  { value: 'Clash of Clans' },
-  { value: 'Clash Royale' },
-  { value: 'Brawl Stars' },
-  { value: 'Genshin Impact' },
-  { value: 'Call of Duty: Mobile' },
-  { value: 'World of Warcraft (Retail si Classic)' },
-  { value: 'Final Fantasy XIV' },
-  { value: 'Diablo 4' },
-  { value: 'Black Desert Online' },
-  { value: 'Rainbow Six Siege' },
-  { value: 'Apex Legends' },
-  { value: 'PUBG' },
-  { value: 'Rocket League' },
-  { value: 'Roblox' },
-  { value: 'Lost Ark' },
-  { value: 'Old School RuneScape' },
-  { value: 'RuneScape 3' },
-  { value: 'Diablo Immortal' },
-  { value: 'Summoners War' },
-  { value: 'Path of Exile' },
-  { value: 'Pokemon GO' },
-  { value: 'Honkai: Star Rail' },
-  { value: 'Destiny 2' },
-  { value: 'Tibia' },
-  { value: 'Lineage 2' },
-  { value: 'EVE Online' },
-  { value: 'Blade and Soul' },
-  { value: 'Tower of Fantasy' },
-  { value: 'V4' },
-  { value: 'Lords Mobile' },
-  { value: 'Marvel Snap' },
-  { value: 'Ragnarok Origin' },
-  { value: 'Monster Hunter: World' },
-  { value: 'ArcheAge / ArcheAge Unchained' },
-  { value: 'Red Dead Redemption 2 (cu Red Dead Online)' },
-  { value: 'Diablo 3' },
-  { value: 'Crowfall' },
-  { value: 'Undawn' },
-  { value: 'Swords of Legends Online' },
-  { value: 'Marvel Rivals (beta 2025)' },
-  { value: 'Enshrouded' },
-  { value: 'Myth of Empires' },
-  { value: 'Conan Exiles' },
-  { value: 'Palia' },
-  { value: 'Dark and Darker' },
-  { value: 'XDefian' }
-];
+  // ===== MODAL: Add Account =====
+  showAddAccount = false;
 
+  openAddAccount() {
+    this.showAddAccount = true;
+    document.body.style.overflow = 'hidden';
+  }
+  closeAddAccount() {
+    this.showAddAccount = false;
+    document.body.style.overflow = '';
+  }
+  onGamePicked(game: string) {
+    console.log('Game selected:', game);
+    this.closeAddAccount();
+    // TODO: pornește wizard-ul de creare pentru jocul ales
+  }
+
+  // ===== Opțiuni filtre =====
+  gameOptions: FilterOption[] = [
+    { value: 'Fortnite' },
+    { value: 'League of Legends' },
+    { value: 'GTA V (GTA Online)' },
+    { value: 'Minecraft (Java Edition)' },
+    { value: 'Call of Duty: Warzone / Warzone Mobile' },
+    { value: 'Valorant' },
+    { value: 'Clash of Clans' },
+    { value: 'Clash Royale' },
+    { value: 'Brawl Stars' },
+    { value: 'Genshin Impact' },
+    { value: 'Call of Duty: Mobile' },
+    { value: 'World of Warcraft (Retail si Classic)' },
+    { value: 'Final Fantasy XIV' },
+    { value: 'Diablo 4' },
+    { value: 'Black Desert Online' },
+    { value: 'Rainbow Six Siege' },
+    { value: 'Apex Legends' },
+    { value: 'PUBG' },
+    { value: 'Rocket League' },
+    { value: 'Roblox' },
+    { value: 'Lost Ark' },
+    { value: 'Old School RuneScape' },
+    { value: 'RuneScape 3' },
+    { value: 'Diablo Immortal' },
+    { value: 'Summoners War' },
+    { value: 'Path of Exile' },
+    { value: 'Pokemon GO' },
+    { value: 'Honkai: Star Rail' },
+    { value: 'Destiny 2' },
+    { value: 'Tibia' },
+    { value: 'Lineage 2' },
+    { value: 'EVE Online' },
+    { value: 'Blade and Soul' },
+    { value: 'Tower of Fantasy' },
+    { value: 'V4' },
+    { value: 'Lords Mobile' },
+    { value: 'Marvel Snap' },
+    { value: 'Ragnarok Origin' },
+    { value: 'Monster Hunter: World' },
+    { value: 'ArcheAge / ArcheAge Unchained' },
+    { value: 'Red Dead Redemption 2 (cu Red Dead Online)' },
+    { value: 'Diablo 3' },
+    { value: 'Crowfall' },
+    { value: 'Undawn' },
+    { value: 'Swords of Legends Online' },
+    { value: 'Marvel Rivals (beta 2025)' },
+    { value: 'Enshrouded' },
+    { value: 'Myth of Empires' },
+    { value: 'Conan Exiles' },
+    { value: 'Palia' },
+    { value: 'Dark and Darker' },
+    { value: 'XDefian' }
+  ];
 
   statusOptions: FilterOption[] = [
     { value: 'In Progress' },
@@ -99,7 +123,7 @@ export class HomeComponent {
   ];
 
   ratingOptions: FilterOption[] = [
-    { value: 'Positive' }, { value: 'Neutral' }, { value: 'Negative' }, { value: '-' , label: '—' }
+    { value: 'Positive' }, { value: 'Neutral' }, { value: 'Negative' }, { value: '-', label: '—' }
   ];
 
   serverOptions: FilterOption[] = [
@@ -113,7 +137,7 @@ export class HomeComponent {
   ];
   datePreset: string[] = [];
 
-  // --- datele + filtrele (ca înainte) ---
+  // ===== Date tabel + filtre =====
   private allRows: (AccountRow & { updatedAt?: string; server?: string; discounted?: boolean })[] = [
     { id: 1,  title: 'Starter Bundle — 8 Skins',               game: 'Fortnite',                       accountId: '#100231', credentials: 'starter@demo.com:pass',        status: 'Listed',      views: 312, price: '€24.99', rating: 'Positive', updated: '2 days ago',    updatedAt: '2025-08-16', server: 'EU',  discounted: true  },
     { id: 2,  title: 'Gold IV Midlane Main',                    game: 'League of Legends',              accountId: '#100232', credentials: 'lol.gold@demo.com:pass',        status: 'Refounded',   views: 88,  price: '€29.00', rating: 'Neutral',  updated: '1 week ago',   updatedAt: '2025-08-10', server: 'EU'                       },
@@ -126,22 +150,24 @@ export class HomeComponent {
     { id: 9,  title: 'Retail • ilvl 486 • M+',                  game: 'World of Warcraft (Retail si Classic)', accountId: '#100239', credentials: 'wow.retail@demo.com:pass', status: 'Disputed',    views: 166, price: '€79.00', rating: 'Positive', updated: '2 weeks ago',  updatedAt: '2025-08-03', server: 'EU'                       },
     { id:10,  title: 'FFXIV • Endwalker Unlocked',              game: 'Final Fantasy XIV',              accountId: '#100240', credentials: 'ffxiv.ew@demo.com:pass',        status: 'Unlisted',    views: 8,   price: '€42.00', rating: 'Neutral',  updated: '2 months ago', updatedAt: '2025-06-18', server: 'NA'                       },
     { id:11,  title: 'Season 4 • WT4 • Barb 80',                game: 'Diablo 4',                       accountId: '#100241', credentials: 'd4.barbarian@demo.com:pass',    status: 'Done',         views: 121, price: '€44.99', rating: 'Positive', updated: '6 days ago',   updatedAt: '2025-08-12', server: 'EU',  discounted: true  },
-    { id:12,  title: 'Premier Ready • 6k Hours',                 game: 'CS2',                            accountId: '#100242', credentials: 'cs2.premier@demo.com:pass',     status: 'In Progress', views: 199, price: '€55.00', rating: 'Positive', updated: '3 days ago',    updatedAt: '2025-08-15', server: 'EU'                       },
-    { id:13,  title: 'Predator Badge (S17)',                     game: 'Apex Legends',                   accountId: '#100243', credentials: 'apex.pred@demo.com:pass',       status: 'Listed',      views: 0,   price: '€89.00', rating: 'Positive', updated: '1 month ago',  updatedAt: '2025-07-09', server: 'NA'                       },
+    { id:12,  title: 'Premier Ready • 6k Hours',                game: 'CS2',                            accountId: '#100242', credentials: 'cs2.premier@demo.com:pass',     status: 'In Progress', views: 199, price: '€55.00', rating: 'Positive', updated: '3 days ago',    updatedAt: '2025-08-15', server: 'EU'                       },
+    { id:13,  title: 'Predator Badge (S17)',                    game: 'Apex Legends',                   accountId: '#100243', credentials: 'apex.pred@demo.com:pass',       status: 'Listed',      views: 0,   price: '€89.00', rating: 'Positive', updated: '1 month ago',  updatedAt: '2025-07-09', server: 'NA'                       },
     { id:14,  title: 'Survivor Mastery 500 • Skins',            game: 'PUBG',                           accountId: '#100244', credentials: 'pubg.m500@demo.com:pass',       status: 'Refounded',   views: 64,  price: '€23.99', rating: 'Neutral',  updated: '9 days ago',   updatedAt: '2025-08-09', server: 'ASIA'                     },
     { id:15,  title: 'Fennec + Octane • GC',                    game: 'Rocket League',                   accountId: '#100245', credentials: 'rl.gc@demo.com:pass',           status: 'Disputed',    views: 25,  price: '€31.00', rating: '-',        updated: '3 weeks ago',  updatedAt: '2025-07-29', server: 'EU'                       },
     { id:16,  title: 'Dev Mode • 3M Visits',                    game: 'Roblox',                         accountId: '#100246', credentials: 'rb.dev@demo.com:pass',          status: 'Done',         views: 410, price: '€19.99', rating: 'Positive', updated: 'yesterday',     updatedAt: '2025-08-17'                                  },
     { id:17,  title: 'Tier 3 • Argos Clear',                    game: 'Lost Ark',                       accountId: '#100247', credentials: 'la.t3@demo.com:pass',           status: 'Unlisted',    views: 77,  price: '€28.00', rating: 'Neutral',  updated: '10 days ago',  updatedAt: '2025-08-08', server: 'EU'                       },
-    { id:18,  title: 'Lightfall • 1810 Power',                   game: 'Destiny 2',                      accountId: '#100248', credentials: 'd2.1810@demo.com:pass',         status: 'Listed',      views: 5,   price: '€26.50', rating: '-',        updated: '2 months ago', updatedAt: '2025-06-20', server: 'NA'                       }
+    { id:18,  title: 'Lightfall • 1810 Power',                  game: 'Destiny 2',                      accountId: '#100248', credentials: 'd2.1810@demo.com:pass',         status: 'Listed',      views: 5,   price: '€26.50', rating: '-',        updated: '2 months ago', updatedAt: '2025-06-20', server: 'NA'                       }
   ];
   rows: AccountRow[] = [...this.allRows];
   filters: AccountsFilters = { search: '' };
 
-  // search text
-  onSearch(term: string) { this.filters.search = term; this.applyFilters(); }
+  // ===== Search & filtre =====
+  onSearch(term: string) {
+    this.filters.search = term;
+    this.applyFilters();
+  }
   onViewClick() {}
 
-  // dropdown handlers
   setFilter<K extends keyof AccountsFilters>(key: K, value: AccountsFilters[K]) {
     this.filters[key] = value;
     this.applyFilters();
@@ -158,7 +184,7 @@ export class HomeComponent {
     const from = new Date(today);
     if (selected[0] === '7d') from.setDate(today.getDate() - 7);
     if (selected[0] === '30d') from.setDate(today.getDate() - 30);
-    const iso = (d: Date) => d.toISOString().slice(0,10);
+    const iso = (d: Date) => d.toISOString().slice(0, 10);
     this.filters.date = { from: iso(from) };
     this.applyFilters();
   }
@@ -166,7 +192,6 @@ export class HomeComponent {
   onRowMenu(row: AccountRow) { console.log('row menu:', row); }
   onSelectionChange(rows: AccountRow[]) { console.log('selected:', rows); }
 
-  // filtrarea (ca înainte)
   private applyFilters() {
     const f = this.filters;
     const term = (f.search ?? '').trim().toLowerCase();
@@ -199,13 +224,12 @@ export class HomeComponent {
       return true;
     });
   }
-  // adaugă în clasa HomeComponent:
-onStatusChange(values: string[]) {
-  this.setFilter('status', values as Status[]);
-}
 
-onRatingChange(values: string[]) {
-  this.setFilter('rating', values as Rating[]);
-}
+  onStatusChange(values: string[]) { this.setFilter('status', values as Status[]); }
+  onRatingChange(values: string[]) { this.setFilter('rating', values as Rating[]); }
 
+  // listă simplă de stringuri pentru modal
+  get gameList(): string[] {
+    return this.gameOptions.map(o => o.label ?? o.value);
+  }
 }
