@@ -65,10 +65,12 @@
   </app-search-bar>
 
   <app-accounts-table
-    [rows]="rows"
-    (rowMenu)="onRowMenu($event)"
-    (selectionChange)="onSelectionChange($event)">
-  </app-accounts-table>
+  [rows]="rows"
+  (rowMenu)="onRowMenu($event)"
+  (selectionChange)="onSelectionChange($event)"
+  (rowAction)="onRowAction($event)">
+</app-accounts-table>
+
 </div>
 
 <!-- Modalul (sibling) – NU în interiorul .page, ca să nu fie blurat -->

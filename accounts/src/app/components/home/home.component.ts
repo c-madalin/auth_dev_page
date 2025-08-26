@@ -2,19 +2,18 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 
 import { SearchBarComponent } from '../../shared/search-bar/search-bar.component';
-import { AccountsTableComponent, AccountRow } from '../../shared/accounts-table/accounts-table.component';
+import { AccountsTableComponent, AccountRow, Rating } from '../../shared/accounts-table/accounts-table.component';
 import { FilterButtonComponent, FilterOption } from '../../shared/filter-button/filter-button.component';
 import { AddAccountComponent } from '../../shared/add-account/add-account.component';
 
-type Status =
+export type Status =
   | 'In Progress'
   | 'Disputed'
   | 'Done'
   | 'Unlisted'
   | 'Listed'
-  | 'Refounded';
-
-type Rating = 'Positive' | 'Neutral' | 'Negative' | '-';
+  | 'Refounded'
+  | 'Sold'; // extins
 
 interface AccountsFilters {
   search?: string;
@@ -119,7 +118,9 @@ export class HomeComponent {
     { value: 'Done' },
     { value: 'Unlisted' },
     { value: 'Listed' },
-    { value: 'Refounded' }
+    { value: 'Refounded' },
+    // poți adăuga și 'Sold' la filtre, dacă vrei să îl filtrezi explicit:
+    // { value: 'Sold' }
   ];
 
   ratingOptions: FilterOption[] = [
@@ -231,5 +232,82 @@ export class HomeComponent {
   // listă simplă de stringuri pentru modal
   get gameList(): string[] {
     return this.gameOptions.map(o => o.label ?? o.value);
+  }
+
+  // ====== NOU: acțiunile venite din tabel ======
+  onRowAction(e: { action: 'edit'|'unlist'|'delete'|'promote'|'quick-edit'|'view'|'copy-url'|'delete-account'; row: AccountRow }) {
+    const { action, row } = e;
+
+    switch (action) {
+      case 'edit':
+        console.log('Edit', row);
+        // TODO: open modal/pagină de editare
+        break;
+
+      case 'unlist':
+        console.log('Unlist', row);
+        // TODO: API -> set status 'Unlisted'
+        this.updateRowStatus(row, 'Unlisted');
+        break;
+
+      case 'delete':
+        console.log('Delete', row);
+        // dacă e Unlisted -> hard delete; altfel fallback la Unlist
+        if (row.status === 'Unlisted') {
+          // TODO: confirm + API delete
+          this.removeRow(row);
+        } else {
+          this.updateRowStatus(row, 'Unlisted');
+        }
+        break;
+
+      case 'promote':
+        console.log('Promote', row);
+        // TODO: deschide dialog select abonament
+        break;
+
+      case 'quick-edit':
+        console.log('Quick Edit', row);
+        // TODO: drawer/inline edit
+        break;
+
+      case 'view':
+        console.log('View Account', row);
+        window.open(this.getPublicUrl(row), '_blank');
+        break;
+
+      case 'copy-url': {
+        const url = this.getPublicUrl(row);
+        navigator.clipboard?.writeText(url).then(() => console.log('URL copiat:', url));
+        break;
+      }
+
+      case 'delete-account':
+        console.log('Delete Account', row);
+        // TODO: confirm + API delete
+        this.removeRow(row);
+        break;
+    }
+  }
+
+  private getPublicUrl(row: AccountRow): string {
+    const id = (row.id ?? row.accountId.replace('#','')).toString();
+    return `${location.origin}/marketplace/accounts/${id}`;
+  }
+
+  private updateRowStatus(row: AccountRow, status: Status) {
+    const match = (x: AccountRow) => (x.id ?? x.accountId) === (row.id ?? row.accountId);
+    const ixAll = this.allRows.findIndex(match as any);
+    const ixView = this.rows.findIndex(match as any);
+    if (ixAll >= 0) this.allRows[ixAll] = { ...this.allRows[ixAll], status };
+    if (ixView >= 0) this.rows[ixView] = { ...this.rows[ixView], status };
+    // forțează change detection (immutability-friendly)
+    this.rows = [...this.rows];
+  }
+
+  private removeRow(row: AccountRow) {
+    const key = (row.id ?? row.accountId);
+    this.allRows = this.allRows.filter(r => (r.id ?? r.accountId) !== key);
+    this.rows = this.rows.filter(r => (r.id ?? r.accountId) !== key);
   }
 }

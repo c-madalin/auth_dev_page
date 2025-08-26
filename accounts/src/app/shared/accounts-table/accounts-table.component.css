@@ -1,5 +1,4 @@
-:host { display: block;
-height: 100%; }
+:host { display: block; height: 100%; }
 
 /* container tabel */
 .table-wrap {
@@ -9,8 +8,16 @@ height: 100%; }
   border-radius: 12px;
   overflow: auto;
   height: 100%;
-  /* poți seta o înălțime dinamică în pagina părinte;
-     dacă vrei exact ca în exemplul tău, pune height în .page */
+}
+
+/* ascunde scrollbars */
+.table-wrap{
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.table-wrap::-webkit-scrollbar{
+  width: 0;
+  height: 0;
 }
 
 .grid {
@@ -40,7 +47,6 @@ height: 100%; }
   padding: 14px;
   vertical-align: middle;
 }
-
 .grid tbody tr:hover {
   background: rgba(20, 27, 39, 0.65);
 }
@@ -71,11 +77,43 @@ height: 100%; }
   border-color: #2d523f;
   color: var(--green);
 }
-
 .rating { color: var(--muted); font-weight: 600; }
 .rating.pos { color: var(--green); }
 
-.actions-td { text-align: right; }
+/* acțiuni */
+.actions-td {
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* butoanele casual */
+.ico-btn {
+  background: #0f1622;
+  border: 1px solid var(--border);
+  color: #c6d2e6;
+  border-radius: 8px;
+  height: 34px;
+  padding: 0 10px;
+  margin-right: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+.ico-btn.edit { border-color: #2b3a52; }
+.ico-btn.warn {
+  border-color: #52322d;
+  color: #ffb4a6;
+  background: #241716;
+}
+.ico-btn.promote {
+  border-color: #2b3a52;
+  background: #171e2b;
+}
+
+/* buton ⋯ + meniu */
+.menu-wrap {
+  display: inline-block;
+  position: relative;
+}
 .dot {
   background: #0f1622;
   border: 1px solid var(--border);
@@ -86,19 +124,32 @@ height: 100%; }
   text-align: center;
   cursor: pointer;
 }
-
-.empty {
-  text-align: center;
-  padding: 40px 10px;
-  color: var(--muted);
+.menu {
+  position: absolute;
+  right: 0;
+  top: 40px;
+  min-width: 220px;
+  background: #0f1722;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.35);
+  padding: 6px;
+  z-index: 10;
 }
-/* Firefox */
-.table-wrap{
-  scrollbar-width: none;          /* ascunde scrollbarul */
-  -ms-overflow-style: none;       /* IE/Edge Legacy */
+.menu > button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 10px 12px;
+  border: 0;
+  background: transparent;
+  color: #e7eefb;
+  border-radius: 8px;
+  cursor: pointer;
 }
-/* Chromium/Safari/WebKit */
-.table-wrap::-webkit-scrollbar{
-  width: 0;                        /* ascunde vizual */
-  height: 0;
+.menu > button:hover {
+  background: rgba(255,255,255,0.06);
+}
+.menu > button.danger {
+  color: #ff9e9e;
 }

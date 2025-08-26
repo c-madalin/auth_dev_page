@@ -3,10 +3,12 @@
     <thead>
       <tr>
         <th style="width:34px;">
-          <input type="checkbox"
-                 [checked]="allChecked"
-                 [indeterminate]="anyChecked"
-                   (change)="toggleAll(($any($event.target)).checked)" />
+          <input
+            type="checkbox"
+            [checked]="allChecked"
+            [indeterminate]="anyChecked"
+            (change)="toggleAll(($any($event.target)).checked)"
+          />
         </th>
         <th>TITLE</th>
         <th>ACCOUNT ID</th>
@@ -16,16 +18,18 @@
         <th>PRICE</th>
         <th>RATING</th>
         <th>LAST UPDATED</th>
-        <th style="width:44px;"></th>
+        <th style="width:160px;"></th>
       </tr>
     </thead>
 
     <tbody>
       <tr *ngFor="let r of rows; trackBy: trackById">
         <td>
-          <input type="checkbox"
-                 [checked]="selected.has(r)"
-                 (change)="toggleRow(r, ($any($event.target)).checked)" />
+          <input
+            type="checkbox"
+            [checked]="selected.has(r)"
+            (change)="toggleRow(r, ($any($event.target)).checked)"
+          />
         </td>
 
         <td>
@@ -55,7 +59,37 @@
         <td class="muted">{{ r.updated }}</td>
 
         <td class="actions-td">
-          <button class="dot" (click)="rowMenu.emit(r)">⋯</button>
+          <!-- Butoane casual (doar Listed/Unlisted) -->
+          <ng-container *ngIf="isCasualVisible(r)">
+            <button class="ico-btn edit" title="Edit" (click)="emit('edit', r)">
+              ✏️
+            </button>
+
+            <!-- Unlist/Delete dinamic -->
+            <button
+              class="ico-btn warn"
+              [title]="r.status === 'Listed' ? 'Unlist' : 'Delete'"
+              (click)="emit(r.status === 'Listed' ? 'unlist' : 'delete', r)"
+            >
+              {{ r.status === 'Listed' ? 'Unlist' : 'Delete' }}
+            </button>
+
+            <button class="ico-btn promote" title="Promote" (click)="emit('promote', r)">
+              ★
+            </button>
+          </ng-container>
+
+          <!-- Meniul ⋯ -->
+          <div class="menu-wrap" (click)="$event.stopPropagation()">
+            <button class="dot" (click)="toggleMenu(r, $event)">⋯</button>
+
+            <div class="menu" *ngIf="openMenuFor === r">
+              <button (click)="emit('quick-edit', r)">Quick Edit Account</button>
+              <button (click)="emit('view', r)">View Account</button>
+              <button (click)="emit('copy-url', r)">Copy Public URL</button>
+              <button class="danger" (click)="emit('delete-account', r)">Delete Account</button>
+            </div>
+          </div>
         </td>
       </tr>
 
