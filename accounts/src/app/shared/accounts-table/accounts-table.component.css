@@ -153,3 +153,12 @@
 .menu > button.danger {
   color: #ff9e9e;
 }
+table {
+  table-layout: auto; /* lasă browserul să facă coloana cât are nevoie */
+}
+
+td.num, th.price {
+  width: 1%;      /* lasă-l să se micșoreze */
+  white-space: nowrap; /* să nu se rupă pe două linii */
+  text-align: right;
+}
