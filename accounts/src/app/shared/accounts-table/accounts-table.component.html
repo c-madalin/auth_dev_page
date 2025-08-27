@@ -18,80 +18,72 @@
         <th>PRICE</th>
         <th>RATING</th>
         <th>LAST UPDATED</th>
-        <th style="width:160px;"></th>
+        <th style="width:200px;"></th>
       </tr>
     </thead>
 
     <tbody>
-      <tr *ngFor="let r of rows; trackBy: trackById">
-        <td>
-          <input
-            type="checkbox"
-            [checked]="selected.has(r)"
-            (change)="toggleRow(r, ($any($event.target)).checked)"
-          />
-        </td>
+      <ng-container *ngFor="let r of rows; trackBy: trackById">
+        <tr>
+          <td>
+            <input
+              type="checkbox"
+              [checked]="selected.has(r)"
+              (change)="toggleRow(r, ($any($event.target)).checked)"
+            />
+          </td>
 
-        <td>
-          <div class="title-cell">
-            <span class="game-icon">🎮</span>
-            <div class="title-block">
-              <div class="title">{{ r.title }}</div>
-              <div class="subtitle">{{ r.game }}</div>
+          <td>
+            <div class="title-cell">
+              <span class="game-icon">🎮</span>
+              <div class="title-block">
+                <div class="title">{{ r.title }}</div>
+                <div class="subtitle">{{ r.game }}</div>
+              </div>
             </div>
-          </div>
-        </td>
+          </td>
 
-        <td class="muted">{{ r.accountId }}</td>
-        <td class="muted cred">{{ r.credentials }}</td>
+          <td class="muted">{{ r.accountId }}</td>
+          <td class="muted cred">{{ r.credentials }}</td>
+          <td>
+            <span class="badge" [class.badge-green]="r.status === 'Done'">{{ r.status }}</span>
+          </td>
+          <td class="num">{{ r.views }}</td>
+          <td class="num">{{ r.price }}</td>
+          <td>
+            <span class="rating" [class.pos]="r.rating === 'Positive'">{{ r.rating }}</span>
+          </td>
+          <td class="muted">{{ r.updated }}</td>
 
-        <td>
-          <span class="badge" [class.badge-green]="r.status === 'Done'">{{ r.status }}</span>
-        </td>
+          <td class="actions-td">
+            <ng-container *ngIf="isCasualVisible(r)">
+              <button class="ico-btn edit" title="Edit" (click)="emit('edit', r)">✏️</button>
+              <button class="ico-btn warn" [title]="r.status === 'Listed' ? 'Unlist' : 'Delete'" (click)="emit(r.status === 'Listed' ? 'unlist' : 'delete', r)">
+                {{ r.status === 'Listed' ? 'Unlist' : 'Delete' }}
+              </button>
+              <button class="ico-btn promote" title="Promote" (click)="emit('promote', r)">★</button>
+              <button class="ico-btn view-img" title="View Image" (click)="toggleImage(r)">👁️</button>
+            </ng-container>
 
-        <td class="num">{{ r.views }}</td>
-        <td class="num">{{ r.price }}</td>
-
-        <td>
-          <span class="rating" [class.pos]="r.rating === 'Positive'">{{ r.rating }}</span>
-        </td>
-
-        <td class="muted">{{ r.updated }}</td>
-
-        <td class="actions-td">
-          <!-- Butoane casual (doar Listed/Unlisted) -->
-          <ng-container *ngIf="isCasualVisible(r)">
-            <button class="ico-btn edit" title="Edit" (click)="emit('edit', r)">
-              ✏️
-            </button>
-
-            <!-- Unlist/Delete dinamic -->
-            <button
-              class="ico-btn warn"
-              [title]="r.status === 'Listed' ? 'Unlist' : 'Delete'"
-              (click)="emit(r.status === 'Listed' ? 'unlist' : 'delete', r)"
-            >
-              {{ r.status === 'Listed' ? 'Unlist' : 'Delete' }}
-            </button>
-
-            <button class="ico-btn promote" title="Promote" (click)="emit('promote', r)">
-              ★
-            </button>
-          </ng-container>
-
-          <!-- Meniul ⋯ -->
-          <div class="menu-wrap" (click)="$event.stopPropagation()">
-            <button class="dot" (click)="toggleMenu(r, $event)">⋯</button>
-
-            <div class="menu" *ngIf="openMenuFor === r">
-              <button (click)="emit('quick-edit', r)">Quick Edit Account</button>
-              <button (click)="emit('view', r)">View Account</button>
-              <button (click)="emit('copy-url', r)">Copy Public URL</button>
-              <button class="danger" (click)="emit('delete-account', r)">Delete Account</button>
+            <div class="menu-wrap" (click)="$event.stopPropagation()">
+              <button class="dot" (click)="toggleMenu(r, $event)">⋯</button>
+              <div class="menu" *ngIf="openMenuFor === r">
+                <button (click)="emit('quick-edit', r)">Quick Edit Account</button>
+                <button (click)="emit('view', r)">View Account</button>
+                <button (click)="emit('copy-url', r)">Copy Public URL</button>
+                <button class="danger" (click)="emit('delete-account', r)">Delete Account</button>
+              </div>
             </div>
-          </div>
-        </td>
-      </tr>
+          </td>
+        </tr>
+
+        <!-- rândul cu imagine -->
+        <tr *ngIf="imageVisibleFor === r">
+          <td colspan="10" class="image-row">
+            <img [src]="r.imageUrl" alt="Preview" />
+          </td>
+        </tr>
+      </ng-container>
 
       <tr *ngIf="!rows?.length && !loading">
         <td class="empty" colspan="10">No results</td>
