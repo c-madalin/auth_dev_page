@@ -7,6 +7,10 @@
         <span class="icon">＋</span>
         Create a New Listing
       </button>
+      <button class="btn btn-primary" (click)="openNewCurrencyOffer()">
+        <span class="icon">＋</span>
+        Create a Currency Offer
+      </button>
     </div>
   </div>
 
@@ -80,3 +84,11 @@
   (submitted)="onListingSubmitted($event)"
   (close)="closeNewListing()">
 </app-new-listing>
+
+<app-currency-offer-overlay
+  *ngIf="showNewCurrencyOffer"
+  [games]="gameList"
+  [feePercent]="0"
+  (submitted)="onCurrencyOfferSubmitted($event)"
+  (close)="closeNewCurrencyOffer()">
+</app-currency-offer-overlay>

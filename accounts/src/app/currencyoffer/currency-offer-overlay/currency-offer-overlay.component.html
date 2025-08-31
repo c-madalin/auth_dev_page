@@ -1,0 +1,137 @@
+<div class="overlay" (click)="cancel()">
+  <div class="panel" (click)="$event.stopPropagation()">
+    <!-- HEADER -->
+    <div class="header">
+      <h3>Create Currency Offer</h3>
+      <button class="x" (click)="cancel()" aria-label="Close">✕</button>
+    </div>
+
+    <!-- BODY (scroll intern) -->
+    <form [formGroup]="form" class="body">
+
+      <!-- SECTION: Main Currency Info -->
+      <section class="card">
+        <h4>Main Currency Info</h4>
+
+        <div class="grid-2">
+          <div class="col">
+            <label>Price per Unit</label>
+            <div class="price-row">
+              <select class="cur" formControlName="currency">
+                <option *ngFor="let c of currencies" [value]="c">{{ c }}</option>
+              </select>
+              <input type="number" formControlName="pricePerUnit" step="0.000001" min="0.000001" />
+              <span class="unit">/ <input class="unit-inline" type="text" formControlName="unit"></span>
+            </div>
+            <small>You can enter up to 6 decimal places for precise pricing.</small>
+          </div>
+
+          <div class="col">
+            <label>Game</label>
+            <select formControlName="game">
+              <option value="" disabled>Select Game</option>
+              <option *ngFor="let g of games" [value]="g">{{ g }}</option>
+            </select>
+          </div>
+
+          <div class="col full">
+            <label>Description</label>
+            <textarea rows="3" formControlName="description" placeholder="Short Currency Description"></textarea>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION: Game Specific Data -->
+      <section class="card">
+        <h4>Game Specific Data</h4>
+        <div class="grid-2">
+          <div class="col">
+            <label>Region</label>
+            <select formControlName="region">
+              <option value="" disabled>Select Region</option>
+              <option *ngFor="let r of regions" [value]="r">{{ r }}</option>
+            </select>
+          </div>
+
+          <div class="col">
+            <label>Server</label>
+            <select formControlName="server">
+              <option value="" disabled>Select Server</option>
+              <option *ngFor="let s of serversFor(form.get('region')!.value)">{{ s }}</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION: Currency Stock -->
+      <section class="card">
+        <h4>Currency Stock</h4>
+
+        <div class="grid-2">
+          <div class="col">
+            <label>Stock</label>
+            <div class="row-split">
+              <input type="number" min="1" formControlName="stock">
+              <span class="addon">{{ form.get('unit')!.value || 'Unit' }}</span>
+            </div>
+          </div>
+
+          <div class="col">
+            <label>Min. Quantity</label>
+            <div class="row-split">
+              <input type="number" min="1" formControlName="minQty">
+              <span class="addon">{{ form.get('unit')!.value || 'Unit' }}</span>
+            </div>
+          </div>
+
+          <div class="col">
+            <label>Delivery Time</label>
+            <div class="row-split">
+              <input type="number" min="1" formControlName="deliveryTime">
+              <select formControlName="deliveryTimeUnit">
+                <option>Minutes</option>
+                <option>Hours</option>
+                <option>Days</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION: Delivery Instructions -->
+      <section class="card">
+        <div class="hdr">
+          <h4>Delivery Instructions</h4>
+          <span class="opt">Optional</span>
+        </div>
+        <textarea rows="4" formControlName="deliveryInstructions"
+          placeholder="Extra information for the buyer, they will see this after purchase."></textarea>
+      </section>
+
+      <!-- SECTION: Fees Breakdown -->
+      <section class="card">
+        <h4>Fees Breakdown</h4>
+        <div class="fees">
+          <div class="row">
+            <span>Original price</span>
+            <span>{{ symbol(form.get('currency')!.value) }}{{ originalPrice | number:'1.2-2' }}</span>
+          </div>
+          <div class="row">
+            <span>Percentage fee</span>
+            <span>-{{ feePercent }}%</span>
+          </div>
+          <div class="row total">
+            <span>Amount you will receive</span>
+            <span>{{ symbol(form.get('currency')!.value) }}{{ sellerGets | number:'1.2-2' }}</span>
+          </div>
+        </div>
+      </section>
+    </form>
+
+    <!-- FOOTER -->
+    <div class="footer">
+      <button class="btn ghost" (click)="cancel()">Cancel</button>
+      <button class="btn primary" [disabled]="form.invalid" (click)="submit()">Create Offer</button>
+    </div>
+  </div>
+</div>

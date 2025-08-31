@@ -5,6 +5,7 @@ import { SearchBarComponent } from '../../shared/search-bar/search-bar.component
 import { AccountsTableComponent, AccountRow, Rating } from '../../shared/accounts-table/accounts-table.component';
 import { FilterButtonComponent, FilterOption } from '../../shared/filter-button/filter-button.component';
 import { NewListingOverlayComponent } from '../../newlisting/new-listing-overlay/new-listing-overlay.component';
+import { CurrencyOfferOverlayComponent } from '../../currencyoffer/currency-offer-overlay/currency-offer-overlay.component';
 
 export type Status =
   | 'In Progress'
@@ -33,7 +34,8 @@ interface AccountsFilters {
     SearchBarComponent,
     AccountsTableComponent,
     FilterButtonComponent,
-    NewListingOverlayComponent
+    NewListingOverlayComponent,
+    CurrencyOfferOverlayComponent
   ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
@@ -41,11 +43,21 @@ interface AccountsFilters {
 export class HomeComponent {
   // ===== NEW LISTING MODAL =====
   showNewListing = false;
+  showNewCurrencyOffer = false;
+  // listing
   openNewListing() { this.showNewListing = true; document.body.style.overflow = 'hidden'; }
   closeNewListing() { this.showNewListing = false; document.body.style.overflow = ''; }
   onListingSubmitted(data: any) {
     console.log('SUBMIT listing (mock):', data);
     this.closeNewListing();
+  }
+
+  // ===== NEW CURRENCY OFFER MODAL =====
+  openNewCurrencyOffer() { this.showNewCurrencyOffer = true; document.body.style.overflow = 'hidden'; }
+  closeNewCurrencyOffer() { this.showNewCurrencyOffer = false; document.body.style.overflow = ''; }
+  onCurrencyOfferSubmitted(data: any) {
+    console.log('SUBMIT currency offer (mock):', data);
+    this.closeNewCurrencyOffer();
   }
 
   // ===== Opțiuni filtre =====
