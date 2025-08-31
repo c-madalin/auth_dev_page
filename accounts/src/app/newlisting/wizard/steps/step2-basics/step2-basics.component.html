@@ -1,0 +1,41 @@
+<form [formGroup]="form" class="step2">
+  <div class="scroll">
+    <div class="grid">
+      <div class="col">
+        <label>Account Title</label>
+        <input type="text" formControlName="title" placeholder="EUW · Platinum I" />
+        <small>Dashes will be converted in the URL.</small>
+      </div>
+
+      <div class="col">
+        <label>Slug (URI)</label>
+        <input type="text" formControlName="slug" placeholder="euw-platinum-i" />
+        <small>This will be used in the URL</small>
+      </div>
+
+      <div class="col">
+        <label>Price</label>
+        <div class="price-row">
+          <span class="cur">{{ symbol(form.get('currency')!.value) }}</span>
+          <input type="number" min="1" step="1" formControlName="price" />
+          <select formControlName="currency">
+            <option value="EUR">EUR</option>
+            <option value="USD">USD</option>
+            <option value="GBP">GBP</option>
+          </select>
+        </div>
+        <small>
+          You will get
+          {{ symbol(form.get('currency')!.value) }}{{ sellerGets | number:'1.2-2' }}
+        </small>
+      </div>
+
+      <div class="col">
+        <label>Game</label>
+        <select formControlName="game">
+          <option *ngFor="let g of games" [value]="g">{{ g }}</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</form>

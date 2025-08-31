@@ -1,0 +1,69 @@
+<form [formGroup]="form" class="step5">
+  <div class="scroll">
+
+    <!-- CREDENTIALS -->
+    <div class="grid-2">
+      <div class="col">
+        <label>Login</label>
+        <input type="text" formControlName="login" placeholder="username / id">
+      </div>
+
+      <div class="col">
+        <label>Password</label>
+        <input type="password" formControlName="password" placeholder="********">
+      </div>
+
+      <div class="col">
+        <label>Email Login</label>
+        <input type="text" formControlName="emailLogin" placeholder="name@mail.com">
+      </div>
+
+      <div class="col">
+        <label>Email Password</label>
+        <input type="password" formControlName="emailPassword" placeholder="********">
+      </div>
+
+      <div class="col">
+        <div class="row-split">
+          <div class="left">
+            <label>In-Game Name <span class="opt">Optional</span></label>
+            <input type="text" formControlName="inGameName" placeholder="Nickname">
+          </div>
+
+          <div class="right">
+            <label>Has 2FA</label>
+            <label class="toggle">
+              <input type="checkbox" formControlName="has2fa">
+              <span class="track"><span class="thumb"></span></span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sep"></div>
+
+    <!-- DELIVERY -->
+    <div class="col">
+      <div class="hdr">
+        <label>Delivery Instructions</label>
+        <span class="opt">Optional</span>
+      </div>
+      <textarea rows="5" formControlName="delivery"
+        placeholder="Helpful login tips for buyers (different from the marketplace description)."></textarea>
+    </div>
+
+    <!-- PROMO -->
+    <div class="col">
+      <label>Promotion Plan (required)</label>
+      <div class="plans">
+        <label class="plan"><input type="radio" formControlName="plan" value="24H"> 24 hours — $2</label>
+        <label class="plan"><input type="radio" formControlName="plan" value="3D"> 3 days — $5</label>
+        <label class="plan"><input type="radio" formControlName="plan" value="7D"> 7 days — $10</label>
+        <label class="plan"><input type="radio" formControlName="plan" value="NONE"> No subscription</label>
+      </div>
+      <small>You must pick one to submit.</small>
+    </div>
+
+  </div>
+</form>

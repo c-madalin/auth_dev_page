@@ -1,0 +1,16 @@
+.overlay{
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,.35);
+  backdrop-filter: blur(8px) saturate(120%);
+  z-index: 10000; display: grid; place-items: center;
+}
+.panel{
+  width: min(980px, calc(100vw - 32px)); /* un pic mai lat pt. formular */
+  max-height: min(86vh, 900px);
+  background: var(--panel-2, #0f1722);
+  border: 1px solid var(--border, #1f2a37);
+  border-radius: 14px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.5);
+  overflow: hidden;
+  display: grid; grid-template-rows: 1fr;
+}

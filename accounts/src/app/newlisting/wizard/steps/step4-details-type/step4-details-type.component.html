@@ -1,0 +1,80 @@
+<form [formGroup]="form" class="step4">
+  <div class="scroll">
+    <div class="grid">
+
+      <!-- Main / Linkable -->
+      <div class="col">
+        <label>Main Platform</label>
+        <select formControlName="mainPlatform">
+          <option value="" disabled>Select Platform</option>
+          <option *ngFor="let p of platforms" [value]="p">{{ p }}</option>
+        </select>
+      </div>
+
+
+       <div class="col">
+        <label>Linkable Platform</label>
+        <select formControlName="linkablePlatform">
+          <option value="" disabled>Select Platform</option>
+          <option *ngFor="let p of platforms" [value]="p">{{ p }}</option>
+        </select>
+      </div>
+      <!-- TYPE -->
+      <div class="col">
+        <label>Account Type</label>
+        <select formControlName="type">
+          <option value="" disabled>Account Type</option>
+          <option *ngFor="let t of types">{{ t }}</option>
+        </select>
+        <small>Required. În loc de Tags folosim TYPE.</small>
+      </div>
+
+      <!-- Counts (2 coloane) -->
+      <div class="col">
+        <label>Outfits/Skins Count</label>
+        <input type="number" min="0" formControlName="outfitsSkinsCount">
+      </div>
+
+      <div class="col">
+        <label>Account Level</label>
+        <input type="number" min="0" formControlName="accountLevel">
+      </div>
+
+      <div class="col">
+        <label>Emotes Count</label>
+        <input type="number" min="0" formControlName="emotesCount">
+      </div>
+
+      <div class="col">
+        <label>Pickaxes Count</label>
+        <input type="number" min="0" formControlName="pickaxesCount">
+      </div>
+
+      <div class="col">
+        <label>BackBlings/Backpacks Count</label>
+        <input type="number" min="0" formControlName="backblingsCount">
+      </div>
+
+      <div class="col">
+        <label>Gliders Count</label>
+        <input type="number" min="0" formControlName="glidersCount">
+      </div>
+
+      <div class="col">
+        <label>Wraps Count</label>
+        <input type="number" min="0" formControlName="wrapsCount">
+      </div>
+
+      <div class="col">
+        <label>Loadings/Banners Count</label>
+        <input type="number" min="0" formControlName="bannersCount">
+      </div>
+
+      <div class="col">
+        <label>Sprays Count</label>
+        <input type="number" min="0" formControlName="spraysCount">
+      </div>
+
+    </div>
+  </div>
+</form>

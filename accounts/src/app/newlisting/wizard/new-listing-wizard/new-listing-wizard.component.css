@@ -1,0 +1,90 @@
+.form-wrapper {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  height: 100%;
+}
+
+.form-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border, #1f2a37);
+  background: var(--panel, #121925);
+}
+
+.form-header h2 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text, #e7eefb);
+}
+
+.step-counter {
+  opacity: .8;
+  font-size: 14px;
+  color: var(--muted, #8a95a6);
+  margin-left: auto;
+}
+
+.form-box {
+  padding: 16px;
+  overflow: auto;
+  background: linear-gradient(180deg, #0f1622 0%, #0f1722 100%);
+}
+
+.x {
+  background: transparent;
+  border: 0;
+  color: var(--text, #e7eefb);
+  font-size: 18px;
+  cursor: pointer;
+  line-height: 1;
+  transition: color .2s;
+}
+
+.x:hover {
+  color: var(--accent, #2f64ff);
+}
+
+/* scrollbars fine-tuned */
+.form-box::-webkit-scrollbar {
+  width: 8px;
+}
+.form-box::-webkit-scrollbar-thumb {
+  background: #2b3a52;
+  border-radius: 10px;
+}
+.form-box::-webkit-scrollbar-track {
+  background: transparent;
+}
+.form-wrapper {
+  display: grid;
+  grid-template-rows: auto 1fr auto; /* header + content + nav */
+  height: 100%;
+}
+
+.form-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border, #1f2a37);
+  background: var(--panel, #121925);
+}
+
+.form-box {
+  overflow: hidden; /* doar interiorul step-ului va avea scroll */
+  background: linear-gradient(180deg, #0f1622 0%, #0f1722 100%);
+}
+
+.x {
+  background: transparent;
+  border: 0;
+  color: var(--text, #e7eefb);
+  font-size: 18px;
+  cursor: pointer;
+  line-height: 1;
+}

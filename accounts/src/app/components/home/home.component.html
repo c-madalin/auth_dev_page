@@ -1,91 +1,82 @@
-<div class="page">
-  <!-- Header -->
+<div class="page" [class.blurred]="showNewListing">
   <div class="page-header">
     <h1>Accounts</h1>
 
     <div class="actions">
-      <button class="btn btn-ghost">
-        <span class="icon">⬆️</span>
-        Account Imports
-      </button>
-      <button class="btn btn-primary">
+      <button class="btn btn-primary" (click)="openNewListing()">
         <span class="icon">＋</span>
-        Add New Account
+        Create a New Listing
       </button>
     </div>
   </div>
 
-  <!-- Toolbar: search + filtre -->
-  <div class="toolbar">
-    <div class="search">
-      <span class="search-icon">🔎</span>
-      <input type="text" placeholder="Search..." />
-      <kbd>/</kbd>
-    </div>
+  <app-search-bar
+    (searchChange)="onSearch($event)"
+    (viewClick)="onViewClick()">
 
-    <div class="filters">
-      <button class="chip">+ Game</button>
-      <button class="chip">+ Status</button>
-      <button class="chip">+ Rating</button>
-      <button class="chip">+ Server</button>
-      <button class="chip">+ Featured</button>
-      <button class="chip">+ Discounted</button>
-      <button class="chip">+ Date</button>
-    </div>
+    <app-filter-button
+      filters
+      label="+ Game"
+      [options]="gameOptions"
+      [selected]="filters.game || []"
+      (selectedChange)="setFilter('game', $event)">
+    </app-filter-button>
 
-    <div class="toolbar-right">
-      <button class="btn btn-ghost small">☰ View</button>
-    </div>
-  </div>
+    <app-filter-button
+      filters
+      label="+ Status"
+      [options]="statusOptions"
+      [selected]="filters.status || []"
+      (selectedChange)="onStatusChange($event)">
+    </app-filter-button>
 
-  <!-- Table -->
-  <div class="table-wrap">
-    <table class="grid">
-      <thead>
-        <tr>
-          <th style="width:34px;">
-            <input type="checkbox" />
-          </th>
-          <th>TITLE</th>
-          <th>ACCOUNT ID</th>
-          <th>CREDENTIALS</th>
-          <th>STATUS</th>
-          <th>VIEWS</th>
-          <th>PRICE</th>
-          <th>RATING</th>
-          <th>LAST UPDATED</th>
-          <th style="width:44px;"></th>
-        </tr>
-      </thead>
+    <app-filter-button
+      filters
+      label="+ Rating"
+      [options]="ratingOptions"
+      [selected]="filters.rating || []"
+      (selectedChange)="onRatingChange($event)">
+    </app-filter-button>
 
-      <tbody>
-        <tr *ngFor="let r of rows">
-          <td><input type="checkbox" /></td>
-          <td>
-            <div class="title-cell">
-              <span class="game-icon">🎮</span>
-              <div class="title-block">
-                <div class="title">{{ r.title }}</div>
-                <div class="subtitle">{{ r.game }}</div>
-              </div>
-            </div>
-          </td>
-          <td class="muted">{{ r.accountId }}</td>
-          <td class="muted cred">{{ r.credentials }}</td>
-          <td>
-            <span class="badge" [class.badge-green]="r.status==='Sold'">{{ r.status }}</span>
-          </td>
-          <td class="num">{{ r.views }}</td>
-          <td class="num">{{ r.price }}</td>
-          <td>
-            <span class="rating" [class.pos]="r.rating==='Positive'">{{ r.rating }}</span>
-          </td>
-          <td class="muted">{{ r.updated }}</td>
-          <td class="actions-td">
-            <button class="dot">⋯</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+    <app-filter-button
+      filters
+      label="+ Server"
+      [options]="serverOptions"
+      [selected]="filters.server || []"
+      (selectedChange)="setFilter('server', $event)">
+    </app-filter-button>
+
+    <app-filter-button
+      filters
+      label="+ Discounted"
+      [options]="[{ value: 'yes', label: 'Discounted only' }]"
+      [multiple]="false"
+      [selected]="filters.discounted ? ['yes'] : []"
+      (selectedChange)="setFilter('discounted', $event.includes('yes'))">
+    </app-filter-button>
+
+    <app-filter-button
+      filters
+      label="+ Date"
+      [options]="dateOptions"
+      [multiple]="false"
+      [selected]="datePreset"
+      (selectedChange)="onDatePresetChange($event)">
+    </app-filter-button>
+  </app-search-bar>
+
+  <app-accounts-table
+    [rows]="rows"
+    (rowMenu)="onRowMenu($event)"
+    (selectionChange)="onSelectionChange($event)"
+    (rowAction)="onRowAction($event)">
+  </app-accounts-table>
 </div>
+
+<!-- NEW: overlay wizard -->
+<app-new-listing
+  *ngIf="showNewListing"
+  [games]="gameList"
+  (submitted)="onListingSubmitted($event)"
+  (close)="closeNewListing()">
+</app-new-listing>

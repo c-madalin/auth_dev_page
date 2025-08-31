@@ -1,0 +1,104 @@
+/* OVERLAY cu blur */
+.overlay{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.35);
+  backdrop-filter: blur(8px) saturate(120%);
+  z-index: 10000;
+  display: grid;
+  place-items: center;
+}
+
+/* PANOU central */
+.panel{
+  width: min(720px, calc(100vw - 32px));
+  max-height: min(80vh, 700px);
+  background: var(--panel-2, #0f1722);
+  border: 1px solid var(--border, #1f2a37);
+  border-radius: 14px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.5);
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  overflow: hidden;
+}
+
+/* HEADER */
+.header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border, #1f2a37);
+  background: var(--panel, #121925);
+}
+.header h3{
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text, #e7eefb);
+}
+.x{
+  background: transparent;
+  border: 0;
+  color: var(--text, #e7eefb);
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+/* SEARCH din modal */
+.panel-search{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border, #1f2a37);
+  background: var(--panel, #121925);
+}
+.panel-search input{
+  background: transparent;
+  border: 0;
+  outline: 0;
+  color: var(--text, #e7eefb);
+  width: 100%;
+  font-size: 14px;
+}
+.icon{ opacity: .8; }
+
+/* LISTA de jocuri */
+.list{
+  overflow: auto;
+  padding: 8px;
+  background: linear-gradient(180deg, #0f1622 0%, #0f1722 100%);
+  scrollbar-width: thin;
+  scrollbar-color: #2b3a52 transparent;
+}
+.list::-webkit-scrollbar{ width: 10px; height: 10px; }
+.list::-webkit-scrollbar-thumb{
+  background: #2b3a52; border-radius: 10px; border: 2px solid transparent; background-clip: content-box;
+}
+.list::-webkit-scrollbar-track{ background: transparent; }
+
+.row{
+  width: 100%;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text, #e7eefb);
+  cursor: pointer;
+}
+.row:hover{ background: rgba(20,27,39,.65); border-color: #243044; }
+.dot{
+  width: 18px; height: 18px;
+  border-radius: 6px;
+  background: #2b3a52;
+  flex: 0 0 18px;
+}
+.name{ flex: 1; font-weight: 600; }
+.chev{ opacity: .75; font-size: 18px; }
+.empty{ color: var(--muted, #8a95a6); text-align: center; padding: 20px 0; }
