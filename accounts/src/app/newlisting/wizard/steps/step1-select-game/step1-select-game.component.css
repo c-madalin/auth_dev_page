@@ -63,3 +63,15 @@
   justify-content: center;
   font-size: 12px;
 }
+
+/* ...existing code... */
+.list {
+  overflow-y: auto;
+  min-height: 300px;
+  max-height: 500px;
+  scrollbar-width: none;         /* Firefox */
+}
+.list::-webkit-scrollbar {
+  display: none;                 /* Chrome, Safari, Edge */
+}
+/* ...existing code... */

@@ -1,0 +1,49 @@
+/* container step cu scroll intern (ca Next/Prev să rămână jos) */
+.step2{
+  height: 100%;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+.scroll{
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: auto;
+  padding: 12px 16px;
+}
+
+/* layout */
+.grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.col{
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+label{ font-weight:600; color:var(--text,#e7eefb); }
+
+input, select{
+  background:#0f141b;
+  border:1px solid var(--border,#1f2a37);
+  color:var(--text,#e7eefb);
+  border-radius:10px;
+  padding:10px 12px;
+}
+
+small{ opacity:.8; }
+
+.price-row{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.cur{ opacity:.9; }
+
+/* responsiv mic */
+@media (max-width: 760px){
+  .grid{ grid-template-columns: 1fr; }
+}

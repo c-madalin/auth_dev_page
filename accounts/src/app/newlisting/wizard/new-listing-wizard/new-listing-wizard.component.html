@@ -16,7 +16,46 @@
         (validChange)="setValid($event)">
       </app-nl-step1-select-game>
 
+      <!-- Step 2: Basics -->
+      <app-nl-step2-basics
+        *ngSwitchCase="2"
+        [games]="games"
+        [selectedGame]="data.game || ''"
+        [currency]="data.currency"
+        [price]="data.price ?? null"
+        [title]="data.title"
+        [slug]="data.slug"
+        (change)="onBasicsChange($event)"
+        (validChange)="setValid($event)">
+      </app-nl-step2-basics>
 
+      <!-- Step 3: Description + Gallery
+      <app-nl-step3-description-gallery
+        *ngSwitchCase="3"
+        [description]="data.description || ''"
+        [gallery]="data.gallery || []"
+        (change)="onDescChange($event)"
+        (validChange)="setValid($event)">
+      </app-nl-step3-description-gallery>
+
+       Step 4: Account Details + TYPE
+      <app-nl-step4-details-type
+        *ngSwitchCase="4"
+        [typeValue]="data.type || ''"
+        [details]="data.details || {}"
+        (change)="onDetailsChange($event)"
+        (validChange)="setValid($event)">
+      </app-nl-step4-details-type>
+
+      Step 5: Delivery Instructions + Promo
+      <app-nl-step5-delivery-promo
+        *ngSwitchCase="5"
+        [delivery]="data.deliveryInstructions || ''"
+        [plan]="data.promotionPlan"
+        (change)="onDeliveryChange($event)"
+        (validChange)="setValid($event)">
+      </app-nl-step5-delivery-promo> -->
+    </div>
   </div>
 
   <app-wizard-nav
