@@ -11,15 +11,14 @@
         </select>
       </div>
 
-      <div class="col">
-        <label>Linkable Platforms</label>
-        <!-- simplu: <select multiple> => array of strings -->
-        <select formControlName="linkablePlatforms" multiple>
+
+       <div class="col">
+        <label>Linkable Platform</label>
+        <select formControlName="linkablePlatform">
+          <option value="" disabled>Select Platform</option>
           <option *ngFor="let p of platforms" [value]="p">{{ p }}</option>
         </select>
-        <small>Hold Ctrl/Cmd pentru selecție multiplă.</small>
       </div>
-
       <!-- TYPE -->
       <div class="col">
         <label>Account Type</label>
@@ -34,11 +33,6 @@
       <div class="col">
         <label>Outfits/Skins Count</label>
         <input type="number" min="0" formControlName="outfitsSkinsCount">
-      </div>
-
-      <div class="col">
-        <label>V-Bucks Count</label>
-        <input type="number" min="0" formControlName="vbucksCount">
       </div>
 
       <div class="col">

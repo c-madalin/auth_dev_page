@@ -27,8 +27,14 @@
   flex: 1 1 auto;
   overflow-y: auto;
   padding: 8px;
+  overflow-y: auto;
+  min-height: 300px;
+  max-height: 500px;
+  scrollbar-width: none;         /* Firefox */
 }
-
+.list::-webkit-scrollbar {
+  display: none;                 /* Chrome, Safari, Edge */
+}
 .row {
   width: 100%;
   display: flex;
@@ -40,6 +46,7 @@
   color: var(--text, #e7eefb);
   cursor: pointer;
   background: transparent;
+  font-size: 20px; /* text bigger */
 }
 
 .row:hover {
@@ -63,15 +70,3 @@
   justify-content: center;
   font-size: 12px;
 }
-
-/* ...existing code... */
-.list {
-  overflow-y: auto;
-  min-height: 300px;
-  max-height: 500px;
-  scrollbar-width: none;         /* Firefox */
-}
-.list::-webkit-scrollbar {
-  display: none;                 /* Chrome, Safari, Edge */
-}
-/* ...existing code... */

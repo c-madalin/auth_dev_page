@@ -22,16 +22,18 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
+  font-size: 20px; /* label and small text bigger */
 }
 
 label{ font-weight:600; color:var(--text,#e7eefb); }
 
-input, select{
-  background:#0f141b;
-  border:1px solid var(--border,#1f2a37);
-  color:var(--text,#e7eefb);
-  border-radius:10px;
-  padding:10px 12px;
+input, select, textarea {
+  background: #0f141b;
+  border: 1px solid var(--border,#1f2a37);
+  color: var(--text,#e7eefb);
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 20px; /* text bigger */
 }
 
 small{ opacity:.8; }
