@@ -5,8 +5,11 @@
   </div>
 
   <div class="list">
-    <button class="row" *ngFor="let g of filtered" (click)="choose(g)">
-      <span class="dot"></span>
+    <button class="row"
+            *ngFor="let g of filtered"
+            [class.selected]="selected === g"
+            (click)="choose(g)">
+      <span class="dot">{{ selected === g ? '✔' : '' }}</span>
       <span class="name">{{ g }}</span>
       <span class="chev">›</span>
     </button>
