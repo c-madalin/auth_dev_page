@@ -12,7 +12,7 @@ import { Subscription } from 'rxjs';
 })
 export class Step4DetailsTypeComponent implements OnInit, OnDestroy {
   @Input() typeValue = '';
-  @Input() details: Record<string, number|string> = {};
+  @Input() details: Record<string, any> = {};
 
   @Output() change = new EventEmitter<any>();
   @Output() validChange = new EventEmitter<boolean>();
@@ -20,48 +20,65 @@ export class Step4DetailsTypeComponent implements OnInit, OnDestroy {
   form!: FormGroup;
   private subs = new Subscription();
 
-  // câmpuri demo — le poți modifica după joc
-  fields = [
-    { key: 'level', label: 'Level', type: 'number' as const },
-    { key: 'rank',  label: 'Rank',  type: 'text'   as const },
-    { key: 'skins', label: 'Skins', type: 'number' as const },
-    { key: 'hours', label: 'Hours Played', type: 'number' as const },
-  ];
+  platforms = ['PC', 'PlayStation', 'Xbox', 'Android', 'iOS', 'Switch'];
+  types = ['OG Account', 'Full Access', 'Original Email', 'Save the World', 'Stacked'];
 
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
-    const cfg: Record<string, FormControl> = {
-      type: new FormControl(this.typeValue, Validators.required),
-    };
-    // inițializează controale pt. fiecare field
-    for (const f of this.fields) {
-      const v = this.details?.[f.key];
-      cfg[f.key] = new FormControl(
-        f.type === 'number' ? (v === undefined || v === '' ? 0 : Number(v)) : (v ?? ''),
-        f.type === 'number' ? [] : []
-      );
-    }
-    this.form = this.fb.group(cfg);
+    const arr = (x: any) => (Array.isArray(x) ? x : []);
+    const num = (x: any) => (x === '' || x === undefined || x === null ? 0 : Number(x));
+
+    this.form = this.fb.group({
+      mainPlatform: [this.details?.['mainPlatform'] ?? '', Validators.required],
+      linkablePlatforms: [arr(this.details?.['linkablePlatforms'])],
+      type: [this.typeValue ?? '', Validators.required],
+
+      // counts (numerice => dacă lipsesc, 0)
+      outfitsSkinsCount: [num(this.details?.['outfitsSkinsCount'])],
+      vbucksCount:       [num(this.details?.['vbucksCount'])],
+      accountLevel:      [num(this.details?.['accountLevel'])],
+      emotesCount:       [num(this.details?.['emotesCount'])],
+      pickaxesCount:     [num(this.details?.['pickaxesCount'])],
+      backblingsCount:   [num(this.details?.['backblingsCount'])],
+      glidersCount:      [num(this.details?.['glidersCount'])],
+      wrapsCount:        [num(this.details?.['wrapsCount'])],
+      bannersCount:      [num(this.details?.['bannersCount'])],
+      spraysCount:       [num(this.details?.['spraysCount'])],
+    });
 
     this.subs.add(this.form.valueChanges.subscribe(() => this.emit()));
-    // emit inițial
-    this.emit();
+    this.emit(); // initial
   }
 
   ngOnDestroy(): void { this.subs.unsubscribe(); }
 
   private emit() {
     const v = this.form.getRawValue();
-    // normalizează numerele goale la 0
-    for (const f of this.fields) {
-      if (f.type === 'number') v[f.key] = Number(v[f.key] ?? 0);
-    }
-    const valid = this.form.get('type')!.valid; // TYPE obligatoriu
-    this.validChange.emit(valid);
-    this.change.emit({
+
+    // asigură numeric la 0
+    const n = (x: any) => Number(x ?? 0);
+
+    const payload = {
       type: v.type,
-      details: this.fields.reduce((acc, f) => ({ ...acc, [f.key]: v[f.key] }), {})
-    });
+      details: {
+        mainPlatform: v.mainPlatform,
+        linkablePlatforms: v.linkablePlatforms ?? [],
+        outfitsSkinsCount: n(v.outfitsSkinsCount),
+        vbucksCount:       n(v.vbucksCount),
+        accountLevel:      n(v.accountLevel),
+        emotesCount:       n(v.emotesCount),
+        pickaxesCount:     n(v.pickaxesCount),
+        backblingsCount:   n(v.backblingsCount),
+        glidersCount:      n(v.glidersCount),
+        wrapsCount:        n(v.wrapsCount),
+        bannersCount:      n(v.bannersCount),
+        spraysCount:       n(v.spraysCount),
+      }
+    };
+
+    const valid = this.form.get('type')!.valid && this.form.get('mainPlatform')!.valid;
+    this.validChange.emit(valid);
+    this.change.emit(payload);
   }
 }

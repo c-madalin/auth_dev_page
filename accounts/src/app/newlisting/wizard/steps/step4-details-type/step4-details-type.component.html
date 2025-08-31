@@ -1,30 +1,86 @@
 <form [formGroup]="form" class="step4">
   <div class="scroll">
     <div class="grid">
+
+      <!-- Main / Linkable -->
       <div class="col">
-        <label>TYPE</label>
-        <select formControlName="type">
-          <option value="" disabled>Select type</option>
-          <option>Starter</option>
-          <option>Mid</option>
-          <option>Endgame</option>
-          <option>Collector</option>
+        <label>Main Platform</label>
+        <select formControlName="mainPlatform">
+          <option value="" disabled>Select Platform</option>
+          <option *ngFor="let p of platforms" [value]="p">{{ p }}</option>
         </select>
-        <small>Required. In loc de Tags folosim TYPE.</small>
       </div>
 
-      <div class="col full">
-        <label>Account Details</label>
-        <div class="details-grid">
-          <div class="drow" *ngFor="let f of fields">
-            <span class="lbl">{{ f.label }}</span>
-
-            <input *ngIf="f.type === 'number'" type="number" min="0" [formControlName]="f.key">
-            <input *ngIf="f.type === 'text'"   type="text"               [formControlName]="f.key">
-          </div>
-        </div>
-        <small>Dacă uiți să completezi un câmp numeric, îl salvăm ca 0.</small>
+      <div class="col">
+        <label>Linkable Platforms</label>
+        <!-- simplu: <select multiple> => array of strings -->
+        <select formControlName="linkablePlatforms" multiple>
+          <option *ngFor="let p of platforms" [value]="p">{{ p }}</option>
+        </select>
+        <small>Hold Ctrl/Cmd pentru selecție multiplă.</small>
       </div>
+
+      <!-- TYPE -->
+      <div class="col">
+        <label>Account Type</label>
+        <select formControlName="type">
+          <option value="" disabled>Account Type</option>
+          <option *ngFor="let t of types">{{ t }}</option>
+        </select>
+        <small>Required. În loc de Tags folosim TYPE.</small>
+      </div>
+
+      <!-- Counts (2 coloane) -->
+      <div class="col">
+        <label>Outfits/Skins Count</label>
+        <input type="number" min="0" formControlName="outfitsSkinsCount">
+      </div>
+
+      <div class="col">
+        <label>V-Bucks Count</label>
+        <input type="number" min="0" formControlName="vbucksCount">
+      </div>
+
+      <div class="col">
+        <label>Account Level</label>
+        <input type="number" min="0" formControlName="accountLevel">
+      </div>
+
+      <div class="col">
+        <label>Emotes Count</label>
+        <input type="number" min="0" formControlName="emotesCount">
+      </div>
+
+      <div class="col">
+        <label>Pickaxes Count</label>
+        <input type="number" min="0" formControlName="pickaxesCount">
+      </div>
+
+      <div class="col">
+        <label>BackBlings/Backpacks Count</label>
+        <input type="number" min="0" formControlName="backblingsCount">
+      </div>
+
+      <div class="col">
+        <label>Gliders Count</label>
+        <input type="number" min="0" formControlName="glidersCount">
+      </div>
+
+      <div class="col">
+        <label>Wraps Count</label>
+        <input type="number" min="0" formControlName="wrapsCount">
+      </div>
+
+      <div class="col">
+        <label>Loadings/Banners Count</label>
+        <input type="number" min="0" formControlName="bannersCount">
+      </div>
+
+      <div class="col">
+        <label>Sprays Count</label>
+        <input type="number" min="0" formControlName="spraysCount">
+      </div>
+
     </div>
   </div>
 </form>
