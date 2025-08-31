@@ -1,1 +1,30 @@
-<p>step4-details-type works!</p>
+<form [formGroup]="form" class="step4">
+  <div class="scroll">
+    <div class="grid">
+      <div class="col">
+        <label>TYPE</label>
+        <select formControlName="type">
+          <option value="" disabled>Select type</option>
+          <option>Starter</option>
+          <option>Mid</option>
+          <option>Endgame</option>
+          <option>Collector</option>
+        </select>
+        <small>Required. In loc de Tags folosim TYPE.</small>
+      </div>
+
+      <div class="col full">
+        <label>Account Details</label>
+        <div class="details-grid">
+          <div class="drow" *ngFor="let f of fields">
+            <span class="lbl">{{ f.label }}</span>
+
+            <input *ngIf="f.type === 'number'" type="number" min="0" [formControlName]="f.key">
+            <input *ngIf="f.type === 'text'"   type="text"               [formControlName]="f.key">
+          </div>
+        </div>
+        <small>Dacă uiți să completezi un câmp numeric, îl salvăm ca 0.</small>
+      </div>
+    </div>
+  </div>
+</form>
