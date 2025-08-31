@@ -26,13 +26,21 @@ export class Step5DeliveryPromoComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.form = this.fb.group({
+      // Credentials (opționale)
+      login: [''],
+      password: [''],
+      emailLogin: [''],
+      emailPassword: [''],
+      inGameName: [''],
+      has2fa: [false],
+
+      // Delivery + Promo (plan obligatoriu)
       delivery: [this.delivery],
-      plan: [this.plan ?? null, Validators.required] // plan obligatoriu
+      plan: [this.plan ?? null, Validators.required]
     });
 
     this.subs.add(this.form.valueChanges.subscribe(() => this.emit()));
-    // emit inițial
-    this.emit();
+    this.emit(); // inițial
   }
 
   ngOnDestroy(): void { this.subs.unsubscribe(); }
@@ -40,18 +48,19 @@ export class Step5DeliveryPromoComponent implements OnInit, OnDestroy {
   private emit() {
     const v = this.form.getRawValue();
     const valid = this.form.get('plan')!.valid;
+
     this.validChange.emit(valid);
-    if (valid) {
-      this.change.emit({
-        deliveryInstructions: v.delivery || '',
-        promotionPlan: v.plan as Plan
-      });
-    } else {
-      // chiar dacă nu-i valid, trimitem payload parțial ca să ții state-ul în wizard
-      this.change.emit({
-        deliveryInstructions: v.delivery || '',
-        promotionPlan: v.plan
-      });
-    }
+    this.change.emit({
+      deliveryInstructions: v.delivery || '',
+      promotionPlan: v.plan as Plan | null,
+      credentials: {
+        login: v.login || '',
+        password: v.password || '',
+        emailLogin: v.emailLogin || '',
+        emailPassword: v.emailPassword || '',
+        inGameName: v.inGameName || '',
+        has2fa: !!v.has2fa
+      }
+    });
   }
 }
