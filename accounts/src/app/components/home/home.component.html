@@ -1,9 +1,11 @@
-<div class="page" [class.blurred]="showAddAccount">
+<div class="page" [class.blurred]="showNewListing">
   <div class="page-header">
     <h1>Accounts</h1>
+
     <div class="actions">
-      <button class="btn btn-primary" (click)="openAddAccount()">
-        <span class="icon">＋</span>Add New Account
+      <button class="btn btn-primary" (click)="openNewListing()">
+        <span class="icon">＋</span>
+        Create a New Listing
       </button>
     </div>
   </div>
@@ -12,13 +14,12 @@
     (searchChange)="onSearch($event)"
     (viewClick)="onViewClick()">
 
-    <!-- fiecare componentă de filtru are atributul `filters` -->
     <app-filter-button
       filters
       label="+ Game"
       [options]="gameOptions"
       [selected]="filters.game || []"
-      (selectedChange)="setFilter('game',$event)">
+      (selectedChange)="setFilter('game', $event)">
     </app-filter-button>
 
     <app-filter-button
@@ -42,13 +43,13 @@
       label="+ Server"
       [options]="serverOptions"
       [selected]="filters.server || []"
-      (selectedChange)="setFilter('server',$event)">
+      (selectedChange)="setFilter('server', $event)">
     </app-filter-button>
 
     <app-filter-button
       filters
       label="+ Discounted"
-      [options]="[{value:'yes', label:'Discounted only'}]"
+      [options]="[{ value: 'yes', label: 'Discounted only' }]"
       [multiple]="false"
       [selected]="filters.discounted ? ['yes'] : []"
       (selectedChange)="setFilter('discounted', $event.includes('yes'))">
@@ -65,18 +66,17 @@
   </app-search-bar>
 
   <app-accounts-table
-  [rows]="rows"
-  (rowMenu)="onRowMenu($event)"
-  (selectionChange)="onSelectionChange($event)"
-  (rowAction)="onRowAction($event)">
-</app-accounts-table>
-
+    [rows]="rows"
+    (rowMenu)="onRowMenu($event)"
+    (selectionChange)="onSelectionChange($event)"
+    (rowAction)="onRowAction($event)">
+  </app-accounts-table>
 </div>
 
-<!-- Modalul (sibling) – NU în interiorul .page, ca să nu fie blurat -->
-<app-add-account
-  *ngIf="showAddAccount"
+<!-- NEW: overlay wizard -->
+<app-new-listing
+  *ngIf="showNewListing"
   [games]="gameList"
-  (pick)="onGamePicked($event)"
-  (close)="closeAddAccount()">
-</app-add-account>
+  (submitted)="onListingSubmitted($event)"
+  (close)="closeNewListing()">
+</app-new-listing>

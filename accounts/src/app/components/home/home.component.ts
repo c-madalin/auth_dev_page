@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
 import { SearchBarComponent } from '../../shared/search-bar/search-bar.component';
 import { AccountsTableComponent, AccountRow, Rating } from '../../shared/accounts-table/accounts-table.component';
 import { FilterButtonComponent, FilterOption } from '../../shared/filter-button/filter-button.component';
-import { AddAccountComponent } from '../../shared/add-account/add-account.component';
+import { NewListingOverlayComponent } from '../../newlisting/new-listing-overlay/new-listing-overlay.component';
 
 export type Status =
   | 'In Progress'
@@ -33,27 +33,19 @@ interface AccountsFilters {
     SearchBarComponent,
     AccountsTableComponent,
     FilterButtonComponent,
-    AddAccountComponent
+    NewListingOverlayComponent
   ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-  // ===== MODAL: Add Account =====
-  showAddAccount = false;
-
-  openAddAccount() {
-    this.showAddAccount = true;
-    document.body.style.overflow = 'hidden';
-  }
-  closeAddAccount() {
-    this.showAddAccount = false;
-    document.body.style.overflow = '';
-  }
-  onGamePicked(game: string) {
-    console.log('Game selected:', game);
-    this.closeAddAccount();
-    // TODO: pornește wizard-ul de creare pentru jocul ales
+  // ===== NEW LISTING MODAL =====
+  showNewListing = false;
+  openNewListing() { this.showNewListing = true; document.body.style.overflow = 'hidden'; }
+  closeNewListing() { this.showNewListing = false; document.body.style.overflow = ''; }
+  onListingSubmitted(data: any) {
+    console.log('SUBMIT listing (mock):', data);
+    this.closeNewListing();
   }
 
   // ===== Opțiuni filtre =====

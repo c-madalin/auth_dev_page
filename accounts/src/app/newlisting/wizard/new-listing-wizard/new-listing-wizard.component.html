@@ -1,0 +1,29 @@
+<div class="form-wrapper">
+  <div class="form-header">
+    <h2>Add new Account</h2>
+    <div class="step-counter">Step {{ step }} of {{ maxStep }}</div>
+    <button class="x" (click)="cancel.emit()" aria-label="Close">✕</button>
+  </div>
+
+  <div class="form-box">
+    <div [ngSwitch]="step">
+      <!-- Step 1: Select Game -->
+      <app-nl-step1-select-game
+        *ngSwitchCase="1"
+        [games]="games"
+        [selected]="data.game"
+        (select)="onGamePicked($event)"
+        (validChange)="setValid($event)">
+      </app-nl-step1-select-game>
+
+
+  </div>
+
+  <app-wizard-nav
+    [step]="step"
+    [maxStep]="maxStep"
+    [isNextEnabled]="currentStepValid"
+    (next)="next()"
+    (prev)="prev()">
+  </app-wizard-nav>
+</div>

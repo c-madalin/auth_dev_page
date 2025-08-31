@@ -1,0 +1,18 @@
+<div class="step1">
+  <div class="panel-search">
+    <span class="icon">🔎</span>
+    <input [(ngModel)]="q" type="text" placeholder="Search games..." />
+  </div>
+
+  <div class="list">
+    <button class="row" *ngFor="let g of filtered" (click)="choose(g)">
+      <span class="dot"></span>
+      <span class="name">{{ g }}</span>
+      <span class="chev">›</span>
+    </button>
+
+    <div class="empty" *ngIf="filtered.length === 0">
+      No games found
+    </div>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+.nav-buttons{
+  display:flex;
+  justify-content:space-between;
+  gap:8px;
+  padding:12px 16px;
+  border-top:1px solid var(--border, #1f2a37);
+  background:var(--panel, #121925);
+}
+
+.nav-button{
+  background:#1a2230;
+  border:1px solid var(--border, #1f2a37);
+  color:var(--text, #e7eefb);
+  padding:10px 14px;
+  border-radius:10px;
+  cursor:pointer;
+}
+
+.nav-button[disabled]{
+  opacity:.6;
+  cursor:not-allowed;
+}
+
+.green{
+  background: var(--green, #45d483);
+  color:#0b121a;
+  border-color: transparent;
+}
