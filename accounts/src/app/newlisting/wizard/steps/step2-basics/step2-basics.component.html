@@ -18,11 +18,7 @@
         <div class="price-row">
           <span class="cur">{{ symbol(form.get('currency')!.value) }}</span>
           <input type="number" min="1" step="1" formControlName="price" />
-          <select formControlName="currency">
-            <option value="EUR">EUR</option>
-            <option value="USD">USD</option>
-            <option value="GBP">GBP</option>
-          </select>
+
         </div>
         <small>
           You will get
