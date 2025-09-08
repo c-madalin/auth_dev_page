@@ -35,3 +35,32 @@
     </div>
   </div>
 </form>
+<form [formGroup]="form" class="step3">
+  <div class="scroll">
+    <div class="col">
+      <label>Description</label>
+      <textarea rows="5" formControlName="description"
+        placeholder="Mention the details of the account here."></textarea>
+    </div>
+
+    <div class="col">
+      <label>Account Gallery (min 1, max 5)</label>
+
+      <div class="gallery">
+        <div class="thumb" *ngFor="let img of gallery; let i = index">
+          <div class="fake-img"></div>
+          <div class="meta">
+            <div class="name">{{ img.name }}</div>
+            <div class="size">{{ img.sizeKB }} KB</div>
+          </div>
+          <button type="button" class="x" (click)="removeAt(i)">✕</button>
+        </div>
+      </div>
+
+      <button type="button" class="btn" (click)="addMockImage()" [disabled]="gallery.length >= 5">
+        + Add mock image
+      </button>
+      <small>First image will be used as marketplace thumbnail.</small>
+    </div>
+  </div>
+</form>

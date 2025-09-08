@@ -18,6 +18,9 @@ export class Step2BasicsComponent implements OnInit, OnDestroy {
   @Input() title = '';
   @Input() slug = '';
 
+  @Input() description = '';
+  @Input() gallery: { name: string; sizeKB: number }[] = [];
+
   @Output() change = new EventEmitter<any>();
   @Output() validChange = new EventEmitter<boolean>();
 
@@ -34,7 +37,9 @@ export class Step2BasicsComponent implements OnInit, OnDestroy {
       price: [this.price, [Validators.required, Validators.min(1)]],
       currency: [this.currency, Validators.required],
       game: [this.selectedGame, Validators.required],
+      description: [this.description, [Validators.required, Validators.minLength(3)]]
     });
+
 
     // Autogen slug din title, până când userul editează slugul manual
     this.subs.add(
@@ -74,19 +79,34 @@ export class Step2BasicsComponent implements OnInit, OnDestroy {
     return cur === 'USD' ? '$' : cur === 'GBP' ? '£' : '€';
   }
 
+  addMockImage() {
+    if (this.gallery.length >= 5) return;
+    const n = this.gallery.length + 1;
+    this.gallery = [...this.gallery, { name: `image_${n}.png`, sizeKB: 120 }];
+    this.emitChange();
+  }
+
+  removeAt(i: number) {
+    this.gallery = this.gallery.filter((_, idx) => idx !== i);
+    this.emitChange();
+  }
+
   private emitChange() {
     const val = this.form.getRawValue();
-    const valid = this.form.valid;
+    const valid =
+      this.form.valid &&
+      this.gallery.length >= 1 &&
+      this.gallery.length <= 5;
     this.validChange.emit(valid);
-    if (valid) {
-      this.change.emit({
-        game: val.game,
-        title: val.title,
-        slug: val.slug,
-        price: Number(val.price),
-        currency: val.currency
-      });
-    }
+    this.change.emit({
+      game: val.game,
+      title: val.title,
+      slug: val.slug,
+      price: Number(val.price),
+      currency: val.currency,
+      description: val.description,
+      gallery: this.gallery
+    });
   }
 
   private slugify(s: string): string {
