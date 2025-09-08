@@ -1,0 +1,44 @@
+{
+  "League of Legends": {
+    "unitLabel": "RP",
+    "regions": ["EU West","North America","Europe Nordic & East","Brazil","Turkey","Latin America North","Latin America South","Russia","Oceania"],
+    "packs": ["574 RP","1380 RP","2800 RP","4500 RP","6500 RP","13500 RP"]
+  },
+  "Valorant": {
+    "unitLabel": "VP",
+    "regions": ["NA","EU","Turkey","Malaysia","Singapore"],
+    "platforms": ["PC","PSN","XBOX"],
+    "packs": ["475 VP","1000 VP","2050 VP","3650 VP","5350 VP","8700 VP","11000 VP"]
+  },
+  "World of Warcraft": {
+    "regions": ["US","EU","South Korea","Taiwan"],
+    "factions": ["Alliance","Horde"],
+    "serversByRegion": {
+      "US": ["Area 52","Illidan","Stormrage"],
+      "EU": ["Draenor","Silvermoon","Kazzak","Gehennas","Firemaw"],
+      "South Korea": [],
+      "Taiwan": []
+    }
+  },
+  "Fortnite": {
+    "unitLabel": "V-Bucks",
+    "regions": ["EU","US"],
+    "packs": ["1000 V-Bucks","2800 V-Bucks","4800 V-Bucks","5000 V-Bucks","10000 V-Bucks","13500 V-Bucks","27000 V-Bucks","40500 V-Bucks","54000 V-Bucks"]
+  },
+  "Genshin Impact": {
+    "unitLabel": "Genesis Crystals",
+    "regions": ["NA","EU","ASIA","TAIWAN/HONG KONG"],
+    "packs": ["60 Genesis Crystals","330 Genesis Crystals","1090 Genesis Crystals","2240 Genesis Crystals","3880 Genesis Crystals","8080 Genesis Crystals","Blessing of the Welkin Moon"]
+  },
+  "Roblox": {
+    "note": "no-specific-data"
+  },
+  "Lost Ark": {
+    "regions": ["US","EU","South Korea","Russia","China","Japan","Taiwan"],
+    "servers": ["Balthorr - East","Inanna - East","Luterra - East","Nineveh - East","Vairgrys - East","Brelshaza - West","Thaemine - West","Arcturus","Elpon","Gienah","Ortuus","Ratik","Main Server"]
+  },
+  "Final Fantasy XIV": {
+    "regions": ["US","EU","OCEANIA","JAPAN"],
+    "servers": ["Cerberus","Louisoix","Moogle","Omega","Ragnarok","Spriggan","Lich","Odin","Phoenix","Shiva","Twintania","Zodiark","Alpha","Raiden"]
+  }
+}
