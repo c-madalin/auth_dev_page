@@ -16,9 +16,7 @@
           <div class="col">
             <label>Price per Unit</label>
             <div class="price-row">
-              <select class="cur" formControlName="currency">
-                <option *ngFor="let c of currencies" [value]="c">{{ c }}</option>
-              </select>
+
               <input type="number" formControlName="pricePerUnit" step="0.000001" min="0.000001" />
               <span class="unit">/ {{ unitLabel || form.get('unit')!.value || 'Unit' }}</span>
             </div>
@@ -140,10 +138,7 @@
             <span>Original price</span>
             <span>{{ symbol(form.get('currency')!.value) }}{{ originalPrice | number:'1.2-2' }}</span>
           </div>
-          <div class="row">
-            <span>Percentage fee</span>
-            <span>-{{ feePercent }}%</span>
-          </div>
+
           <div class="row total">
             <span>Amount you will receive</span>
             <span>{{ symbol(form.get('currency')!.value) }}{{ sellerGets | number:'1.2-2' }}</span>

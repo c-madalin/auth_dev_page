@@ -34,7 +34,7 @@ export class CurrencyOfferOverlayComponent implements OnInit, OnDestroy {
   subs = new Subscription();
 
   // static
-  currencies = ['EUR', 'USD', 'GBP'];
+
 
   // dynamic (from JSON)
   private gameData: GameSpecific = {};
