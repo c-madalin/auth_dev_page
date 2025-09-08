@@ -18,11 +18,9 @@
         <div class="price-row">
           <span class="cur">{{ symbol(form.get('currency')!.value) }}</span>
           <input type="number" min="1" step="1" formControlName="price" />
-
         </div>
         <small>
-          You will get
-          {{ symbol(form.get('currency')!.value) }}{{ sellerGets | number:'1.2-2' }}
+          You will get {{ symbol(form.get('currency')!.value) }}{{ sellerGets | number:'1.2-2' }}
         </small>
       </div>
 
@@ -33,10 +31,8 @@
         </select>
       </div>
     </div>
-  </div>
-</form>
-<form [formGroup]="form" class="step3">
-  <div class="scroll">
+
+    <!-- Description + Gallery -->
     <div class="col">
       <label>Description</label>
       <textarea rows="5" formControlName="description"

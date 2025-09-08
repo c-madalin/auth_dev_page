@@ -33,41 +33,32 @@ export class Step2BasicsComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.form = this.fb.group({
       title: [this.title, [Validators.required, Validators.minLength(3)]],
-      slug: [this.slug, [Validators.required, Validators.pattern(/^[a-z0-9-]+$/)]],
+      slug:  [this.slug,  [Validators.required, Validators.pattern(/^[a-z0-9-]+$/)]],
       price: [this.price, [Validators.required, Validators.min(1)]],
       currency: [this.currency, Validators.required],
       game: [this.selectedGame, Validators.required],
       description: [this.description, [Validators.required, Validators.minLength(3)]]
     });
 
-
-    // Autogen slug din title, până când userul editează slugul manual
-    this.subs.add(
-      this.form.get('title')!.valueChanges.subscribe((v: string) => {
-        if (!this.slugTouched) {
-          const s = this.slugify(v ?? '');
-          this.form.get('slug')!.setValue(s, { emitEvent: false });
-          this.emitChange();
-        }
-      })
-    );
-
-    this.subs.add(
-      this.form.get('slug')!.valueChanges.subscribe(() => {
-        this.slugTouched = true;
+    // Autogen slug din title până când userul editează slug-ul
+    this.subs.add(this.form.get('title')!.valueChanges.subscribe((v: string) => {
+      if (!this.slugTouched) {
+        const s = this.slugify(v ?? '');
+        this.form.get('slug')!.setValue(s, { emitEvent: false });
         this.emitChange();
-      })
-    );
+      }
+    }));
+
+    this.subs.add(this.form.get('slug')!.valueChanges.subscribe(() => {
+      this.slugTouched = true;
+      this.emitChange();
+    }));
 
     this.subs.add(this.form.valueChanges.subscribe(() => this.emitChange()));
-
-    // emit inițial
-    this.emitChange();
+    this.emitChange(); // inițial
   }
 
-  ngOnDestroy(): void {
-    this.subs.unsubscribe();
-  }
+  ngOnDestroy(): void { this.subs.unsubscribe(); }
 
   // 85% după taxa de 15%
   get sellerGets(): number {
@@ -93,11 +84,9 @@ export class Step2BasicsComponent implements OnInit, OnDestroy {
 
   private emitChange() {
     const val = this.form.getRawValue();
-    const valid =
-      this.form.valid &&
-      this.gallery.length >= 1 &&
-      this.gallery.length <= 5;
+    const valid = this.form.valid && this.gallery.length >= 1 && this.gallery.length <= 5;
     this.validChange.emit(valid);
+
     this.change.emit({
       game: val.game,
       title: val.title,
