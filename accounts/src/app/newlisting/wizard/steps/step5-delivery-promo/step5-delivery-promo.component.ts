@@ -24,24 +24,25 @@ export class Step5DeliveryPromoComponent implements OnInit, OnDestroy {
 
   constructor(private fb: FormBuilder) {}
 
-  ngOnInit(): void {
-    this.form = this.fb.group({
-      // Credentials (opționale)
-      login: [''],
-      password: [''],
-      emailLogin: [''],
-      emailPassword: [''],
-      inGameName: [''],
-      has2fa: [false],
+ngOnInit(): void {
+  this.form = this.fb.group({
+    // Credentials (opționale)
+    login: [''],
+    password: [''],
+    emailLogin: [''],
+    emailPassword: [''],
+    inGameName: [''],
+    has2fa: [false],
+    description: ['', [Validators.maxLength(500)]], // (deja limitat)
 
-      // Delivery + Promo (plan obligatoriu)
-      delivery: [this.delivery],
-      plan: [this.plan ?? null, Validators.required]
-    });
+    // Delivery + Promo
+    delivery: [this.delivery, [Validators.maxLength(500)]], // ⬅️ limită 500
+    plan: [this.plan ?? null, Validators.required]
+  });
 
-    this.subs.add(this.form.valueChanges.subscribe(() => this.emit()));
-    this.emit(); // inițial
-  }
+  this.subs.add(this.form.valueChanges.subscribe(() => this.emit()));
+  this.emit(); // inițial
+}
 
   ngOnDestroy(): void { this.subs.unsubscribe(); }
 

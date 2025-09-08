@@ -44,14 +44,30 @@
     <div class="sep"></div>
 
     <!-- DELIVERY -->
-    <div class="col">
-      <div class="hdr">
-        <label>Delivery Instructions</label>
-        <span class="opt">Optional</span>
-      </div>
-      <textarea rows="5" formControlName="delivery"
-        placeholder="Helpful login tips for buyers (different from the marketplace description)."></textarea>
-    </div>
+    <!-- DELIVERY -->
+<div class="col">
+  <div class="hdr">
+    <label>Delivery Instructions</label>
+    <span class="opt">Optional</span>
+  </div>
+
+  <textarea
+    rows="5"
+    formControlName="delivery"
+    maxlength="500"
+    placeholder="Helpful login tips for buyers (different from the marketplace description).">
+  </textarea>
+
+  <!-- opțional: contor + mesaj eroare -->
+  <div class="row between">
+    <small>{{ form.get('delivery')?.value?.length || 0 }}/500</small>
+    <small class="err"
+      *ngIf="form.get('delivery')?.hasError('maxlength') && form.get('delivery')?.touched">
+      Max 500 characters.
+    </small>
+  </div>
+</div>
+
 
     <!-- PROMO -->
     <div class="col">

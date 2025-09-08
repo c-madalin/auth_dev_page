@@ -32,13 +32,13 @@ export class Step2BasicsComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      title: [this.title, [Validators.required, Validators.minLength(3)]],
-      slug:  [this.slug,  [Validators.required, Validators.pattern(/^[a-z0-9-]+$/)]],
-      price: [this.price, [Validators.required, Validators.min(1)]],
-      currency: [this.currency, Validators.required],
-      game: [this.selectedGame, Validators.required],
-      description: [this.description, [Validators.required, Validators.minLength(3)]]
-    });
+  title: [this.title, [Validators.required, Validators.minLength(3)]],
+  slug:  [this.slug,  [Validators.required, Validators.pattern(/^[a-z0-9-]+$/)]],
+  price: [this.price, [Validators.required, Validators.min(1)]],
+  currency: [this.currency, Validators.required],
+  game: [this.selectedGame, Validators.required],
+  description: [this.description, [Validators.required, Validators.minLength(3), Validators.maxLength(500)]] // ⬅️ aici
+});
 
     // Autogen slug din title până când userul editează slug-ul
     this.subs.add(this.form.get('title')!.valueChanges.subscribe((v: string) => {

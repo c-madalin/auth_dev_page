@@ -33,9 +33,6 @@ export class CurrencyOfferOverlayComponent implements OnInit, OnDestroy {
   form!: FormGroup;
   subs = new Subscription();
 
-  // static
-
-
   // dynamic (from JSON)
   private gameData: GameSpecific = {};
   private currentMeta: GameMeta | null = null;
@@ -56,7 +53,7 @@ export class CurrencyOfferOverlayComponent implements OnInit, OnDestroy {
       currency: ['EUR', Validators.required],
       unit: ['Unit', Validators.required],
       game: ['', Validators.required],
-      description: [''],
+      description: ['', [Validators.maxLength(500)]], // ⬅️ limită 500
 
       // Game specific (validators set dynamically)
       region: [''],

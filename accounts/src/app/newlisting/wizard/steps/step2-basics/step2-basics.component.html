@@ -34,10 +34,23 @@
 
     <!-- Description + Gallery -->
     <div class="col">
-      <label>Description</label>
-      <textarea rows="5" formControlName="description"
-        placeholder="Mention the details of the account here."></textarea>
-    </div>
+  <label>Description</label>
+  <textarea
+    rows="5"
+    formControlName="description"
+    maxlength="500"
+    placeholder="Mention the details of the account here."></textarea>
+
+  <!-- opțional: contor + mesaj -->
+  <div class="row between">
+    <small>{{ form.get('description')?.value?.length || 0 }}/500</small>
+    <small class="err"
+      *ngIf="form.get('description')?.hasError('maxlength') && form.get('description')?.touched">
+      Max 500 characters.
+    </small>
+  </div>
+</div>
+
 
     <div class="col">
       <label>Account Gallery (min 1, max 5)</label>

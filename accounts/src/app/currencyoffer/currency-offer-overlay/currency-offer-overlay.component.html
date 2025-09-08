@@ -16,7 +16,6 @@
           <div class="col">
             <label>Price per Unit</label>
             <div class="price-row">
-
               <input type="number" formControlName="pricePerUnit" step="0.000001" min="0.000001" />
               <span class="unit">/ {{ unitLabel || form.get('unit')!.value || 'Unit' }}</span>
             </div>
@@ -33,7 +32,20 @@
 
           <div class="col full">
             <label>Description</label>
-            <textarea rows="3" formControlName="description" placeholder="Short Currency Description"></textarea>
+            <textarea
+              rows="3"
+              formControlName="description"
+              maxlength="500"
+              placeholder="Short Currency Description"></textarea>
+
+            <!-- opțional: contor + mesaj de eroare -->
+            <div class="row between">
+              <small>{{ form.get('description')?.value?.length || 0 }}/500</small>
+              <small class="err"
+                    *ngIf="form.get('description')?.hasError('maxlength') && form.get('description')?.touched">
+                Max 500 characters.
+              </small>
+            </div>
           </div>
         </div>
       </section>
