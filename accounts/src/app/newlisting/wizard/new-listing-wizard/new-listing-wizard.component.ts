@@ -14,7 +14,7 @@ import { WizardNavComponent } from '../wizard-nav/wizard-nav.component';
     CommonModule, NgSwitch, NgSwitchCase,
     WizardNavComponent,
     Step1SelectGameComponent, Step2BasicsComponent,
-    Step3DescriptionGalleryComponent, Step4DetailsTypeComponent,
+     Step4DetailsTypeComponent,
     Step5DeliveryPromoComponent
   ],
   templateUrl: './new-listing-wizard.component.html',
@@ -26,7 +26,7 @@ export class NewListingWizardComponent {
   @Output() submit = new EventEmitter<any>(); // fără interfață
 
   step = 1;
-  maxStep = 5;
+  maxStep = 4;
   currentStepValid = false;
 
   // obiect simplu pentru colectarea datelor (doar pentru UI)
@@ -40,9 +40,8 @@ export class NewListingWizardComponent {
     switch (this.step) {
       case 1: return !!this.data.game;
       case 2: return !!(this.data.title && this.data.slug && (this.data.price ?? 0) > 0 && this.data.game);
-      case 3: return !!(this.data.description && (this.data.gallery?.length ?? 0) >= 1);
-      case 4: return !!this.data.type;
-      case 5: return !!this.data.promotionPlan;
+      case 3: return !!this.data.type;
+      case 4: return !!this.data.promotionPlan;
       default: return false;
     }
   }

@@ -29,16 +29,9 @@
         (validChange)="setValid($event)">
       </app-nl-step2-basics>
 
-      <app-nl-step3-description-gallery
-        *ngSwitchCase="3"
-        [description]="data.description || ''"
-        [gallery]="data.gallery || []"
-        (change)="onDescChange($event)"
-        (validChange)="setValid($event)">
-      </app-nl-step3-description-gallery>
 
       <app-nl-step4-details-type
-        *ngSwitchCase="4"
+        *ngSwitchCase="3"
         [typeValue]="data.type || ''"
         [details]="data.details || {}"
         (change)="onDetailsChange($event)"
@@ -46,7 +39,7 @@
       </app-nl-step4-details-type>
 
       <app-nl-step5-delivery-promo
-        *ngSwitchCase="5"
+        *ngSwitchCase="4"
         [delivery]="data.deliveryInstructions || ''"
         [plan]="data.promotionPlan"
         (change)="onDeliveryChange($event)"
