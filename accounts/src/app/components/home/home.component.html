@@ -1,4 +1,4 @@
-<div class="page" [class.blurred]="showNewListing">
+<div class="page" [class.blurred]="showNewListing || showNewCurrencyOffer">
   <div class="page-header">
     <h1>Accounts</h1>
 
@@ -77,7 +77,7 @@
   </app-accounts-table>
 </div>
 
-<!-- NEW: overlay wizard -->
+<!-- Overlays -->
 <app-new-listing
   *ngIf="showNewListing"
   [games]="gameList"
@@ -88,7 +88,7 @@
 <app-currency-offer-overlay
   *ngIf="showNewCurrencyOffer"
   [games]="gameList"
-  [feePercent]="0"
+  [feePercent]="15"
   (submitted)="onCurrencyOfferSubmitted($event)"
   (close)="closeNewCurrencyOffer()">
 </app-currency-offer-overlay>

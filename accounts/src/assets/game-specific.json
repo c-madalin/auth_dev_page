@@ -4,12 +4,14 @@
     "regions": ["EU West","North America","Europe Nordic & East","Brazil","Turkey","Latin America North","Latin America South","Russia","Oceania"],
     "packs": ["574 RP","1380 RP","2800 RP","4500 RP","6500 RP","13500 RP"]
   },
+
   "Valorant": {
     "unitLabel": "VP",
     "regions": ["NA","EU","Turkey","Malaysia","Singapore"],
     "platforms": ["PC","PSN","XBOX"],
     "packs": ["475 VP","1000 VP","2050 VP","3650 VP","5350 VP","8700 VP","11000 VP"]
   },
+
   "World of Warcraft": {
     "regions": ["US","EU","South Korea","Taiwan"],
     "factions": ["Alliance","Horde"],
@@ -20,25 +22,372 @@
       "Taiwan": []
     }
   },
+
   "Fortnite": {
     "unitLabel": "V-Bucks",
     "regions": ["EU","US"],
     "packs": ["1000 V-Bucks","2800 V-Bucks","4800 V-Bucks","5000 V-Bucks","10000 V-Bucks","13500 V-Bucks","27000 V-Bucks","40500 V-Bucks","54000 V-Bucks"]
   },
+
   "Genshin Impact": {
     "unitLabel": "Genesis Crystals",
     "regions": ["NA","EU","ASIA","TAIWAN/HONG KONG"],
     "packs": ["60 Genesis Crystals","330 Genesis Crystals","1090 Genesis Crystals","2240 Genesis Crystals","3880 Genesis Crystals","8080 Genesis Crystals","Blessing of the Welkin Moon"]
   },
-  "Roblox": {
-    "note": "no-specific-data"
-  },
+
+  "Roblox": { "note": "no-specific-data" },
+
   "Lost Ark": {
     "regions": ["US","EU","South Korea","Russia","China","Japan","Taiwan"],
-    "servers": ["Balthorr - East","Inanna - East","Luterra - East","Nineveh - East","Vairgrys - East","Brelshaza - West","Thaemine - West","Arcturus","Elpon","Gienah","Ortuus","Ratik","Main Server"]
+    "servers": [
+      "Balthorr - East","Inanna - East","Luterra - East","Nineveh - East","Vairgrys - East",
+      "Brelshaza - West","Thaemine - West","Arcturus","Elpon","Gienah","Ortuus","Ratik","Main Server",
+      "Кратос","Альдеран","一区 - 卢特兰","一区 - 安忆谷","一区 - 妮娜芙","一区 - 卡丹","一区 - 希里安","一区 - 摩可可",
+      "一区 - 洛恒戴尔","一区 - 库克赛顿","二区 - 贝隆","二区 - 巴尔坦","二区 - 贝拉","二区 - 阿尔古斯","二区 - 艾达琳",
+      "二区 - 特里希温","二区 - 凯因","二区 - 卡隆","三区 - 托托克","三区 - 阿布莱修德","三区 - 艾伦","三区 - 阿贾娜",
+      "三区 - 萨沙","三区 - 卡门","三区 - 阿黛尔","三区 - 霸者之剑","席利安","阿曼"
+    ]
   },
+
   "Final Fantasy XIV": {
     "regions": ["US","EU","OCEANIA","JAPAN"],
-    "servers": ["Cerberus","Louisoix","Moogle","Omega","Ragnarok","Spriggan","Lich","Odin","Phoenix","Shiva","Twintania","Zodiark","Alpha","Raiden"]
+    "servers": [
+      "Cerberus","Louisoix","Moogle","Omega","Ragnarok","Spriggan","Sagittarius","Phantom",
+      "Lich","Odin","Phoenix","Shiva","Twintania","Zodiark","Alpha","Raiden",
+      "Adamantoise","Cactuar","Faerie","Gilgamesh","Jenova","Midgardsormr","Sargatanas","Siren",
+      "Balmung","Brynhildr","Coeurl","Diabolos","Goblin","Malboro","Mateus","Zalera",
+      "Behemoth","Excalibur","Exodus","Famfrit","Hyperion","Lamia","Leviathan","Ultros",
+      "Aegis","Atomos","Carbuncle","Garuda","Gungnir","Kujata","Tonberry","Typhon",
+      "Alexander","Bahamut","Durandal","Fenrir","Ifrit","Ridill","Tiamat","Ultima",
+      "Anima","Asura","Chocobo","Hades","Ixion","Masamune","Pandaemonium","Titan",
+      "Belias","Mandragora","Ramuh","Shinryu","Unicorn","Valefor","Yojimbo","Zeromus"
+    ]
+  },
+
+  "Rocket League": {
+    "platforms": ["PC","PSN","XBOX"],
+    "packs": ["500 Credits","1100 Credits","3000 Credits","6500 Credits"]
+  },
+
+  "WoW: Season of Discovery": {
+    "regions": ["US","EU","AUSTRALIA"],
+    "servers": ["Living Flame","Wild Growth","Lone Wolf","Crusader Strike","Chaos Bolt","Lava Lash","Shadowstrike","Penance"],
+    "factions": ["Alliance","Horde"]
+  },
+
+  "Clash of Clans": {
+    "packs": ["80 Gems","500 Gems","1200 Gems","2500 Gems","6500 Gems","14000 Gems","Gold Pass"],
+    "unitLabel": "Gems"
+  },
+
+  "Rainbow Six Siege": {
+    "packs": ["600 Credits","1200 Credits","3300 Credits","7200 Credits","15000 Credits","30000 Credits","45000 Credits"],
+    "unitLabel": "Credits"
+  },
+
+  "Old School RuneScape": { "note": "no-specific-data" },
+
+  "WoW: Cataclysm": {
+    "regions": ["US","EU"],
+    "servers": [
+      "Amnennar","Ashbringer","Auberdine","Earthshaker","Everlook","Firemaw","Gehennas","Giantstalker","Golemagg",
+      "Hydraxian Waterlords","Jin'do","Lakeshire","Mandokir","Mirage Raceway","Mograine","Nethergarde Keep","Patchwerk",
+      "Pyrewood Village","Razorfen","Sulfuron","Thekal","Transcendence","Venoxis",
+      "Angerforge","Arugal","Ashkandi","Atiesh","Azuresong","Benediction","Bloodsail Buccaneers","Earthfury","Eranikus",
+      "Faerlina","Grobbulus","Maladath","Mankrik","Myzrael","Old Blanchy","Pagle","Remulos","Skyfury","Sulfuras",
+      "Westfall","Whitemane","Windseeker"
+    ],
+    "factions": ["Alliance","Horde"]
+  },
+
+  "Clash Royale": {
+    "packs": ["80 Gems","500 Gems","1200 Gems","2500 Gems","6500 Gems","14000 Gems","Diamond Pass","Gold Pass"],
+    "unitLabel": "Gems"
+  },
+
+  "Pokemon GO": {
+    "packs": ["100 PokeCoins","550 PokeCoins","600 PokeCoins","1200 PokeCoins","1300 PokeCoins","2500 PokeCoins","2700 PokeCoins","5200 PokeCoins","5600 PokeCoins","14500 PokeCoins","15500 PokeCoins"],
+    "unitLabel": "PokeCoins"
+  },
+
+  "Call of Duty": {
+    "platforms": ["PSN","XBOX","BattleNet","Steam"],
+    "packs": ["200 CP","500 CP","1100 CP","2400 CP","5000 CP","9500 CP","13000 CP"],
+    "unitLabel": "CP"
+  },
+
+  "Free Fire": {
+    "regions": ["Global","Brazil","Latin America","India","Indonesia","Vietnam","Middle East","Europe","Singapore","Malaysia","Thailand"],
+    "packs": [
+      "Monthly Membership","Weekly Membership",
+      "100 Diamonds","110 Diamonds","210 Diamonds","341 Diamonds","530 Diamonds","572 Diamonds","645 Diamonds",
+      "1080 Diamonds","1166 Diamonds","2200 Diamonds","2396 Diamonds","2398 Diamonds","4450 Diamonds","6160 Diamonds","6900 Diamonds"
+    ],
+    "unitLabel": "Diamonds"
+  },
+
+  "Honkai: Star Rail": {
+    "unitLabel": "Oneiric Shards",
+    "regions": ["US","EU","Asia","Taiwan/ Hong Kong"],
+    "packs": ["60 Oneiric Shards","330 Oneiric Shards","1090 Oneiric Shards","2240 Oneiric Shards","3880 Oneiric Shards","8080 Oneiric Shards","Express Supply Pass"]
+  },
+
+  "Mobile Legends": {
+    "regions": ["Global","Singapore","Indonesia","Malaysia","Philippines"],
+    "packs": [
+      "86 Diamonds","172 Diamonds","257 Diamonds","344 Diamonds","514 Diamonds","600 Diamonds","963 Diamonds","1412 Diamonds",
+      "2195 Diamonds","2981 Diamonds","3688 Diamonds","4394 Diamonds","5532 Diamonds","6000 Diamonds","6238 Diamonds","7727 Diamonds",
+      "9288 Diamonds","12976 Diamonds","18576 Diamonds"
+    ],
+    "unitLabel": "Diamonds"
+  },
+
+  "Escape from Tarkov": {
+    "servers": ["PvP","PvE"]
+  },
+
+  "Diablo 4": {
+    "servers": [
+      "Eternal Realm • Softcore","Eternal Realm • Hardcore",
+      "Belial's Return • Softcore","Belial's Return • Hardcore",
+      "Sins of the Horadrim • Softcore","Sins of the Horadrim • Hardcore"
+    ]
+  },
+
+  "Last Epoch": {
+    "servers": [
+      "Beneath Ancient Skies Standard","Beneath Ancient Skies Hardcore",
+      "Tombs of the Erased Standard","Tombs of the Erased Hardcore",
+      "Legacy Standard","Legacy Hardcore"
+    ]
+  },
+
+  "Warframe": {
+    "platforms": ["PC","PSN","XBOX","Switch"],
+    "packs": ["75 Platinum","170 Platinum","370 Platinum","1000 Platinum","2100 Platinum","4300 Platinum"],
+    "unitLabel": "Platinum"
+  },
+
+  "The Elder Scrolls Online": {
+    "platforms": ["PC","PLAYSTATION","XBOX"],
+    "regions": ["NA","EU"]
+  },
+
+  "Fallout 76": {
+    "platforms": ["PC","PLAYSTATION","XBOX"],
+    "packs": ["500 Atoms","1100 Atoms","2400 Atoms","5000 Atoms"],
+    "unitLabel": "Atoms"
+  },
+
+  "Path of Exile": {
+    "items": [
+      "Divine Orb","Exalted Orb","Chaos Orb","Orb of Fusing","Mirror of Kalandra","Ancient Orb","Armourer’s Scrap",
+      "Awakened Sextant","Awakener’s Orb","Blacksmith’s Whetstone","Blessed Orb","Cartographer’s Chisel","Chromatic Orb",
+      "Crusader’s Exalted Orb","Elevated Sextant","Gemcutter’s Prism","Glassblower’s Bauble","Hinekora's Lock",
+      "Hunter’s Exalted Orb","Jeweller’s Orb","Orb of Alchemy","Orb of Alteration","Orb of Annulment","Orb of Augmentation",
+      "Orb of Chance","Orb of Conflict","Orb of Dominance","Orb of Regret","Orb of Scouring","Orb of Transmutation",
+      "Orb of Unmaking","Portal Scroll","Redeemer’s Exalted Orb","Regal Orb","Scroll of Wisdom","Stacked Deck",
+      "Tailoring Orb","Tempering Orb","Vaal Orb","Veiled Chaos Orb","Warlord’s Exalted Orb",
+      "Lesser/Greater/Grand/Exceptional Eldritch Ichor",
+      "Lesser/Greater/Grand/Exceptional Eldritch Ember",
+      "Wild/Vivid/Primal/Sacred Crystallised Lifeforce",
+      "Reflecting Mist","Veiled Orb","Tainted Divine Teardrop","Blessing of Chayula","Bestiary Orb","Eternal Orb",
+      "Orb of Horizons","Engineer's Orb","Maven's Orb","Harbinger's Orb","Unshaping Orb","Orb of Binding",
+      "Gold","Mirror Shard","Fracturing Orb"
+    ]
+  },
+
+  "RuneScape 3": { "note": "no-specific-data" },
+
+  "New World": {
+    "platforms": ["PC","Playstation","Xbox"],
+    "regions": ["US","EU","AP","SA"],
+    "servers": [
+      "Aries - EU Central","Nysa - EU Central","Mardi [PS] - EU Central","Bifrost - EU Central",
+      "Hudsonland - US East","Pangea - US East","Valhalla - US East","Tumtum [PS] - US East",
+      "El Dorado - US West","Delos - AP Southeast","Taiyi [PS] - AP Southeast",
+      "Devaloka - SA East","Nihal [PS] - SA East"
+    ]
+  },
+
+  "Zenless Zone Zero": {
+    "unitLabel": "Monochrome",
+    "packs": [
+      "60 Monochrome","330 Monochrome","1090 Monochrome","2240 Monochrome","3880 Monochrome","8080 Monochrome",
+      "Inter-Knot Membership"
+    ],
+    "regions": ["NA","EU","ASIA","Taiwan/Honk Kong"]
+  },
+
+  "FC 25": {
+    "platforms": ["PC","Playstation","Xbox","Switch"]
+  },
+
+  "Albion Online": {
+    "regions": ["US","Europe","Asia"]
+  },
+
+  "Throne and Liberty": {
+    "regions": ["NA West","NA East","South America","Europe","Asia Pacific"],
+    "servers": [
+      "Invoker","Moonstone","Oblivion","Akidu","Carnage","Ivory","Stellarite","Adrenaline","Pippin","Snowburn",
+      "Eldritch","Resistance","Starlight","Chamir","Zephyr","Conviction","Rebellion","Fortune","Destiny","Arcane",
+      "Emerald","Cascade","Paola","Talon","Obsidian","Judgment","Valkarg","Sunstorm","Amethyst","Titanspine"
+    ]
+  },
+
+  "Diablo Immortal": {
+    "regions": ["EU","South Korea","EA","JAPAN","NA","OCEANIA","SAM","SEA"],
+    "servers": [
+      "Angiris Council","Archbishop Lazarus","Arreat Summit","Blood Rose","Cathedral of Light","Crystal Arch",
+      "Dark Exile","Dark Wanderer","Diamond Gates","Frost Horrors","Frozen Orb","Gardens of Hope","Gharbad the Weak",
+      "Imperius","Oblivion Knight","Peace Warders","Sea of Light","Sightless Eye","Solarian","Stone of Jordan",
+      "Stygian Fury","Tal Rasha","The Countess","The Hellforge","The Void","Vizjerei","Zoltun Kulle",
+      "Lilith","Deckard Cain","Greed","Prime Evils","Caldesann","Eternal Conflict"
+    ]
+  },
+
+  "WoW: Hardcore": {
+    "regions": ["US","EU"],
+    "servers": ["Nek'rosh","Stitches","Defias Pillager","Skull Rock"],
+    "factions": ["Alliance","Horde"]
+  },
+
+  "Trove": {
+    "platforms": ["Nintendo Switch","PC","PlayStation 4 - EU","PlayStation 4 - US","Xbox One"]
+  },
+
+  "Dofus": {
+    "servers": [
+      "TalKasha","Tylezia","Imagiro","Hellmina","Orukam","Ombre","Draconiros",
+      "Dakal-1","Dakal-2","Dakal-3","Dakal-4","Dakal-5","Dakal-6","Dakal-7","Dakal-8","Dakal-9","Dakal-10","Dakal-11","Dakal-12",
+      "Salar-1","Kourial-2","Rafal-1","Brial 1","Brial 2","Allisteria","Fallanster",
+      "HellMina - FR","Imagiro - FR","Orukam - FR","Tylezia - FR","Draconiros - INT","Shadow - INT","Tal Kasha - INT",
+      "Boune - Retro","Bogan - Temporis","Budshu - Temporis","Handar - Temporis","Mahturj - Temporis","Railzeur - Temporis","Tarad - Temporis"
+    ]
+  },
+
+  "WoW: Classic Era": {
+    "regions": ["US","EU","Oceania","Russia","South Korea","Taiwan","Australia"],
+    "servers": [
+      "Spineshatter","Thunderstrike","Soulseeker","Nightslayer","Dreamscythe","Doomhowl","Maladath","Ivus","Maraudon",
+      "Nek'rosh","Stitches","Defias Pillager","Skull Rock","Goretusk","Mak'gora","Lokholar","Hillsbrad","Iceblood",
+      "Ragnaros","Shimmering Flats","Chromie","Flamegor","Harbinger of Doom","Rhok'delar","Wyrmthalak",
+      "Amnennar","Ashbringer","Auberdine","Bloodfang","Celebras","Dragon's Call","Dragonfang","Dreadmist","Earthshaker",
+      "Everlook","Finkle","Firemaw","Flamelash","Gandling","Gehennas","Golemagg","Heartstriker","Hydraxian Waterlords",
+      "Judgement","Lakeshire","Lucifron","Mandokir","Mirage Raceway","Mograine","Nethergarde Keep","Noggenfogger",
+      "Patchwerk","Pyrewood Village","Razorfen","Razorgore","Shazzrah","Skullflame","Stonespine","Sulfuron",
+      "Ten Storms","Transcendence","Venoxis","Zandalar Tribe"
+    ],
+    "factions": ["Alliance","Horde"]
+  },
+
+  "Path of Exile 2": {
+    "items": [
+      "Artificer's Orb","Armourer's Scrap","Blacksmith's Whetstone","Chaos Orb","Divine Orb","Exalted Orb",
+      "Gemcutter's Prism","Glassblower's Bauble","Greater Jeweller's Orb","Perfect Jeweller's Orb","Lesser Jeweller's Orb",
+      "Mirror of Kalandra","Orb of Alchemy","Orb of Annulment","Orb of Augmentation","Orb of Chance","Regal Orb",
+      "Scroll of Widsom","Vaal Orb","Orb of Transmutation"
+    ],
+    "platforms": ["PC","Playstation","Xbox"],
+    "servers": ["Standard","Hardcore","League","League Hardcore","Rise of the Abyssal Standard","Rise of the Abyssal Hardcore"]
+  },
+
+  "Marvel Rivals": {
+    "packs": ["100 Lattices","500 Lattices","1000 Lattices","2180 Lattices","5680 Lattices","11680 Lattices"],
+    "unitLabel": "Lattices"
+  },
+
+  "Star Wars: The Old Republic": {
+    "regions": ["EU","NA","APAC"],
+    "servers": ["Darth Malgus","Tulak Hord","The Leviathan","Satele Shan","Star Forge","Shae Vizla"],
+    "factions": ["Galactic Republic","Sith Empire"]
+  },
+
+  "Dark and Darker": { "note": "no-specific-data" },
+
+  "Wuthering Waves": {
+    "regions": ["EU","AM","TW/HK/MO","Asia","South East Asia"],
+    "packs": [
+      "Lunite Subscription","Inside Channel","Connoisseur Channel",
+      "60 Lunite","300 Lunite","980 Lunite","1980 Lunite","3280 Lunite","6480 Lunite"
+    ],
+    "unitLabel": "Lunite"
+  },
+
+  "Grow a Garden": { "note": "no-specific-data" },
+
+  "WoW: Mists of Pandaria": {
+    "regions": ["EU","US"],
+    "servers": [
+      "Amnennar","Ashbringer","Auberdine","Earthshaker","Everlook","Firemaw","Gehennas","Giantstalker","Golemagg",
+      "Hydraxian Waterlords","Jin'do","Lakeshire","Mandokir","Mirage Raceway","Mograine","Nethergarde Keep","Patchwerk",
+      "Pyrewood Village","Razorfen","Sulfuron","Thekal","Transcendence","Venoxis",
+      "Angerforge","Arugal","Ashkandi","Atiesh","Azuresong","Benediction","Bloodsail Buccaneers","Earthfury","Eranikus",
+      "Faerlina","Grobbulus","Maladath","Mankrik","Myzrael","Old Blanchy","Pagle","Remulos","Skyfury","Sulfuras",
+      "Westfall","Whitemane","Windseeker"
+    ]
+  },
+
+  "Dune: Awakening": {
+    "regions": ["US Central","US West","US East","South America","Oceania","Asia"],
+    "servers": [
+      "Archidamas III","Bahamonde","Grumman","Icarus","Khala","Limos","Pax","Puppis","Rhea","Selene","Solaria",
+      "Alpha Corvus","Deneb","Cassiopeia","Daxos","Epsilon Eridani","Fides","Hagal","Indra","Jongleur","Korona","Lampadas",
+      "Mycenae","Buzzel","Oxylon","Quirinus","Saturina","Tucana","Xenophon","Aiglon","Andromeda","Chapterhouse"
+    ]
+  },
+
+  "99 Nights in the Forest": {
+    "packs": ["20 Diamonds","100 Diamonds","250 Diamonds","500 Diamonds","700 Diamonds","1400 Diamonds"],
+    "unitLabel": "Diamonds"
+  },
+
+  "FC 26": {
+    "platforms": ["PC","Playstation","Xbox","Switch"]
+  },
+
+  "Xbox": {
+    "regions": ["Global","Europe","US"],
+    "packs": [
+      "PC Game Pass - 1 Month","PC Game Pass - 3 Months","PC Game Pass - 6 Months","PC Game Pass - 12 Months",
+      "PC Game Pass Trial - 1 Month","PC Game Pass Trial - 14 Days",
+      "Xbox Game Pass Core - 1 Month","Xbox Game Pass Core - 3 Months","Xbox Game Pass Core - 6 Months","Xbox Game Pass Core - 12 Months",
+      "Xbox Game Pass Ultimate - 1 Month","Xbox Game Pass Ultimate - 3 Months","Xbox Game Pass Ultimate - 6 Months","Xbox Game Pass Ultimate - 12 Months",
+      "Xbox Game Pass Ultimate Trial - 1 Month"
+    ]
+  },
+
+  "Conan Exiles": {
+    "platforms": ["PC","Playstation","Xbox"],
+    "packs": ["120 Crom Coins","500 Crom Coins","1200 Crom Coins","2500 Crom Coins"],
+    "unitLabel": "Crom Coins"
+  },
+
+  "Destiny 2": {
+    "platforms": ["PC","Playstation","Xbox"],
+    "packs": ["500 Silver","1000 Silver","2000 Silver","5000 Silver"],
+    "unitLabel": "Silver"
+  },
+
+  "EVE Online": {
+    "packs": ["100 Plex","250 Plex","500 Plex","1000 Plex","1500 Plex","3000 Plex","7000 Plex"],
+    "unitLabel": "PLEX"
+  },
+
+  "Palia": {
+    "packs": ["2050 Palia Coins","3650 Palia Coins","5350 Palia Coins","11000 Palia Coins"],
+    "unitLabel": "Palia Coins"
+  },
+
+  "Tibia": {
+    "packs": ["25 Tibia Coins","50 Tibia Coins","250 Tibia Coins","750 Tibia Coins","1500 Tibia Coins"],
+    "unitLabel": "Tibia Coins"
+  },
+
+  "Tower of Fantasy": {
+    "regions": ["NA (North America)","EU (Europe)","SEA (Southeast Asia)","Asia/Pacific"],
+    "packs": ["60 Tanium","300 Tanium","980 Tanium","1 980 Tanium","3 280 Tanium","6 480 Tanium"],
+    "unitLabel": "Tanium"
   }
 }
