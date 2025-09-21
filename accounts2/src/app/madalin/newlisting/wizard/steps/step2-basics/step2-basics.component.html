@@ -1,0 +1,75 @@
+<form [formGroup]="form" class="step2">
+  <div class="scroll">
+    <div class="grid">
+      <div class="col">
+        <label>Account Title</label>
+        <input type="text" formControlName="title" placeholder="EUW · Platinum I" />
+        <small>Dashes will be converted in the URL.</small>
+      </div>
+
+      <div class="col">
+        <label>Slug (URI)</label>
+        <input type="text" formControlName="slug" placeholder="euw-platinum-i" />
+        <small>This will be used in the URL</small>
+      </div>
+
+      <div class="col">
+        <label>Price</label>
+        <div class="price-row">
+          <span class="cur">{{ symbol(form.get('currency')!.value) }}</span>
+          <input type="number" min="1" step="1" formControlName="price" />
+        </div>
+        <small>
+          You will get {{ symbol(form.get('currency')!.value) }}{{ sellerGets | number:'1.2-2' }}
+        </small>
+      </div>
+
+      <div class="col">
+        <label>Game</label>
+        <select formControlName="game">
+          <option *ngFor="let g of games" [value]="g">{{ g }}</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Description + Gallery -->
+    <div class="col">
+  <label>Description</label>
+  <textarea
+    rows="5"
+    formControlName="description"
+    maxlength="500"
+    placeholder="Mention the details of the account here."></textarea>
+
+  <!-- opțional: contor + mesaj -->
+  <div class="row between">
+    <small>{{ form.get('description')?.value?.length || 0 }}/500</small>
+    <small class="err"
+      *ngIf="form.get('description')?.hasError('maxlength') && form.get('description')?.touched">
+      Max 500 characters.
+    </small>
+  </div>
+</div>
+
+
+    <div class="col">
+      <label>Account Gallery (min 1, max 5)</label>
+
+      <div class="gallery">
+        <div class="thumb" *ngFor="let img of gallery; let i = index">
+          <div class="fake-img"></div>
+          <div class="meta">
+            <div class="name">{{ img.name }}</div>
+            <div class="size">{{ img.sizeKB }} KB</div>
+          </div>
+          <button type="button" class="x" (click)="removeAt(i)">✕</button>
+        </div>
+      </div>
+
+      <button type="button" class="btn" (click)="addMockImage()" [disabled]="gallery.length >= 5">
+        + Add mock image
+      </button>
+      <small>First image will be used as marketplace thumbnail.</small>
+    </div>
+  </div>
+</form>

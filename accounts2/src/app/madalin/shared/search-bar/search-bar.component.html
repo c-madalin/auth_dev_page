@@ -1,0 +1,22 @@
+<div class="toolbar" (window:keydown)="focusWithSlash($event)">
+  <!-- SEARCH -->
+  <div class="search">
+    <span class="search-icon">🔎</span>
+    <input #searchInput
+           type="text"
+           [value]="term"
+           (input)="onKey(searchInput.value)"
+           placeholder="Search..." />
+    <kbd>/</kbd>
+  </div>
+
+
+  <!-- Filtrele (butoane dropdown) sunt proiectate aici -->
+  <div class="filters">
+    <ng-content select="[filters]" style="gap: 66px;"></ng-content>
+  </div>
+
+  <div class="toolbar-right">
+
+  </div>
+</div>

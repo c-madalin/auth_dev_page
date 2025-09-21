@@ -1,0 +1,168 @@
+<div class="overlay" (click)="cancel()">
+  <div class="panel" (click)="$event.stopPropagation()">
+    <!-- HEADER -->
+    <div class="header">
+      <h3>Create Currency Offer</h3>
+      <button class="x" (click)="cancel()" aria-label="Close">✕</button>
+    </div>
+
+    <!-- BODY -->
+    <form [formGroup]="form" class="body">
+      <!-- MAIN -->
+      <section class="card">
+        <h4>Main Currency Info</h4>
+
+        <div class="grid-2">
+          <div class="col">
+            <label>Price per Unit</label>
+            <div class="price-row">
+              <input type="number" formControlName="pricePerUnit" step="0.000001" min="0.000001" />
+              <span class="unit">/ {{ unitLabel || form.get('unit')!.value || 'Unit' }}</span>
+            </div>
+            <small>You can enter up to 6 decimal places for precise pricing.</small>
+          </div>
+
+          <div class="col">
+            <label>Game</label>
+            <select formControlName="game">
+              <option value="" disabled>Select Game</option>
+              <option *ngFor="let g of games" [value]="g">{{ g }}</option>
+            </select>
+          </div>
+
+          <div class="col full">
+            <label>Description</label>
+            <textarea
+              rows="3"
+              formControlName="description"
+              maxlength="500"
+              placeholder="Short Currency Description"></textarea>
+
+            <!-- opțional: contor + mesaj de eroare -->
+            <div class="row between">
+              <small>{{ form.get('description')?.value?.length || 0 }}/500</small>
+              <small class="err"
+                    *ngIf="form.get('description')?.hasError('maxlength') && form.get('description')?.touched">
+                Max 500 characters.
+              </small>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- GAME SPECIFIC -->
+      <section class="card">
+        <h4>Game Specific Data</h4>
+        <div class="grid-2">
+          <div class="col" *ngIf="regionOptions.length">
+            <label>Region</label>
+            <select formControlName="region">
+              <option value="" disabled>Select Region</option>
+              <option *ngFor="let r of regionOptions" [value]="r">{{ r }}</option>
+            </select>
+          </div>
+
+          <div class="col" *ngIf="serverOptions.length">
+            <label>Server</label>
+            <select formControlName="server">
+              <option value="" disabled>Select Server</option>
+              <option *ngFor="let s of serverOptions" [value]="s">{{ s }}</option>
+            </select>
+          </div>
+
+          <div class="col" *ngIf="platformOptions.length">
+            <label>Platform</label>
+            <select formControlName="platform">
+              <option value="" disabled>Select Platform</option>
+              <option *ngFor="let p of platformOptions" [value]="p">{{ p }}</option>
+            </select>
+          </div>
+
+          <div class="col" *ngIf="packOptions.length">
+            <label>Pack</label>
+            <select formControlName="pack">
+              <option value="" disabled>Select Pack</option>
+              <option *ngFor="let pk of packOptions" [value]="pk">{{ pk }}</option>
+            </select>
+          </div>
+
+          <div class="col full" *ngIf="factionOptions.length">
+            <label>Faction</label>
+            <div class="radio-row">
+              <label *ngFor="let f of factionOptions" class="radio">
+                <input type="radio" [value]="f" formControlName="faction" />
+                <span>{{ f }}</span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- STOCK -->
+      <section class="card">
+        <h4>Currency Stock</h4>
+        <div class="grid-2">
+          <div class="col">
+            <label>Stock</label>
+            <div class="row-split">
+              <input type="number" min="1" formControlName="stock">
+              <span class="addon">{{ unitLabel || form.get('unit')!.value || 'Unit' }}</span>
+            </div>
+          </div>
+
+          <div class="col">
+            <label>Min. Quantity</label>
+            <div class="row-split">
+              <input type="number" min="1" formControlName="minQty">
+              <span class="addon">{{ unitLabel || form.get('unit')!.value || 'Unit' }}</span>
+            </div>
+          </div>
+
+          <div class="col">
+            <label>Delivery Time</label>
+            <div class="row-split">
+              <input type="number" min="1" formControlName="deliveryTime">
+              <select formControlName="deliveryTimeUnit">
+                <option>Minutes</option>
+                <option>Hours</option>
+                <option>Days</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- DELIVERY -->
+      <section class="card">
+        <div class="hdr">
+          <h4>Delivery Instructions</h4>
+          <span class="opt">Optional</span>
+        </div>
+        <textarea rows="4" formControlName="deliveryInstructions"
+          placeholder="Extra information for the buyer, they will see this after purchase."></textarea>
+      </section>
+
+      <!-- FEES -->
+      <section class="card">
+        <h4>Fees Breakdown</h4>
+        <div class="fees">
+          <div class="row">
+            <span>Original price</span>
+            <span>{{ symbol(form.get('currency')!.value) }}{{ originalPrice | number:'1.2-2' }}</span>
+          </div>
+
+          <div class="row total">
+            <span>Amount you will receive</span>
+            <span>{{ symbol(form.get('currency')!.value) }}{{ sellerGets | number:'1.2-2' }}</span>
+          </div>
+        </div>
+      </section>
+    </form>
+
+    <!-- FOOTER -->
+    <div class="footer">
+      <button class="btn ghost" (click)="cancel()">Cancel</button>
+      <button class="btn primary" [disabled]="form.invalid" (click)="submit()">Create Offer</button>
+    </div>
+  </div>
+</div>

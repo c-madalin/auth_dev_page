@@ -1,0 +1,21 @@
+<!-- add-account-panel.component.html -->
+<div class="panel" (click)="$event.stopPropagation()">
+  <div class="header">
+    <h3>{{ title }}</h3>
+    <button class="x" (click)="close.emit()" aria-label="Close">✕</button>
+  </div>
+
+  <div class="panel-search">
+    <span class="icon">🔎</span>
+    <input [(ngModel)]="q" type="text" placeholder="Search games..." />
+  </div>
+
+  <div class="list">
+    <button class="row" *ngFor="let g of filtered" (click)="onPick(g)">
+      <span class="dot"></span>
+      <span class="name">{{ g }}</span>
+      <span class="chev">›</span>
+    </button>
+    <div class="empty" *ngIf="filtered.length === 0">No games found</div>
+  </div>
+</div>
